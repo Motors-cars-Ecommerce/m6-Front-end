@@ -1,21 +1,34 @@
+import { LoginButton, SingUpButton } from "../../styles/componets/buttons/buttons"
+import { Header, TitleBox } from "../../styles/componets/header"
+import { StyledTitle } from "../../styles/componets/typography"
 
 
 
 const Dashboard = () => {
     return(
         <>
-        <section className="header">
-            <h2>motors shop</h2>
-            <div>
-                <button>fazer login</button>
-                <button>Cadastrar</button>
+        <Header>
+            <div className="header_tittle">
+                <StyledTitle tag="h2">Motors </StyledTitle>
+                <StyledTitle tag="h3">shop</StyledTitle>
+
             </div>
-        </section>
-        <section>
-            <h2>Motors Shop</h2>
-            <h2>A melhor plataforma de anúncios de carros do país</h2>
-        </section>
-        <section>
+            <div className="header_buttons">
+                <LoginButton>Fazer Login</LoginButton>
+                <SingUpButton>Cadastrar</SingUpButton>
+            </div>
+        </Header>
+        <TitleBox>
+            <div>
+                <img src="src\assets\Photo.png" alt="" />
+            </div>
+            <div className="title_box_text">
+                <StyledTitle tag="h1">Motors Shop</StyledTitle>
+                <StyledTitle tag="h2">A melhor plataforma de anúncios de carros do país</StyledTitle>
+            </div>
+            
+        </TitleBox>
+        <section className="car_section">
             <div className="filters">
                 <div className="">
                     <h3>marca</h3>
