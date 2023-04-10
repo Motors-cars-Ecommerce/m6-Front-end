@@ -1,3 +1,4 @@
+import { StyledTitle } from "../../styles/componets/typography"
 
 
 
@@ -69,16 +70,11 @@ const Dashboard = () => {
                 </div>
                 
             </div>
-            <div className="filters">
+            <div className="products-card">
                 <ul>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
+                    <li>
+                        CARD CARRO
+                    </li>
                 </ul>
             </div>
         </section>
