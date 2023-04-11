@@ -2,16 +2,12 @@ import styled from "styled-components";
 
 export const CarCardStyled = styled.li`
   width: 312px;
-  height: 350px;
-  background-color: aqua;
-  
+  height: 370px;
 
   figure {
     background-color: var(--grey-7);
     width: 100%;
     height: 152px;
-    background-color: blue;
-
     display: flex;
     flex-direction: row-reverse;
     margin: 0 auto;
@@ -23,10 +19,10 @@ export const CarCardStyled = styled.li`
       align-items: center;
       justify-content: center;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 500;
       line-height: 17px;
 
-      width: 10%;
+      width: 15px;
       height: 27px;
       background-color: var(--random-7);
       color: var(--whiteFixed);
@@ -36,17 +32,16 @@ export const CarCardStyled = styled.li`
 
       position: absolute;
 
-      /* display: none; */
+      /* display: none; */ // aqui o display será alterado conforme regra de negócio do valor fipe
     }
 
     img {
       width: 100%;
       height: 100%;
-      background-color: yellow;
+      background-color: var(--grey-7);
+      object-fit: cover; 
     }
-
   }
-
 `;
 
 export const UserDataStyled = styled.div`
@@ -61,20 +56,15 @@ export const UserDataStyled = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0px;
-
     width: 32px;
     height: 32px;
-
-    /* Brand/brand1 */
-
-    background: #4529e6;
+    background: var(--brand-2); // essa cor será sortida
     border-radius: 150px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    color: var(--whiteFixed);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 0px;
   }
 `;
 
@@ -84,29 +74,50 @@ export const CarDataStyled = styled.div`
   justify-content: space-between;
 
   div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 
-    span {
-      width: 34px;
+    h2 {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 4px 8px;
+      gap: 10px;
+
+      background: var(--brand-4);
+      border-radius: 4px;
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+
+      width: 35px;
       height: 24px;
-
-      /* Text/body-2-500 */
 
       font-family: "Inter";
       font-style: normal;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 24px;
-      /* identical to box height, or 171% */
 
-      /* Brand/brand1 */
-
-      color: #4529e6;
-
-      /* Inside auto layout */
+      color: var(--brand-1);
 
       flex: none;
       order: 0;
       flex-grow: 0;
     }
+  }
+
+  h3 {
+    width: 105px;
+    height: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--gray-1);
   }
 `;

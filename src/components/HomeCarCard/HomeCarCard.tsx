@@ -16,7 +16,8 @@ const HomeCarCard = () => {
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...
       </StyledTitle>
       <UserDataStyled>
-        <div>SL</div>
+      {/* as letras iniciais dependerão do nome do usuário */}
+        <div>SL</div> 
         <StyledTitle
           tag="h4"
           color="--grey-2"
@@ -29,10 +30,10 @@ const HomeCarCard = () => {
       </UserDataStyled>
       <CarDataStyled>
         <div>
-          <span>0 KM</span>
-          <span>2019</span>
+          <h2>0 KM</h2>
+          <h2>2019</h2>
         </div>
-        <span>R$ 112077</span>
+        <h3>R$ 112.077,00</h3>
       </CarDataStyled>
     </CarCardStyled>
   );
