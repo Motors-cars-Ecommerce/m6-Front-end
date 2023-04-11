@@ -1,19 +1,21 @@
 import { StyledTitle } from "../../styles/componets/typography";
+import { CarCardStyled, CarDataStyled, UserDataStyled } from "./styles";
+import carro from "./imgs/EXTERIOR-frontSidePilotNear-1653845164710-removebg-preview 1.png"
 
 const HomeCarCard = () => {
   return (
-    <li>
+    <CarCardStyled>
       <figure>
         <div>$</div>
-        <img src="" alt="" />
+        <img src={carro} alt="" />
       </figure>
       <StyledTitle tag="h2" color="--grey-1" size={16} weight={600} height={20}>
         Marca - Modelo
       </StyledTitle>
       <StyledTitle tag="h3" color="--grey-2" size={14} weight={400} height={24}>
-        Descrição do Veículo
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...
       </StyledTitle>
-      <div>
+      <UserDataStyled>
         <div>SL</div>
         <StyledTitle
           tag="h4"
@@ -24,15 +26,15 @@ const HomeCarCard = () => {
         >
           Samuel Leão
         </StyledTitle>
-      </div>
-      <div>
+      </UserDataStyled>
+      <CarDataStyled>
         <div>
           <span>0 KM</span>
           <span>2019</span>
         </div>
         <span>R$ 112077</span>
-      </div>
-    </li>
+      </CarDataStyled>
+    </CarCardStyled>
   );
 };
 

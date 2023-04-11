@@ -1,3 +1,4 @@
+import HomeCarCard from "../../components/HomeCarCard/HomeCarCard"
 import { StyledTitle } from "../../styles/componets/typography"
 
 
@@ -72,9 +73,7 @@ const Dashboard = () => {
             </div>
             <div className="products-card">
                 <ul>
-                    <li>
-                        CARD CARRO
-                    </li>
+                    <HomeCarCard/>
                 </ul>
             </div>
         </section>

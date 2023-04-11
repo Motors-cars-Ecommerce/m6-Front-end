@@ -1,6 +1,7 @@
-import { useState } from 'react'
 import './App.css'
 import { RoutesMain } from './routes'
+import HomeCarCard from './components/HomeCarCard/HomeCarCard'
+import Dashboard from './pages/Dashboard/dashboard'
 
 function App() {
   return (
