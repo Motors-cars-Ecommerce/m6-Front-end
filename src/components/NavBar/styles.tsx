@@ -15,6 +15,8 @@ export const NavBarStyled = styled.nav`
     font-size: 20px;
     line-height: 25px;
     color: var(--grey-3);
+    cursor: pointer;
+    width: 20px;
   }
 
   span {
@@ -49,6 +51,7 @@ export const NavBarStyled = styled.nav`
     font-family: "Inter";
     font-size: 16px;
     color: var(--whiteFixed);
+    cursor: pointer;
 
     margin: 40px 0px;
   }
