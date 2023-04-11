@@ -18,62 +18,10 @@ const Dashboard = () => {
             <h2>A melhor plataforma de anúncios de carros do país</h2>
         </section>
         <section>
-            <div className="filters">
-                <div className="">
-                    <h3>marca</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>marca</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>modelo</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>cor</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>ano</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>Km</h3>
-                    <input placeholder="min"/>
-                    <input placeholder="max"/>
-                </div>
-                <div className="">
-                    <h3>preço</h3>
-                    <input placeholder="min"/>
-                    <input placeholder="max"/>
-                </div>
-                
-            </div>
+             {/* AQUI VAI A NAVBAR -BARRA DE NAVEGAÇÃO DOS VEICULOS */}
             <div className="products-card">
                 <ul>
-                    <HomeCarCard/>
+                    LI DOS VEÍCULOS
                 </ul>
             </div>
         </section>
