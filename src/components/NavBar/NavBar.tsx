@@ -85,7 +85,8 @@ const NavBar = () => {
         <input placeholder="Mínimo" />
         <input placeholder="Máximo" />
       </span>
-      <button>Limpar Filtros</button>
+      <button className="mobile-button" >Ver Anúncios</button>
+      <button className="desktop-button" >Limpar Filtros</button>
     </NavBarStyled>
   );
 };

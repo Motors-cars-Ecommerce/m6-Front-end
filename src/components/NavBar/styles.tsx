@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const NavBarStyled = styled.nav`
-  width: 454px;
+  /* MOBILE FIRST */
+
   /* DEFINIT ALTURA MÍNIMA DA CAIXA */
-  min-height: 1400px;
-  padding-left: 30px;
+  /* min-height: 1400px; */
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
 
   li {
+    padding-left: 10px;
     font-family: "Lexend";
     font-style: normal;
     font-weight: 500;
@@ -54,5 +56,22 @@ export const NavBarStyled = styled.nav`
     cursor: pointer;
 
     margin: 40px 0px;
+  }
+
+  .desktop-button{
+    display: none;
+  }
+
+  @media (min-width: 586px) {
+    background-color: yellow;
+    width: 454px;
+
+    .desktop-button{
+    display: block;
+  }
+
+  .mobile-button{
+    display: none;
+  }
   }
 `;
