@@ -28,7 +28,7 @@ export const SingUpButton = styled.button`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 12px 28px;
+    padding: 24px 50px;
     gap: 10px;
 
     width: 90px;
@@ -37,5 +37,11 @@ export const SingUpButton = styled.button`
     border: 1.5px solid var(--grey-4);
     border-radius: 4px;
 
-    color: var(--grey-0)
+    color: var(--grey-0);
+    background-color: transparent;
+
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0em;
+
 `
