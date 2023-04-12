@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const CarCardStyled = styled.li`
   width: 312px;
   height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   figure {
     background-color: var(--grey-7);

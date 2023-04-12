@@ -1,11 +1,12 @@
 import HomeCarCard from "../../components/HomeCarCard/HomeCarCard"
 import { StyledTitle } from "../../styles/componets/typography"
+import { DashboardStyled, NavSectionStyled } from "./styles"
 
 
 
 const Dashboard = () => {
     return(
-        <>
+        <DashboardStyled>
         <section className="header">
             <h2>motors shop</h2>
             <div>
@@ -21,11 +22,21 @@ const Dashboard = () => {
              {/* AQUI VAI A NAVBAR -BARRA DE NAVEGAÇÃO DOS VEICULOS */}
             <div className="products-card">
                 <ul>
-                    LI DOS VEÍCULOS
+                    <HomeCarCard/>
                 </ul>
             </div>
+            <NavSectionStyled>
+            <button className="button-filter-dashboard" >Filtros</button>
+            <div>
+                <h2>1</h2>
+                <h3>de 2</h3>
+            </div>
+            <span>
+                <h4>Seguinte {'>'} </h4>
+            </span>
+            </NavSectionStyled>
         </section>
-    </>
+    </DashboardStyled>
     )
 }
 
