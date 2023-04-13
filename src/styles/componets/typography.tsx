@@ -38,7 +38,7 @@ type tColors =
         "--random-12"
 
 interface iStyledTitleProps {
-  color: tColors;
+  color?: tColors;
   weight?: number;
   size?: number;
   height?: number;
