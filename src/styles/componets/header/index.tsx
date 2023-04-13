@@ -24,7 +24,7 @@ export const Header = styled.section`
     }
 
     .header_buttons{
-        display: none;
+        display: flex;
         flex-direction: row;
         -webkit-box-align: center;
         align-items: center;
@@ -37,7 +37,7 @@ export const Header = styled.section`
     }
 
     .header_user{
-        display:flex;
+        display:none;
         flex-direction: row;
         -webkit-box-align: center;
         align-items: center;
