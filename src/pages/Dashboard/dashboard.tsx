@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer/Footer"
 import HomeCarCard from "../../components/HomeCarCard/HomeCarCard"
 import { StyledTitle } from "../../styles/componets/typography"
 import { DashboardStyled, NavSectionStyled } from "./styles"
@@ -36,6 +37,7 @@ const Dashboard = () => {
             </span>
             </NavSectionStyled>
         </section>
+        <Footer/>
     </DashboardStyled>
     )
 }
