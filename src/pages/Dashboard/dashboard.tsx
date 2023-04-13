@@ -21,8 +21,10 @@ const Dashboard = () => {
         </section>
         <section>
              {/* AQUI VAI A NAVBAR -BARRA DE NAVEGAÇÃO DOS VEICULOS */}
-            <div className="products-card">
+            <div className="container-card">
                 <ul>
+                    <HomeCarCard/>
+                    <HomeCarCard/>
                     <HomeCarCard/>
                 </ul>
             </div>

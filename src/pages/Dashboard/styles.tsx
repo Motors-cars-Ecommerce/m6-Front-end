@@ -1,11 +1,21 @@
 import styled from "styled-components";
 
 export const DashboardStyled = styled.main`
-  .products-card {
+  .container-card {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    /* margin: 5px; */
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
   }
 
   .button-filter-dashboard {
@@ -21,7 +31,6 @@ export const DashboardStyled = styled.main`
     font-size: 16px;
     color: var(--whiteFixed);
     margin-bottom: 60px;
-
   }
 `;
 
@@ -58,7 +67,7 @@ export const NavSectionStyled = styled.section`
     color: rgba(134, 142, 150, 0.5);
   }
 
-  span{
+  span {
     height: 10px;
   }
 

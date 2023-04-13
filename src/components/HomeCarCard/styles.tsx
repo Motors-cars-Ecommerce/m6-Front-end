@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const CarCardStyled = styled.li`
-  width: 312px;
+  min-width: 312px;
+  max-width: 312px;
   height: 370px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 10px;
 
   figure {
     background-color: var(--grey-7);
