@@ -3,13 +3,14 @@ import { Route } from "react-router-dom";
 import Dashboard from "../pages/Dashboard/dashboard";
 import HomeCarCard from "../components/HomeCarCard/HomeCarCard";
 import NavBar from "../components/NavBar/NavBar";
-import CardProduct from "../components/CardProduct/CardProduct";
+import CardProduct from "../components/CardProduct";
+import InfoProduct from "../components/InfoProduct";
 
 export const RoutesMain = () => {
   return (
     <Routes>
       {/* <Route path="/" element={<Dashboard />} /> */}
-      <Route path="/" element={<CardProduct />} />
+      <Route path="/" element={<InfoProduct />} />
     </Routes>
   );
 };
