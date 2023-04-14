@@ -7,12 +7,13 @@ import CardProduct from "../components/CardProduct";
 import InfoProduct from "../components/InfoProduct";
 import CardDescription from "../components/CardDescription";
 import CardComment from "../components/CardComment";
+import InputComment from "../components/InputComment";
 
 export const RoutesMain = () => {
   return (
     <Routes>
       {/* <Route path="/" element={<Dashboard />} /> */}
-      <Route path="/" element={<CardComment />} />
+      <Route path="/" element={<InputComment />} />
     </Routes>
   );
 };
