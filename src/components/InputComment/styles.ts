@@ -48,7 +48,7 @@ const FormStyled = styled.form`
 
       font-size: 16px;
 
-      background-color: green;
+      /* background-color: green; */
 
       @media (max-width: 768px) {
         height: 100px;

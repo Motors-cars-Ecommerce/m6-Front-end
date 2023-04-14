@@ -8,6 +8,7 @@ const SectionStyled = styled.section`
 
   background-color: var(--grey-10);
   padding: 28px 44px 28px 44px;
+  border-radius: 4px;
 
   button {
     width: 100px;

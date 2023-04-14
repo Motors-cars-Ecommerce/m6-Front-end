@@ -5,7 +5,7 @@ const ContainerStyled = styled.div`
   background-color: var(--grey-10);
 
   max-width: 752px;
-  min-width: 375px;
+  min-width: 325px;
   width: 47%;
 
   height: 355px;
@@ -15,10 +15,10 @@ const ContainerStyled = styled.div`
   justify-content: center;
 
   border-radius: 4px;
-
+  /* 
   position: absolute;
   top: 40%;
-  left: 30%;
+  left: 30%; */
 
   img {
     max-width: 441px;
