@@ -2,12 +2,32 @@ import React from "react";
 import { StyledTitle } from "../../styles/componets/typography";
 import { NavBarStyled } from "./styles";
 
+
 const NavBar = () => {
   return (
     <NavBarStyled>
+      <div className="Mobile-Filter">
+        <h2>Filtro</h2>
+        <ul>
+          <li>Fiat</li>
+          <button>x</button>
+          <li>Siena</li>
+          <button>x</button>
+          <li>Brnaca</li>
+          <button>x</button>
+        </ul>
+        <button>X</button>
+      </div>
+
       <div>
-        <StyledTitle  tag="h2" color="--grey-0" size={28} weight={600} height={35} >
-            Marca
+        <StyledTitle
+          tag="h2"
+          color="--grey-0"
+          size={28}
+          weight={600}
+          height={35}
+        >
+          Marca
         </StyledTitle>
         <ul>
           <li>General Motors</li>
@@ -19,8 +39,14 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="">
-      <StyledTitle  tag="h2" color="--grey-0" size={28} weight={600} height={35} >
-            Modelo
+        <StyledTitle
+          tag="h2"
+          color="--grey-0"
+          size={28}
+          weight={600}
+          height={35}
+        >
+          Modelo
         </StyledTitle>
         <ul>
           <li>Civic</li>
@@ -34,8 +60,14 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="">
-      <StyledTitle  tag="h2" color="--grey-0" size={28} weight={600} height={35} >
-            Cor
+        <StyledTitle
+          tag="h2"
+          color="--grey-0"
+          size={28}
+          weight={600}
+          height={35}
+        >
+          Cor
         </StyledTitle>
         <ul>
           <li>Azul</li>
@@ -47,8 +79,14 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="">
-      <StyledTitle  tag="h2" color="--grey-0" size={28} weight={600} height={35} >
-            Ano
+        <StyledTitle
+          tag="h2"
+          color="--grey-0"
+          size={28}
+          weight={600}
+          height={35}
+        >
+          Ano
         </StyledTitle>
         <ul>
           <li>2022</li>
@@ -61,8 +99,14 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="">
-      <StyledTitle  tag="h2" color="--grey-0" size={28} weight={600} height={35} >
-            Combustível
+        <StyledTitle
+          tag="h2"
+          color="--grey-0"
+          size={28}
+          weight={600}
+          height={35}
+        >
+          Combustível
         </StyledTitle>
         <ul>
           <li>Diesel</li>
@@ -71,22 +115,22 @@ const NavBar = () => {
           <li>Flex</li>
         </ul>
       </div>
-      <StyledTitle  tag="h2" color="--grey-0" size={28} weight={600} height={35} >
-            Km
-        </StyledTitle>
+      <StyledTitle tag="h2" color="--grey-0" size={28} weight={600} height={35}>
+        Km
+      </StyledTitle>
       <span className="">
         <input placeholder="Mínima" />
         <input placeholder="Máxima" />
       </span>
-      <StyledTitle  tag="h2" color="--grey-0" size={28} weight={600} height={35} >
-            Preço
-        </StyledTitle>
+      <StyledTitle tag="h2" color="--grey-0" size={28} weight={600} height={35}>
+        Preço
+      </StyledTitle>
       <span className="">
         <input placeholder="Mínimo" />
         <input placeholder="Máximo" />
       </span>
-      <button className="mobile-button" >Ver Anúncios</button>
-      <button className="desktop-button" >Limpar Filtros</button>
+      <button className="mobile-button">Ver Anúncios</button>
+      <button className="desktop-button">Limpar Filtros</button>
     </NavBarStyled>
   );
 };
