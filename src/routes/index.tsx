@@ -7,7 +7,7 @@ import NavBar from "../components/NavBar/NavBar";
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<NavBar />} />
     </Routes>
   );
 };
