@@ -20,6 +20,7 @@ const ContainerStyled = styled.div`
 const FormStyled = styled.form`
   margin-top: 15px;
   background-color: var(--grey-10);
+  /* background-color: red; */
 
   max-width: 672px;
   min-width: 128px;
@@ -34,7 +35,7 @@ const FormStyled = styled.form`
     display: flex;
     justify-content: flex-start;
 
-    /* gap: 30px; */
+    gap: 10px;
 
     input {
       margin-top: 10px;
@@ -46,6 +47,14 @@ const FormStyled = styled.form`
       height: 70px;
 
       font-size: 16px;
+
+      background-color: green;
+
+      @media (max-width: 768px) {
+        height: 100px;
+
+        /* background-color: yellow; */
+      }
     }
 
     button {
@@ -63,8 +72,21 @@ const FormStyled = styled.form`
       cursor: pointer;
 
       margin-top: 70px;
+
+      @media (max-width: 768px) {
+        margin-top: 30px;
+      }
+    }
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      /* background-color: yellow; */
     }
   }
+
+  /* @media (max-width: 768px) {
+    height: 300px;
+  } */
 `;
 
 const OwnerComment = styled.div`
