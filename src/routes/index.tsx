@@ -13,7 +13,7 @@ export const RoutesMain = () => {
   return (
     <Routes>
       {/* <Route path="/" element={<Dashboard />} /> */}
-      <Route path="/" element={<InputComment />} />
+      <Route path="/" element={<InfoProduct />} />
     </Routes>
   );
 };

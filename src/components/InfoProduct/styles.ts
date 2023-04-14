@@ -46,6 +46,11 @@ const InfoCardStyled = styled.div`
     font-weight: 500;
     color: var(--grey-1);
   }
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 const YearAndKmStyled = styled.div`
