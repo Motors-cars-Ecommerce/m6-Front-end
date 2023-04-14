@@ -1,12 +1,20 @@
+
+import Footer from "../../components/Footer/Footer"
+import HomeCarCard from "../../components/HomeCarCard/HomeCarCard"
+import { StyledTitle } from "../../styles/componets/typography"
+import { DashboardStyled, NavSectionStyled } from "./styles"
+
 import { LoginButton, SingUpButton } from "../../styles/componets/buttons/buttons"
 import { Header, TitleBox } from "../../styles/componets/header"
 import { StyledTitle } from "../../styles/componets/typography"
 
 
 
+
 const Dashboard = () => {
     return(
-        <>
+
+        <DashboardStyled>
         <Header>
             <div className="header_tittle">
                 <StyledTitle tag="h2">Motors </StyledTitle>
@@ -30,74 +38,29 @@ const Dashboard = () => {
             </div>
             
         </TitleBox>
-        <section className="car_section">
-            <div className="filters">
-                <div className="">
-                    <h3>marca</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>marca</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>modelo</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>cor</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>ano</h3>
-                    <ul>
-                        <li>teste</li>
-                        <li>teste</li>
-                        <li>teste</li>
-                    </ul>
-                </div>
-                <div className="">
-                    <h3>Km</h3>
-                    <input placeholder="min"/>
-                    <input placeholder="max"/>
-                </div>
-                <div className="">
-                    <h3>preço</h3>
-                    <input placeholder="min"/>
-                    <input placeholder="max"/>
-                </div>
-                
-            </div>
-            <div className="filters">
-                <ul>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
-                    <li>carro</li>
+        <section>
+             {/* AQUI VAI A NAVBAR -BARRA DE NAVEGAÇÃO DOS VEICULOS */}
+            <div className="container-card">
+         <ul>
+                    <HomeCarCard/>
+                    <HomeCarCard/>
+                    <HomeCarCard/>
                 </ul>
             </div>
+            <NavSectionStyled>
+            <button className="button-filter-dashboard" >Filtros</button>
+            <div>
+                <h2>1</h2>
+                <h3>de 2</h3>
+            </div>
+            <span>
+                <h4>Seguinte {'>'} </h4>
+            </span>
+            </NavSectionStyled>
         </section>
-    </>
+                
+        <Footer/>
+    </DashboardStyled>
     )
 }
 
