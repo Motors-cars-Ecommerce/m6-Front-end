@@ -5,12 +5,14 @@ import HomeCarCard from "../components/HomeCarCard/HomeCarCard";
 import NavBar from "../components/NavBar/NavBar";
 import CardProduct from "../components/CardProduct";
 import InfoProduct from "../components/InfoProduct";
+import CardDescription from "../components/CardDescription";
+import CardComment from "../components/CardComment";
 
 export const RoutesMain = () => {
   return (
     <Routes>
       {/* <Route path="/" element={<Dashboard />} /> */}
-      <Route path="/" element={<InfoProduct />} />
+      <Route path="/" element={<CardComment />} />
     </Routes>
   );
 };
