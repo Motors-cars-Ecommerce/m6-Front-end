@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const NavBarStyled = styled.nav`
   /* MOBILE FIRST */
 
@@ -8,6 +9,32 @@ export const NavBarStyled = styled.nav`
   padding-left: 20px;
   display: flex;
   flex-direction: column;
+
+  .Mobile-Filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 30px;
+    overflow: scroll;
+
+    ul{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px 10px;
+    }
+
+    li{
+
+      width: 100%;
+    }
+    
+    button{
+      all: unset;
+      margin-bottom: 15px;
+    }
+    
+  }
 
   li {
     padding-left: 10px;
@@ -71,6 +98,10 @@ export const NavBarStyled = styled.nav`
   }
 
   .mobile-button{
+    display: none;
+  }
+
+  .Mobile-Filter{
     display: none;
   }
   }
