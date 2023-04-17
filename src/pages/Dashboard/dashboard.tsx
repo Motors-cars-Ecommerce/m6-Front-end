@@ -1,10 +1,16 @@
 import Footer from "../../components/Footer/Footer"
 import HomeCarCard from "../../components/HomeCarCard/HomeCarCard"
+
+import { DashboardStyled, NavSectionStyled } from "./styles"
+
+import { LoginButton, SingUpButton } from "../../styles/componets/buttons/buttons"
+import { Header, TitleBox } from "../../styles/componets/header"
+import { StyledTitle } from "../../styles/componets/typography"
+import PhotoGallery from "../../components/PhotosCompartment"
+
 import { DashboardStyled, NavSectionStyled } from "../../components/Header/styles"
 import { HeaderComponet } from "../../components/Header/Header"
 import { TitleBoxComponent } from "../../components/TitleBox/TitleBox"
-
-
 
 
 
