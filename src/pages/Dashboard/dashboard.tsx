@@ -1,3 +1,4 @@
+
 import Footer from "../../components/Footer/Footer"
 import HomeCarCard from "../../components/HomeCarCard/HomeCarCard"
 
@@ -42,9 +43,9 @@ const Dashboard = () => {
         </section>
                 
         <Footer/>
+
     </DashboardStyled>
-    )
-}
+  );
+};
 
-
-export default Dashboard
+export default Dashboard;
