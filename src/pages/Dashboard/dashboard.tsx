@@ -2,20 +2,18 @@ import Footer from "../../components/Footer/Footer";
 import HomeCarCard from "../../components/HomeCarCard/HomeCarCard";
 import { HeaderComponet } from "../../components/Header/Header";
 import { TitleBoxComponent } from "../../components/TitleBox/TitleBox";
-import {
-  DashboardStyled,
-  NavSectionStyled,
-} from "../../components/Header/styles";
+import { DashboardMainStyled } from "./styles";
 import NavBarDesktop from "../../components/NavBarDesktop/NavBarDesktop";
+import PageSelect from "../../components/PageSelect/PageSelect";
 
 const Dashboard = () => {
   return (
     <>
       <HeaderComponet />
       <TitleBoxComponent />
-      <DashboardStyled>
+      <DashboardMainStyled>
         <section>
-          <NavBarDesktop/>
+          <NavBarDesktop />
           <div className="container-card">
             <ul>
               <HomeCarCard />
@@ -23,18 +21,9 @@ const Dashboard = () => {
               <HomeCarCard />
             </ul>
           </div>
-          <NavSectionStyled>
-            <button className="button-filter-dashboard">Filtros</button>
-            <div>
-              <h2>1</h2>
-              <h3>de 2</h3>
-            </div>
-            <span>
-              <h4>Seguinte {">"} </h4>
-            </span>
-          </NavSectionStyled>
         </section>
-      </DashboardStyled>
+        <PageSelect />
+      </DashboardMainStyled>
       <Footer />
     </>
   );
