@@ -13,12 +13,8 @@ import ProductPage from "../pages/ProductPage";
 export const RoutesMain = () => {
   return (
     <Routes>
-
-      {/* <Route path="/" element={<Dashboard />} /> */}
-      <Route path="/" element={<ProductPage />} />
-
-      <Route path="/" element={<NavBar />} />
-
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/detail" element={<ProductPage />} />
     </Routes>
   );
 };
