@@ -32,6 +32,10 @@ export const DashboardStyled = styled.main`
     color: var(--whiteFixed);
     margin-bottom: 60px;
   }
+
+  @media (min-width: 800px) {
+    
+  }
 `;
 
 export const NavSectionStyled = styled.section`

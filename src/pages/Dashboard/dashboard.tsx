@@ -6,17 +6,16 @@ import {
   DashboardStyled,
   NavSectionStyled,
 } from "../../components/Header/styles";
-import NavBar from "../../components/NavBar/NavBar";
+import NavBarDesktop from "../../components/NavBarDesktop/NavBarDesktop";
 
 const Dashboard = () => {
   return (
     <>
       <HeaderComponet />
-
+      <TitleBoxComponent />
       <DashboardStyled>
-        <TitleBoxComponent />
         <section>
-          <NavBar/>
+          <NavBarDesktop/>
           <div className="container-card">
             <ul>
               <HomeCarCard />

@@ -3,7 +3,7 @@ import { StyledTitle } from "../../styles/componets/typography";
 import { NavBarStyled } from "./styles";
 
 
-const NavBar = () => {
+const NavBarMobile = () => {
   return (
     <NavBarStyled>
       <div className="Mobile-Filter">
@@ -135,4 +135,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavBarMobile;
