@@ -1,14 +1,27 @@
 import styled from "styled-components";
 
-export const DashboardMainStyled = styled.main`
-  .container-card {
+export const DashboardStyled = styled.main`
+  @media (min-width: 800px) {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    /* margin: 5px; */
-  }
+    flex-direction: column;
 
+    section {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .container-card {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 100px;
+
+      
+    }
+  }
+`;
+
+export const DashboardMainStyled = styled.main`
   ul {
     display: flex;
     flex-direction: row;
@@ -34,8 +47,7 @@ export const DashboardMainStyled = styled.main`
   }
 
   @media (min-width: 800px) {
-    
-    ul{
+    ul {
       flex-direction: column;
       overflow: auto;
     }

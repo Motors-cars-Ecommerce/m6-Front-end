@@ -11,6 +11,7 @@ export const NavBarStyled = styled.nav`
   @media (min-width: 800px) {
     min-height: 1600px;
     max-width: 454px;
+    min-width: 454px;
     padding-left: 40px;
     display: flex;
     flex-direction: column;

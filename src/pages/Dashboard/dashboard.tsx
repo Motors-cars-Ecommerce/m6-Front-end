@@ -2,30 +2,37 @@ import Footer from "../../components/Footer/Footer";
 import HomeCarCard from "../../components/HomeCarCard/HomeCarCard";
 import { HeaderComponet } from "../../components/Header/Header";
 import { TitleBoxComponent } from "../../components/TitleBox/TitleBox";
-import { DashboardMainStyled } from "./styles";
+import { DashboardMainStyled, DashboardStyled } from "./styles";
 import NavBarDesktop from "../../components/NavBarDesktop/NavBarDesktop";
 import PageSelect from "../../components/PageSelect/PageSelect";
 
 const Dashboard = () => {
   return (
-    <>
+    <DashboardStyled>
       <HeaderComponet />
       <TitleBoxComponent />
       <DashboardMainStyled>
         <section>
           <NavBarDesktop />
-          <div className="container-card">
-            <ul>
+            <ul className="container-card">
+              <HomeCarCard />
+              <HomeCarCard />
+              <HomeCarCard />
+              <HomeCarCard />
+              <HomeCarCard />
+              <HomeCarCard />
+              <HomeCarCard />
+              <HomeCarCard />
+              <HomeCarCard />
               <HomeCarCard />
               <HomeCarCard />
               <HomeCarCard />
             </ul>
-          </div>
         </section>
         <PageSelect />
       </DashboardMainStyled>
       <Footer />
-    </>
+    </DashboardStyled>
   );
 };
 

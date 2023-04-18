@@ -6,7 +6,6 @@ export const PageSelectStyled = styled.section`
   align-items: center;
   justify-content: center;
   padding: 60px 0px;
-  margin-bottom: 60px;
 
   div {
     display: flex;
@@ -33,10 +32,6 @@ export const PageSelectStyled = styled.section`
     color: rgba(134, 142, 150, 0.5);
   }
 
-  span {
-    height: 10px;
-  }
-
   h4 {
     font-family: "Inter";
     font-style: normal;
@@ -46,5 +41,18 @@ export const PageSelectStyled = styled.section`
     align-items: center;
     text-align: center;
     color: var(--brand-2);
+  }
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+    gap: 20px;
+
+    
+
+
+    .button-filter-dashboard{
+        display: none;
+    }
+
   }
 `;
