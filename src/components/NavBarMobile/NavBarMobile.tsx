@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledTitle } from "../../styles/componets/typography";
 import { NavBarStyled } from "./styles";
 
@@ -6,6 +5,7 @@ import { NavBarStyled } from "./styles";
 const NavBarMobile = () => {
   return (
     <NavBarStyled>
+      <section className="content">
       <div className="Mobile-Filter">
         <h2>Filtro</h2>
         <ul>
@@ -130,7 +130,7 @@ const NavBarMobile = () => {
         <input placeholder="Máximo" />
       </span>
       <button className="mobile-button">Ver Anúncios</button>
-      <button className="desktop-button">Limpar Filtros</button>
+      </section>
     </NavBarStyled>
   );
 };
