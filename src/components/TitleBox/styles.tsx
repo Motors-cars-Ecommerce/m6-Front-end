@@ -27,6 +27,7 @@ export const TitleBox = styled.section`
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 100%;
 
     h1,
     h2 {
