@@ -1,24 +1,10 @@
-import React from "react";
 import { StyledTitle } from "../../styles/componets/typography";
 import { NavBarStyled } from "./styles";
 
 
-const NavBar = () => {
+const NavBarDesktop = () => {
   return (
     <NavBarStyled>
-      <div className="Mobile-Filter">
-        <h2>Filtro</h2>
-        <ul>
-          <li>Fiat</li>
-          <button>x</button>
-          <li>Siena</li>
-          <button>x</button>
-          <li>Brnaca</li>
-          <button>x</button>
-        </ul>
-        <button>X</button>
-      </div>
-
       <div>
         <StyledTitle
           tag="h2"
@@ -38,7 +24,7 @@ const NavBar = () => {
           <li>Volkswagen</li>
         </ul>
       </div>
-      <div className="">
+      <div>
         <StyledTitle
           tag="h2"
           color="--grey-0"
@@ -59,7 +45,7 @@ const NavBar = () => {
           <li>Porsche 781</li>
         </ul>
       </div>
-      <div className="">
+      <div>
         <StyledTitle
           tag="h2"
           color="--grey-0"
@@ -78,7 +64,7 @@ const NavBar = () => {
           <li>Verde</li>
         </ul>
       </div>
-      <div className="">
+      <div>
         <StyledTitle
           tag="h2"
           color="--grey-0"
@@ -98,7 +84,7 @@ const NavBar = () => {
           <li>2010</li>
         </ul>
       </div>
-      <div className="">
+      <div>
         <StyledTitle
           tag="h2"
           color="--grey-0"
@@ -129,10 +115,9 @@ const NavBar = () => {
         <input placeholder="Mínimo" />
         <input placeholder="Máximo" />
       </span>
-      <button className="mobile-button">Ver Anúncios</button>
       <button className="desktop-button">Limpar Filtros</button>
     </NavBarStyled>
   );
 };
 
-export default NavBar;
+export default NavBarDesktop;

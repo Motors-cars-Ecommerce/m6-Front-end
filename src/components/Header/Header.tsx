@@ -2,7 +2,7 @@ import {
   LoginButton,
   SingUpButton,
 } from "../../styles/componets/buttons/buttons";
-import { Header } from "./styles";
+import { Header } from ".";
 import { StyledTitle } from "../../styles/componets/typography";
 import ShowMenu from "./script";
 

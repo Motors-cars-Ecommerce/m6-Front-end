@@ -1,39 +1,30 @@
 import styled from "styled-components";
 
-
 export const NavBarStyled = styled.nav`
-  /* MOBILE FIRST */
 
-  /* DEFINIT ALTURA MÍNIMA DA CAIXA */
-  /* min-height: 1400px; */
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
 
-  .Mobile-Filter{
+  .Mobile-Filter {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-right: 30px;
     overflow: scroll;
 
-    ul{
+    ul {
       display: flex;
       flex-direction: row;
       align-items: center;
       padding: 0px 10px;
     }
 
-    li{
-
+    li {
       width: 100%;
     }
-    
-    button{
+
+    button {
       all: unset;
       margin-bottom: 15px;
     }
-    
   }
 
   li {
@@ -85,24 +76,7 @@ export const NavBarStyled = styled.nav`
     margin: 40px 0px;
   }
 
-  .desktop-button{
+  @media (min-width: 800px) {
     display: none;
-  }
-
-  @media (min-width: 586px) {
-    background-color: yellow;
-    width: 454px;
-
-    .desktop-button{
-    display: block;
-  }
-
-  .mobile-button{
-    display: none;
-  }
-
-  .Mobile-Filter{
-    display: none;
-  }
   }
 `;
