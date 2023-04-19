@@ -13,6 +13,7 @@ export const DivHeaderModal = styled.div`
 
   svg {
     width: 24px;
+    cursor: pointer;
   }
 `;
 
@@ -41,6 +42,10 @@ export const DivButtonModal = styled.div`
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
+
+  button {
+    cursor: pointer;
+  }
 
   @media (min-width: 800px) {
     display: flex;

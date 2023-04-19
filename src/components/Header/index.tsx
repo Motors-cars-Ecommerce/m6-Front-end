@@ -155,6 +155,10 @@ export const Header = styled.section`
       height: 100%;
       border-left: 1.5px solid var(--grey-4);
       justify-content: space-around;
+
+      button {
+        cursor: pointer;
+      }
     }
 
     .header_user {

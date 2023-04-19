@@ -17,6 +17,7 @@ import {
 import { StyledTitle } from "../../styles/componets/typography";
 import { FormComponet } from "../../styles/componets/Forms/form";
 import { IoIosClose } from "react-icons/io";
+import ReactModal from "react-modal";
 
 const customStyles = {
   content: {
@@ -24,6 +25,10 @@ const customStyles = {
     width: "85vw",
     insetBlockStart: "20vw",
     borderRadius: "8px",
+  },
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    zIndex: 9999,
   },
 };
 
@@ -37,6 +42,10 @@ const customStylesDesktop = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+  },
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    zIndex: 9999,
   },
 };
 
