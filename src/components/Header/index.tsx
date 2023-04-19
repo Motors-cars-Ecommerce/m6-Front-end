@@ -5,6 +5,7 @@ export const Header = styled.section`
   flex-direction: row;
   justify-content: space-between;
   height: 8vh;
+  padding-left: 10px;
 
   .header_tittle {
     display: flex;
@@ -123,6 +124,7 @@ export const Header = styled.section`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 40px;
 
     .div-show-menu {
       display: none;
