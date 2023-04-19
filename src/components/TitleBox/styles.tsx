@@ -14,6 +14,7 @@ export const TitleBox = styled.section`
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    overflow: hidden;
     img {
       width: 1000px;
       height: 100%;
