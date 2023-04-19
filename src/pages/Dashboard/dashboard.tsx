@@ -15,7 +15,7 @@ const Dashboard = () => {
       <DashboardMainStyled>
         <section>
           <NavBarDesktop />
-          <NavBarMobile/>
+          {/* <NavBarMobile/> */}
             <ul className="container-card">
               <HomeCarCard />
               <HomeCarCard />
