@@ -10,6 +10,10 @@ export const DivHeaderModal = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  svg {
+    width: 24px;
+  }
 `;
 
 export const DivCarDetailModal = styled.div`

@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import {
-  StyledModal,
   StyledDivModal,
   DivHeaderModal,
   DivCarDetailModal,
@@ -17,11 +16,12 @@ import {
 } from "../../styles/componets/buttons/buttons";
 import { StyledTitle } from "../../styles/componets/typography";
 import { FormComponet } from "../../styles/componets/Forms/form";
-import styled from "styled-components";
+import { IoIosClose } from "react-icons/io";
 
 const customStyles = {
   content: {
-    width: "80vw",
+    insetInlineStart: "5px",
+    width: "85vw",
     insetBlockStart: "20vw",
     borderRadius: "8px",
   },
@@ -81,7 +81,7 @@ export const NewAdModal = () => {
           >
             Criar anúncio
           </StyledTitle>
-          <button onClick={toggleModal}>x</button>
+          <IoIosClose onClick={toggleModal} />
         </DivHeaderModal>
         <StyledTitle
           tag="span"

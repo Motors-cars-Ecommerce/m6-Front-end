@@ -6,13 +6,18 @@ export const TitleBox = styled.section`
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
   position: relative;
 
-  img {
-    width: 140%;
+  .title_box_img {
     position: absolute;
+    width: 100%;
+    height: 100%;
     z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    img {
+      width: 1000px;
+      height: 100%;
+    }
   }
 
   .title_box_text {
