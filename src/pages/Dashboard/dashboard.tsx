@@ -11,7 +11,6 @@ import NavBarMobile from "../../components/NavBarMobile/NavBarMobile";
 const Dashboard = () => {
   return (
     <DashboardStyled>
-      <NewAdModal />
       <HeaderComponet />
       <TitleBoxComponent />
       <DashboardMainStyled>
