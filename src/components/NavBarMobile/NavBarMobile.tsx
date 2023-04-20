@@ -1,7 +1,6 @@
 import { StyledTitle } from "../../styles/componets/typography";
 import { NavBarStyled } from "./styles";
 
-
 const NavBarMobile = () => {
   return (
     <NavBarStyled>
@@ -14,6 +13,10 @@ const NavBarMobile = () => {
           <li>Siena</li>
           <button>x</button>
           <li>Brnaca</li>
+          <button>x</button>
+          <li>2010</li>
+          <button>x</button>
+          <li>Gasolina</li>
           <button>x</button>
         </ul>
         <button>X</button>
