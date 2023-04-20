@@ -1,6 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../service/api";
 
+export interface iModelCar {
+  id: string;
+  name: string;
+  brand: string;
+  year: string;
+  fuel: number;
+  value: number;
+}
+
 export interface iSallerProps {
   children: React.ReactNode;
 }
@@ -39,18 +48,14 @@ export interface icar {
     year: string;
     fuel: string;
   };
-  images: {
-    image_url: string;
-    car: any;
-    id: string;
-  }[];
+  images: { image_url: string }[];
   comments: {
     id: string;
     text: string;
     car: any;
     user: any;
   }[];
-  user: string;
+  user: IUser | null;
 }
 
 interface iSallerContext {
@@ -59,6 +64,14 @@ interface iSallerContext {
   cars: icar[];
   setCars: React.Dispatch<React.SetStateAction<icar[]>>;
   createNewCar: (data: icar) => Promise<void>;
+  carsApi: any;
+  setCarsApi: React.Dispatch<any>;
+  carModels: iModelCar[];
+  setCarModels: React.Dispatch<React.SetStateAction<iModelCar[]>>;
+  getAllCarModels: (model: string) => Promise<void>;
+  carModel: iModelCar | null;
+  setCarModel: React.Dispatch<React.SetStateAction<iModelCar | null>>;
+  getCarModel: (name: string, brand: string) => Promise<void>;
 }
 
 export const SallerContext = createContext({} as iSallerContext);
@@ -66,6 +79,9 @@ export const SallerContext = createContext({} as iSallerContext);
 const SaleProvider = ({ children }: iSallerProps) => {
   const [saller, setSaller] = useState<IUser | null>(null);
   const [cars, setCars] = useState([] as icar[]);
+  const [carsApi, setCarsApi] = useState<any | null>();
+  const [carModels, setCarModels] = useState([] as iModelCar[]);
+  const [carModel, setCarModel] = useState<iModelCar | null>(null);
 
   useEffect(() => {
     async function loadSaller() {
@@ -89,15 +105,45 @@ const SaleProvider = ({ children }: iSallerProps) => {
         console.log("erro");
       }
     }
+
+    async function loadCarApi() {
+      try {
+        const { data } = await api.get(
+          "https://kenzie-kars.herokuapp.com/cars"
+        );
+        setCarsApi(data);
+      } catch {
+        console.log("erro");
+      }
+    }
+
     loadSaller();
     loadCars();
+    loadCarApi();
   }, []);
+
+  const getAllCarModels = async (model: string) => {
+    const { data } = await api.get(
+      `https://kenzie-kars.herokuapp.com/cars?brand=${model}`
+    );
+    setCarModels(data);
+  };
+
+  const getCarModel = async (name: string, brand: string) => {
+    const { data } = await api.get(
+      `https://kenzie-kars.herokuapp.com/cars?brand=${brand}`
+    );
+    data.map((key: any) => {
+      if (key.name === name) {
+        setCarModel(key);
+      }
+    });
+  };
 
   const createNewCar = async (data: icar) => {
     try {
       const newCar = [...cars, data];
       await api.post("cars", data);
-      console.log(newCar);
       setCars(newCar);
     } catch {
       console.log("erro");
@@ -110,6 +156,14 @@ const SaleProvider = ({ children }: iSallerProps) => {
     cars,
     setCars,
     createNewCar,
+    carsApi,
+    setCarsApi,
+    carModels,
+    setCarModels,
+    getAllCarModels,
+    carModel,
+    setCarModel,
+    getCarModel,
   };
 
   return (

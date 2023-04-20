@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import {
@@ -7,7 +7,10 @@ import {
   DivCarDetailModal,
   DivButtonModal,
 } from "./styles";
-import { InputBoxComponent } from "../../styles/componets/inputs/input";
+import {
+  InputBoxComponent,
+  SelectBoxComponent,
+} from "../../styles/componets/inputs/input";
 import {
   AddImageButton,
   CancelButton,
@@ -40,7 +43,7 @@ const customStyles = {
 const customStylesDesktop = {
   content: {
     width: "520px",
-    height: "auto",
+    height: "80vh",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -80,7 +83,39 @@ export const NewAdModal = () => {
   const [modalStyles, setModalStyles] = React.useState(
     window.innerWidth < 800 ? customStyles : customStylesDesktop
   );
-  const { saller, createNewCar } = useContext(SallerContext);
+  const {
+    saller,
+    createNewCar,
+    carsApi,
+    carModels,
+    getAllCarModels,
+    getCarModel,
+    carModel,
+    setCarModel,
+  } = useContext(SallerContext);
+
+  const [brandCar, setBrandCar] = useState("");
+  const [imageInputsCount, setImageInputsCount] = useState(1);
+
+  const handleAddImageButtonClick = () => {
+    if (imageInputsCount === 6) {
+      return;
+    }
+    setImageInputsCount(imageInputsCount + 1);
+  };
+
+  const handleBrandChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCarModel(null);
+    const selectedBrand = e.target.value;
+    setBrandCar(selectedBrand);
+    getAllCarModels(selectedBrand);
+  };
+
+  const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCarModel(null);
+    const selectModel = e.target.value;
+    getCarModel(selectModel, brandCar);
+  };
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -95,24 +130,60 @@ export const NewAdModal = () => {
   }, []);
 
   function toggleModal() {
+    reset();
+    setImageInputsCount(1);
+    setCarModel(null);
     setIsOpen(!isOpen);
   }
+
+  const carOptions =
+    carsApi &&
+    Object.keys(carsApi).map((brand) => (
+      <option key={brand} value={brand}>
+        {brand}
+      </option>
+    ));
+
+  const carModelOptions = carModels.map((model: any) => (
+    <option key={model.name} value={model.name}>
+      {model.name}
+    </option>
+  ));
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<icar>({
     resolver: yupResolver(formSchema),
   });
 
-  const submit = (data: any) => {
-    //const id = localStorage.getItem("@USER_ID");
-    const id = "f2b684cd-fc07-4bc6-8a73-80be024447c9";
-    const newData = { ...data, user: saller, id: id };
+  const submit = (data: icar) => {
+    const newData = {
+      user: saller,
+      comments: [],
+      id: data.id,
+      km: data.km,
+      price: data.price,
+      color: data.color,
+      description: data.description,
+      main_image: data.main_image,
+      model_car: {
+        branded: data.model_car.branded,
+        model: data.model_car.model,
+        year: data.model_car.year,
+        fuel: data.model_car.fuel,
+      },
+      images: data.images.map((image) => ({
+        image_url: image.image_url,
+      })),
+    };
     createNewCar(newData);
     toggleModal();
   };
+
+  const form = document.getElementById("form_create") as HTMLFormElement;
 
   return (
     <StyledDivModal>
@@ -146,35 +217,42 @@ export const NewAdModal = () => {
         >
           Informação do veiculo
         </StyledTitle>
-        <FormComponet onSubmit={handleSubmit(submit)}>
+        <FormComponet id="form_create" onSubmit={handleSubmit(submit)}>
           <label htmlFor="branded">Marca</label>
-          <InputBoxComponent
-            type="text"
-            placeholder="Mercedes Benz"
+          <SelectBoxComponent
             {...register("model_car.branded")}
-          />
+            onChange={handleBrandChange}
+          >
+            <option value="">Selecione a Marca:</option>
+            {carOptions}
+          </SelectBoxComponent>
           <label htmlFor="model">Modelo</label>
-          <InputBoxComponent
-            type="text"
-            placeholder="A 200 CGI ADVANCE SEDAN"
+          <SelectBoxComponent
+            placeholder="Mercedes Benz"
             {...register("model_car.model")}
-          />
+            onChange={handleModelChange}
+          >
+            <option value="">Selecione o modelo:</option>
+            {carModelOptions}
+          </SelectBoxComponent>
           <DivCarDetailModal>
             <div>
               <label htmlFor="">Ano</label>
               <InputBoxComponent
                 type="text"
                 placeholder="2018"
+                defaultValue={carModel ? carModel?.year : ""}
+                readOnly
                 {...register("model_car.year")}
               />
             </div>
             <div>
               <label htmlFor="fuel">Combustivel</label>
-              <InputBoxComponent
-                type="text"
-                placeholder="Etanol/Gasolina"
-                {...register("model_car.fuel")}
-              />
+              <SelectBoxComponent {...register("model_car.fuel")}>
+                <option value="Gasolina">Gasolina</option>
+                <option value="Etanol">Etanol</option>
+                <option value="Flex">Flex</option>
+              </SelectBoxComponent>
             </div>
             <div>
               <label htmlFor="km">Quilometragem</label>
@@ -194,7 +272,12 @@ export const NewAdModal = () => {
             </div>
             <div>
               <label htmlFor="">Preço tabela FIPE</label>
-              <InputBoxComponent type="text" placeholder="R$ 48.000,00" />
+              <InputBoxComponent
+                type="text"
+                placeholder="R$ 48.000,00"
+                value={carModel ? `R$ ${carModel?.value},00` : ""}
+                readOnly
+              />
             </div>
             <div>
               <label htmlFor="price">Preço</label>
@@ -217,18 +300,27 @@ export const NewAdModal = () => {
             placeholder="https://image.com"
             {...register("main_image")}
           />
-          <label htmlFor="image_url">1ª Imagem da Galeria</label>
-          <InputBoxComponent
-            type="text"
-            placeholder="https://image.com"
-            //{...register("images")}
-          />
-          <AddImageButton>
+          {Array.from({ length: imageInputsCount }, (_, index) => (
+            <>
+              <label htmlFor="image_url">{index + 1}ª Imagem da Galeria</label>
+              <InputBoxComponent
+                key={index}
+                type="text"
+                {...register(`images[${index}].image_url`)}
+              />
+            </>
+          ))}
+          {errors?.images && <span>{errors.images.message}</span>}
+          <AddImageButton type="button" onClick={handleAddImageButtonClick}>
             Adicionar campo para imagem da galeria
           </AddImageButton>
           <DivButtonModal>
             <CancelButton onClick={() => toggleModal()}> Cancelar</CancelButton>
-            <DisableButton type="submit">Criar Anuncio</DisableButton>
+            {form?.checkValidity() ? (
+              <EnableButton type="submit">Criar Anuncio</EnableButton>
+            ) : (
+              <DisableButton type="submit">Criar Anuncio</DisableButton>
+            )}
           </DivButtonModal>
         </FormComponet>
       </Modal>

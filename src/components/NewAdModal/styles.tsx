@@ -27,7 +27,8 @@ export const DivCarDetailModal = styled.div`
     width: 152px;
     height: 73px;
 
-    input {
+    input,
+    select {
       width: 100%;
     }
 
