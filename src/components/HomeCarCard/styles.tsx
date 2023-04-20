@@ -47,6 +47,11 @@ export const CarCardStyled = styled.li`
       object-fit: cover; 
     }
   }
+
+
+  @media (min-width: 800px) {
+    
+  }
 `;
 
 export const UserDataStyled = styled.div`

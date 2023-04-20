@@ -1,38 +1,40 @@
-import Footer from "../../components/Footer/Footer"
-import HomeCarCard from "../../components/HomeCarCard/HomeCarCard"
-import { HeaderComponet } from "../../components/Header/Header"
-import { TitleBoxComponent } from "../../components/TitleBox/TitleBox"
-import { DashboardStyled, NavSectionStyled } from "../../components/Header/styles";
+import Footer from "../../components/Footer/Footer";
+import HomeCarCard from "../../components/HomeCarCard/HomeCarCard";
+import { HeaderComponet } from "../../components/Header/Header";
+import { TitleBoxComponent } from "../../components/TitleBox/TitleBox";
+import { NewAdModal } from "../../components/NewAdModal/NewAdModal";
+import { DashboardMainStyled, DashboardStyled } from "./styles";
+import NavBarDesktop from "../../components/NavBarDesktop/NavBarDesktop";
+import PageSelect from "../../components/PageSelect/PageSelect";
+import NavBarMobile from "../../components/NavBarMobile/NavBarMobile";
 
 const Dashboard = () => {
-    return(
 
-        <DashboardStyled>
-        <HeaderComponet />
-        <TitleBoxComponent />
+  return (
+    <DashboardStyled>
+      <NewAdModal />
+      <HeaderComponet />
+      {/* NavBar Mobile é ativada ao clicar em "Ver anuncios" e desativa do TitleBoxComponent até o Footer */}
+      {/* <NavBarMobile/> */}
+      <TitleBoxComponent />
+      <DashboardMainStyled>
         <section>
-             {/* AQUI VAI A NAVBAR -BARRA DE NAVEGAÇÃO DOS VEICULOS */}
-            <div className="container-card">
-         <ul>
-                    <HomeCarCard/>
-                    <HomeCarCard/>
-                    <HomeCarCard/>
-                </ul>
-            </div>
-            <NavSectionStyled>
-            <button className="button-filter-dashboard" >Filtros</button>
-            <div>
-                <h2>1</h2>
-                <h3>de 2</h3>
-            </div>
-            <span>
-                <h4>Seguinte {'>'} </h4>
-            </span>
-            </NavSectionStyled>
+          <NavBarDesktop />
+          <ul className="container-card">
+            <HomeCarCard />
+            <HomeCarCard />
+            <HomeCarCard />
+            <HomeCarCard />
+            <HomeCarCard />
+            <HomeCarCard />
+            <HomeCarCard />
+            <HomeCarCard />
+            <HomeCarCard />
+          </ul>
         </section>
-                
-        <Footer/>
-
+        <PageSelect />
+      </DashboardMainStyled>
+      <Footer />
     </DashboardStyled>
   );
 };
