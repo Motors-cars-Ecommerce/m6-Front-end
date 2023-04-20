@@ -20,7 +20,6 @@ export const DashboardStyled = styled.main`
 `;
 
 export const DashboardMainStyled = styled.main`
-
   ul {
     display: flex;
     flex-direction: row;
@@ -43,8 +42,6 @@ export const DashboardMainStyled = styled.main`
     font-size: 16px;
     color: var(--whiteFixed);
     margin-bottom: 60px;
-
-    
   }
 
   @media (min-width: 800px) {
@@ -52,4 +49,5 @@ export const DashboardMainStyled = styled.main`
       flex-direction: column;
       overflow: auto;
     }
+  }
 `;

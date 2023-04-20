@@ -9,11 +9,12 @@ import CardDescription from "../components/CardDescription";
 import CardComment from "../components/CardComment";
 import InputComment from "../components/InputComment";
 import ProductPage from "../pages/ProductPage";
+import ModalCadastre from "../components/ModalCadastre";
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<ModalCadastre />} />
       <Route path="/detail" element={<ProductPage />} />
     </Routes>
   );
