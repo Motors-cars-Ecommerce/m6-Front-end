@@ -12,7 +12,6 @@ const Dashboard = () => {
 
   return (
     <DashboardStyled>
-      <NewAdModal />
       <HeaderComponet />
       {/* NavBar Mobile é ativada ao clicar em "Ver anuncios" e desativa do TitleBoxComponent até o Footer */}
       {/* <NavBarMobile/> */}
