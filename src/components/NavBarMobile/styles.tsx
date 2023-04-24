@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const NavBarStyled = styled.nav`
+  padding-left: 20px;
 
 
   .Mobile-Filter {
