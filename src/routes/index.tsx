@@ -10,12 +10,14 @@ import CardComment from "../components/CardComment";
 import InputComment from "../components/InputComment";
 import ProductPage from "../pages/ProductPage";
 import ModalCadastre from "../components/ModalCadastre";
+import Login from "../pages/LoginPage";
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<ModalCadastre />} />
+      <Route path="/register" element={<ModalCadastre />} />
       <Route path="/detail" element={<ProductPage />} />
+      <Route path="/" element={<Login/>}/>
     </Routes>
   );
 };
