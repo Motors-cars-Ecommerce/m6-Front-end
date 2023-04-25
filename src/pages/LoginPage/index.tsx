@@ -3,7 +3,7 @@ import { LoginPage } from "./styles";
 import { Header } from "../../components/Header";
 import { useContext } from "react";
 import { DataUserContext } from "../../contexts/userContext";
-import { loginUserSchema } from "../../schemas/user.schemas";
+import { loginUserSchema } from "../../Schemas/User";
 
 const Login = () => {
   const {

@@ -9,6 +9,7 @@ import CardDescription from "../components/CardDescription";
 import CardComment from "../components/CardComment";
 import InputComment from "../components/InputComment";
 import ProductPage from "../pages/ProductPage";
+import { SalerPage } from "../pages/SelerPage";
 import ModalCadastre from "../components/ModalCadastre";
 import Login from "../pages/LoginPage";
 
@@ -17,7 +18,11 @@ export const RoutesMain = () => {
     <Routes>
       <Route path="/register" element={<ModalCadastre />} />
       <Route path="/detail" element={<ProductPage />} />
+<<<<<<< HEAD
       <Route path="/" element={<Login/>}/>
+=======
+      <Route path="/saler" element={<SalerPage />} />
+>>>>>>> 824d11ccf6f3fbe21ad9978724e8b9c1c35ff85b
     </Routes>
   );
 };
