@@ -4,7 +4,7 @@ import App from "./App";
 import "./index.css";
 import { GlobalStyle } from "./styles/componets/global";
 import { BrowserRouter } from "react-router-dom";
-import Providers from "./contexts/Provider";
+import { Providers } from "./context";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

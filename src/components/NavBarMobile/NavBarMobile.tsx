@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { StyledTitle } from "../../styles/componets/typography";
 import { NavBarStyled } from "./styles";
+import { DashboardContext } from "../../context/DashboardContext";
 
 const NavBarMobile = () => {
+
+  const { setFilterMobile } = useContext(DashboardContext);
+
   return (
     <NavBarStyled>
       <section className="content">
@@ -19,7 +24,7 @@ const NavBarMobile = () => {
           <li>Gasolina</li>
           <button>x</button>
         </ul>
-        <button>X</button>
+        <button onClick={()=> setFilterMobile(false)} >X</button>
       </div>
 
       <div>
