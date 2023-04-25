@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import SaleProvider from "./salleContext";
 import { DataUserProvider } from "./userContext";
+import DashboardProvider from "./DashboardContext";
 
 interface iProvider {
   children: ReactNode;
@@ -9,7 +10,9 @@ interface iProvider {
 export const Providers = ({ children }: iProvider) => {
   return (
     <DataUserProvider>
-      <SaleProvider>{children}</SaleProvider>
+      <DashboardProvider>
+        <SaleProvider>{children}</SaleProvider>;
+      </DashboardProvider>
     </DataUserProvider>
   );
 };

@@ -10,7 +10,7 @@ export interface iModelCar {
   value: number;
 }
 
-export interface iSallerProps {
+export interface iChildrenProps {
   children: React.ReactNode;
 }
 
@@ -76,7 +76,7 @@ interface iSallerContext {
 
 export const SallerContext = createContext({} as iSallerContext);
 
-const SaleProvider = ({ children }: iSallerProps) => {
+const SaleProvider = ({ children }: iChildrenProps) => {
   const [saller, setSaller] = useState<IUser | null>(null);
   const [cars, setCars] = useState([] as icar[]);
   const [carsApi, setCarsApi] = useState<any | null>();
