@@ -5,7 +5,7 @@ import { DashboardContext } from "../../context/DashboardContext";
 
 const PageSelect = () => {
 
-  const { setFilterMobile} = useContext(DashboardContext);
+  const {setFilterMobile} = useContext(DashboardContext);
 
 
   return (

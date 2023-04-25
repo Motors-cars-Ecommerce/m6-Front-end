@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { DashboardContext } from "../../context/DashboardContext";
 
 const Dashboard = () => {
-  const { setFilterMobile, filterMobile } = useContext(DashboardContext);
+  const { filterMobile } = useContext(DashboardContext);
 
   const datacar = {
     id: "edd6ed65-3e56-42cd-886e-f175206cf665",
