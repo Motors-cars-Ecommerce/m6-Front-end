@@ -117,7 +117,7 @@ export const NewAdModal = () => {
     getCarModel(selectModel, brandCar);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       setModalStyles(
         window.innerWidth < 800 ? customStyles : customStylesDesktop

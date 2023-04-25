@@ -10,6 +10,7 @@ import {
 import { Header } from "../../components/Header";
 import { StyledTitle } from "../../styles/componets/typography";
 import { MainStyled } from "./styles";
+import { TestModal } from "../../components/testModal";
 
 const ProductPage = () => {
   return (

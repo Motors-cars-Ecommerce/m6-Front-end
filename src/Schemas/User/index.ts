@@ -18,9 +18,18 @@ const cadastreUserSchema = z
     password: z.string(),
     confirmPassword: z.string(),
   })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "As senhas não coincidem",
-    path: ["passwordConfirmation"],
-  });
+  .refine(
+    (data: { password: string; confirmPassword: string }) =>
+      data.password === data.confirmPassword,
+    {
+      message: "As senhas não coincidem",
+      path: ["passwordConfirmation"],
+    }
+  );
 
-export { cadastreUserSchema };
+const loginUserSchema = z.object({
+  email: z.string().email().nonempty(),
+  password: z.string().nonempty(),
+});
+
+export { cadastreUserSchema, loginUserSchema };
