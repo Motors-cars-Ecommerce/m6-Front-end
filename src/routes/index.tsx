@@ -16,13 +16,10 @@ import Login from "../pages/LoginPage";
 export const RoutesMain = () => {
   return (
     <Routes>
+      <Route path="/" element={<Dashboard />} />
       <Route path="/register" element={<ModalCadastre />} />
       <Route path="/detail" element={<ProductPage />} />
-<<<<<<< HEAD
-      <Route path="/" element={<Login/>}/>
-=======
       <Route path="/saler" element={<SalerPage />} />
->>>>>>> 824d11ccf6f3fbe21ad9978724e8b9c1c35ff85b
     </Routes>
   );
 };
