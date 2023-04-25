@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { cadastreUserSchema } from "../../Schemas/User";
 import { ICadastre } from "../../interfaces/User";
 import { useContext } from "react";
-import { UserContext } from "../../contexts/User";
+import { UserContext } from "../../context/user.context";
 
 const ModalCadastre = () => {
   // const { onSubmitFunc } = useContext(UserContext);
@@ -13,12 +13,14 @@ const ModalCadastre = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: zodResolver(cadastreUserSchema),
   });
 
   const onSubmitFunc = (data: any) => {
     console.log(data);
+    reset();
   };
 
   return (

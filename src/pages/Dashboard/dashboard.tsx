@@ -2,14 +2,12 @@ import Footer from "../../components/Footer/Footer";
 import HomeCarCard from "../../components/HomeCarCard/HomeCarCard";
 import { HeaderComponet } from "../../components/Header/Header";
 import { TitleBoxComponent } from "../../components/TitleBox/TitleBox";
-import { NewAdModal } from "../../components/NewAdModal/NewAdModal";
 import { DashboardMainStyled, DashboardStyled } from "./styles";
 import NavBarDesktop from "../../components/NavBarDesktop/NavBarDesktop";
 import PageSelect from "../../components/PageSelect/PageSelect";
 import NavBarMobile from "../../components/NavBarMobile/NavBarMobile";
 
 const Dashboard = () => {
-
   return (
     <DashboardStyled>
       <HeaderComponet />

@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import ModalCadastre from "../../components/ModalCadastre";
+import ModalCadastre from "../components/ModalCadastre";
 
 interface IUserContext {
   onSubmitFunc: (data: any) => void;

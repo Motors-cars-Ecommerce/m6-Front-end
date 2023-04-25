@@ -15,7 +15,7 @@ import ModalCadastre from "../components/ModalCadastre";
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<ModalCadastre />} />
+      <Route path="/" element={<Dashboard />} />
       <Route path="/detail" element={<ProductPage />} />
       <Route path="/saler" element={<SalerPage />} />
     </Routes>
