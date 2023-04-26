@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { cadastreUserSchema } from "../../Schemas/User";
 import { ICadastre } from "../../interfaces/User";
 import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
 
 const ModalCadastre = () => {
   // const { onSubmitFunc } = useContext(UserContext);
