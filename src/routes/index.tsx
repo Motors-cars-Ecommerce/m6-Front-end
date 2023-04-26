@@ -17,7 +17,7 @@ import ModalEditProfile from "../components/ModalEditProfile/ModalEditProfile";
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<ModalEditProfile />} />
+      <Route path="/" element={<Dashboard />} />
       <Route path="/register" element={<ModalCadastre />} />
       <Route path="/detail" element={<ProductPage />} />
       <Route path="/login" element={<Login />} />

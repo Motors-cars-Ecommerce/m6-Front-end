@@ -47,15 +47,19 @@ export const ModalEditProfileStyed = styled.div`
   }
 
   .closeButton {
-    background-color: var(--grey-4);
+    background-color: var(--whiteFixed);
     width: 12px;
     height: 12px;
-    border: 2px solid var(--grey-4);
+    border: 2px solid var(--whiteFixed);
     font-size: 10px;
     font-weight: 200;
+    padding: 15px;
 
+    color: var(--grey-4);
+    font-size: 16px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   h3 {
