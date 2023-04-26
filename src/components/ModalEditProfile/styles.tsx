@@ -25,6 +25,7 @@ export const ModalEditProfileStyed = styled.div`
         position: relative;
         padding: 10px;
         background-color: var(--whiteFixed);
+        border-radius: 8px;
     }
 
 
@@ -179,6 +180,10 @@ export const ModalEditProfileStyed = styled.div`
   }
 
   @media (min-width: 520px) {
+
+    .content{
+      padding: 0px 20px;
+    }
 
     button {
       width: 160px;
