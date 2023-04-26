@@ -9,6 +9,7 @@ import NavBarMobile from "../../components/NavBarMobile/NavBarMobile";
 import { useContext } from "react";
 import { DashboardContext } from "../../context/DashboardContext";
 import ModalEditProfile from "../../components/ModalEditProfile/ModalEditProfile";
+import ModalEditAddress from "../../components/ModalEditAddress/ModalEditAddress";
 
 const Dashboard = () => {
   const { filterMobile } = useContext(DashboardContext);
@@ -45,7 +46,7 @@ const Dashboard = () => {
 
   return (
     <DashboardStyled>
-      <ModalEditProfile/>
+      <ModalEditAddress/>
       <HeaderComponet />
       {!filterMobile ? (
         <>
