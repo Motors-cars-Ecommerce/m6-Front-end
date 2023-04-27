@@ -27,6 +27,47 @@ export const Header = styled.section`
     display: none !important;
   }
 
+  .menu_options_mobile {
+    position: absolute;
+    right: 0px;
+    width: 95vw;
+    background: var(--whiteFixed);
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    gap: 30px;
+    z-index: 5;
+    padding: 24px 2.5vw;
+    padding-bottom: 24px;
+
+    .singup {
+      width: 100% !important;
+    }
+
+    background: var(--grey-9);
+    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+
+  .user_options_mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    span {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 28px;
+
+      color: var(--grey-2);
+
+      cursor: pointer;
+    }
+  }
+
   .header-section {
     display: flex;
     flex-direction: column;
@@ -126,6 +167,7 @@ export const Header = styled.section`
     justify-content: space-between;
     padding-left: 40px;
 
+    .div_mobile,
     .div-show-menu {
       display: none;
     }
@@ -155,11 +197,8 @@ export const Header = styled.section`
         font-weight: 400;
         font-size: 16px;
         line-height: 28px;
-        /* identical to box height, or 175% */
 
-        /* Grey Scale/grey-2 */
-
-        color: #495057;
+        color: var(--grey-2);
 
         cursor: pointer;
       }

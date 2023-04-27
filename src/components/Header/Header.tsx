@@ -4,7 +4,6 @@ import {
 } from "../../styles/componets/buttons/buttons";
 import { Header } from ".";
 import { StyledTitle } from "../../styles/componets/typography";
-import ShowMenu from "./script";
 import { useContext, useEffect, useRef, useState } from "react";
 import { DataUserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
@@ -14,19 +13,15 @@ export const HeaderComponet = () => {
   const { user, setUser } = useContext(DataUserContext);
   const { setSaller, getSaler } = useContext(SallerContext);
   const [userOptions, setUserOptions] = useState(false);
+  const [menuOptions, setMenuOptions] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  /*   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setUserOptions(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref]) */ const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const setMenuMobile = () => {
+    setMenuOptions(!menuOptions);
+    console.log(menuOptions);
+  };
 
   const logout = () => {
     localStorage.clear();
@@ -76,7 +71,7 @@ export const HeaderComponet = () => {
           </div>
           {userOptions ? (
             <>
-              <div ref={ref} className="user_options">
+              <div className="user_options">
                 <span>Editar Perfil</span>
                 <span>Editar Endereço</span>
                 {user?.seller ? (
@@ -98,29 +93,42 @@ export const HeaderComponet = () => {
           <SingUpButton>Cadastrar</SingUpButton>
         </div>
       )}
+      <div className="div_mobile">
+        <div className="div-show-menu">
+          <input type="checkbox" id="checkbox-menu" />
+          <label htmlFor="checkbox-menu" onClick={setMenuMobile}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        {menuOptions ? (
+          <div className="menu_options_mobile">
+            {!user ? (
+              <>
+                <LoginButton onClick={toLogin}>Fazer Login</LoginButton>
+                <SingUpButton className="singup">Cadastrar</SingUpButton>
+              </>
+            ) : (
+              <>
+                <div className="user_options_mobile">
+                  <span>Editar Perfil</span>
+                  <span>Editar Endereço</span>
+                  {user?.seller ? (
+                    <span onClick={() => getSaler(user.id)}>Meus Anuncios</span>
+                  ) : (
+                    <></>
+                  )}
 
-      <div className="div-show-menu" onClick={() => ShowMenu.show()}>
-        <input type="checkbox" id="checkbox-menu" />
-
-        <label htmlFor="checkbox-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-      </div>
-      <section id="header-section" className="header-section hidden">
-        <section className="menu">
-          <ul className="div-menu">
-            <li>Carros</li>
-            <li>Motos</li>
-            <li>Leilão</li>
-          </ul>
-          <div className="div-buttons">
-            <LoginButton>Fazer Login</LoginButton>
-            <SingUpButton>Cadastrar</SingUpButton>
+                  <span onClick={logout}>Sair</span>
+                </div>
+              </>
+            )}
           </div>
-        </section>
-      </section>
+        ) : (
+          <></>
+        )}
+      </div>
     </Header>
   );
 };
