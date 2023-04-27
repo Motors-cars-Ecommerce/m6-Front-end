@@ -1,8 +1,12 @@
 import { StyledTitle } from "../../styles/componets/typography";
 import { CarCardStyled, CarDataStyled, UserDataStyled } from "./styles";
 import carro from "./imgs/EXTERIOR-frontSidePilotNear-1653845164710-removebg-preview 1.png";
+import { useContext } from "react";
+import { SallerContext } from "../../context/salleContext";
 
 const HomeCarCard = ({ car }: any) => {
+  const { getSaler } = useContext(SallerContext);
+
   return (
     <CarCardStyled>
       <figure>
@@ -15,7 +19,7 @@ const HomeCarCard = ({ car }: any) => {
       <StyledTitle tag="h3" color="--grey-2" size={14} weight={400} height={24}>
         {car.description}
       </StyledTitle>
-      <UserDataStyled>
+      <UserDataStyled onClick={() => getSaler(car?.user?.id)}>
         {/* as letras iniciais dependerão do nome do usuário */}
         <div>{car.user.name[0]}</div>
         <StyledTitle
