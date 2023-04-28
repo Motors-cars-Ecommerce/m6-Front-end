@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { LoginPage } from "./styles";
 import { Header } from "../../components/Header";
 import { useContext } from "react";
@@ -11,6 +11,7 @@ import { FormComponet } from "../../styles/componets/Forms/form";
 import { InputBoxComponent } from "../../styles/componets/inputs/input";
 import Footer from "../../components/Footer/Footer";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const {
