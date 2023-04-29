@@ -1,14 +1,10 @@
 import styled from "styled-components";
 
 const SectionStyled = styled.section`
-  max-width: 752px;
-  min-width: 375px;
-  width: 47%;
-  height: 239px;
-
+  width: -webkit-fill-available;
   background-color: var(--grey-10);
-  padding: 28px 44px 28px 44px;
   border-radius: 4px;
+  padding: 28px 44px;
 
   button {
     width: 100px;

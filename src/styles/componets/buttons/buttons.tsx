@@ -227,3 +227,35 @@ export const CreateAnnounceButton = styled.button`
     background: var(--brand-4);
   }
 `;
+
+export const ShowAdsbutton = styled.button`
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 28px;
+  gap: 10px;
+
+  width: 206px;
+  height: 48px;
+
+  background: var(--grey-0);
+
+  border: 1.5px solid var(--grey-0);
+  border-radius: 4px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 0px;
+
+  color: var(--whiteFixed);
+
+  &:hover {
+    background: var(--grey-1);
+    border: 1.5px solid var(--grey-1);
+  }
+`;
