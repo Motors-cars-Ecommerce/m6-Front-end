@@ -85,6 +85,7 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   const [carsApi, setCarsApi] = useState<any | null>();
   const [carModels, setCarModels] = useState([] as iModelCar[]);
   const [carModel, setCarModel] = useState<iModelCar | null>(null);
+  //const [token, setToken] = useState("")
   const token = localStorage.getItem("@accessToken");
   const userId = localStorage.getItem("@userID");
 
@@ -150,6 +151,7 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   };
 
   const createNewCar = async (data: icar) => {
+    console.log(userId, token);
     if (userId) {
       try {
         api.defaults.headers.authorization = `Bearer ${token}`;

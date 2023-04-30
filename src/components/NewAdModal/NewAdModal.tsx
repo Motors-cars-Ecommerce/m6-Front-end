@@ -29,9 +29,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 const customStyles = {
   content: {
-    insetInlineStart: "5px",
-    width: "85vw",
-    insetBlockStart: "20vw",
+    width: "-webkit-fill-available",
     borderRadius: "8px",
   },
   overlay: {

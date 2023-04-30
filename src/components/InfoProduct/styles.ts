@@ -32,10 +32,12 @@ const InfoCardStyled = styled.div`
   justify-content: space-between;
 
   div {
-    width: 115px;
+    width: auto;
     display: flex;
-    /* background-color: black; */
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+    justify-content: center;
+    gap: 15px;
+    padding: 0px 10px;
   }
 
   strong {
@@ -51,22 +53,21 @@ const InfoCardStyled = styled.div`
 `;
 
 const YearAndKmStyled = styled.div`
-  span {
-    width: 50px;
-    height: 32px;
+  height: 32px;
+  background-color: var(--brand-4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    background-color: var(--brand-4);
+  span {
+    width: auto;
+    margin: 0px;
     color: var(--brand-1);
 
     font-weight: 500;
-    font-size: 14px;
+    font-size: 1rem;
 
-    margin-right: 12px;
     border-radius: 4px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 `;
 

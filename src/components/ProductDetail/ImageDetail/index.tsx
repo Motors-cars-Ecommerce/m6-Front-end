@@ -12,28 +12,15 @@ export const DivImageDetail = () => {
       <StyledTitle tag="h6" weight={600} size={20} height={25} color="--grey-1">
         Fotos
       </StyledTitle>
-      <div>
-        <ul>
-          {product?.images.map((image) => {
-            return (
-              <li className="image_li">
-                <img src={image.image_url} alt="" />
-              </li>
-            );
-          })}
-        </ul>
-        <ul>
-          <li className="image_li">
-            <img src={produto} alt="" />
-          </li>
-          <li className="image_li">
-            <img src={produto} alt="" />
-          </li>
-          <li className="image_li">
-            <img src={produto} alt="" />
-          </li>
-        </ul>
-      </div>
+      <section className="image_container">
+        {product?.images.map((image) => {
+          return (
+            <div className="grid-item">
+              <img src={image.image_url} alt="Imagem 1" />
+            </div>
+          );
+        })}
+      </section>
     </StyledDivImage>
   );
 };

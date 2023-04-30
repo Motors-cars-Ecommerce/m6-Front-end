@@ -51,9 +51,7 @@ export const Saller = () => {
             height={28}
             color="--grey-2"
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+            {saller?.description}
           </StyledTitle>
           {user?.seller && user?.id == saller?.id ? (
             <NewAdModal />
