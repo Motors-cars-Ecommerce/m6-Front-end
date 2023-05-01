@@ -3,7 +3,7 @@ import styled from "styled-components";
 const FormStyled = styled.form`
   max-width: 411px;
   min-width: 320px;
-  width: 25%;
+  width: 20%;
 
   height: auto;
 
@@ -14,9 +14,7 @@ const FormStyled = styled.form`
   border-radius: 4px;
 
   background-color: var(--grey-10);
-
-  padding-top: 44px;
-  padding-left: 48px;
+  padding: 3%;
 
   label {
     margin-top: 24px;
@@ -62,8 +60,7 @@ const FormStyled = styled.form`
   }
 
   position: absolute;
-  /* top: 30%; */
-  left: 30%;
+  
 `;
 
 const DivStreetStyled = styled.div`
