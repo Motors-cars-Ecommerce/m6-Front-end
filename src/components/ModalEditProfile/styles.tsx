@@ -115,6 +115,14 @@ export const ModalEditProfileStyed = styled.div`
     }
   }
 
+  span{
+    color: red;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-left: 15px;
+    height: 15px;
+  }
+
   textarea {
     font-family: "Inter";
     font-style: normal;
