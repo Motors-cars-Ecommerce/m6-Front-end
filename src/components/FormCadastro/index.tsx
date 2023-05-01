@@ -2,8 +2,6 @@ import { FormStyled, DivStreetStyled, DivButtonType } from "./styles";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cadastreUserSchema } from "../../Schemas/User";
-import { ICadastre } from "../../interfaces/User";
-import { useContext } from "react";
 
 const ModalCadastre = () => {
   // const { onSubmitFunc } = useContext(UserContext);

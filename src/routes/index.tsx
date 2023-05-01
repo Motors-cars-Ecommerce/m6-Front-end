@@ -10,15 +10,18 @@ import CardComment from "../components/CardComment";
 import InputComment from "../components/InputComment";
 import ProductPage from "../pages/ProductPage";
 import { SalerPage } from "../pages/SelerPage";
-import ModalCadastre from "../components/ModalCadastre";
 import Login from "../pages/LoginPage";
+<<<<<<< HEAD
+import { RegisterPage } from "../pages/RegisterPage/registerPage";
+=======
 import ModalEditProfile from "../components/ModalEditProfile/ModalEditProfile";
+>>>>>>> a9e7cd99b737aece3d97aecbee00d047a8dd8555
 
 export const RoutesMain = () => {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="/register" element={<ModalCadastre />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/detail" element={<ProductPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/saler" element={<SalerPage />} />
