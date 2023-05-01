@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalEditProfileStyed = styled.div`
+export const ModalEditAddressStyed = styled.div`
 
     position: fixed;
     inset: 0;
@@ -98,7 +98,7 @@ export const ModalEditProfileStyed = styled.div`
     box-sizing: border-box;
 
     height: 2.5rem;
-    width: auto;
+    width: 100%;
 
     display: flex;
     flex-direction: row;
@@ -123,40 +123,13 @@ export const ModalEditProfileStyed = styled.div`
     height: 15px;
   }
 
-  textarea {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 28px;
-    color: var(--grey-2);
-
-    box-sizing: border-box;
-
-    height: 84px;
-    width: auto;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px 16px;
-    gap: 10px;
-
-    border: 1.5px solid var(--grey-7);
-    border-radius: 4px;
-
-    &:focus {
-      border-color: var(--brand-2);
-      outline: none;
-    }
-  }
-
   .buttonsContainer {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    
 
     margin: 20px 0px;
   }
@@ -175,12 +148,6 @@ export const ModalEditProfileStyed = styled.div`
     font-size: 16px;
   }
 
-  .deleteButton {
-    background: var(--alert-2);
-    border: 1.5px solid var(--alert-2);
-    color: var(--alert-1);
-  }
-
   .saveButton {
     background: var(--brand-1);
     border: 1.5px solid var(--brand-1);
@@ -191,6 +158,12 @@ export const ModalEditProfileStyed = styled.div`
 
     .content{
       padding: 0px 20px;
+    }
+
+    .containter2Inputs{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     button {
