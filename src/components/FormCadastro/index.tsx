@@ -3,8 +3,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cadastreUserSchema } from "../../Schemas/User";
 
-
-const FormCadastro = () => {
+const ModalCadastre = () => {
+  // const { onSubmitFunc } = useContext(UserContext);
 
   const {
     register,
@@ -129,4 +129,4 @@ const FormCadastro = () => {
   );
 };
 
-export default FormCadastro;
+export default ModalCadastre;

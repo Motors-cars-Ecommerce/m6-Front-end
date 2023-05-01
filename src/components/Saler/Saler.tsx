@@ -3,9 +3,11 @@ import { StyledTitle } from "../../styles/componets/typography";
 import { NewAdModal } from "../NewAdModal/NewAdModal";
 import { useContext } from "react";
 import { SallerContext } from "../../context/salleContext";
+import { DataUserContext } from "../../context/userContext";
 
 export const Saller = () => {
   const { saller } = useContext(SallerContext);
+  const { user } = useContext(DataUserContext);
 
   return (
     <SellerSectionComponent>
@@ -53,7 +55,11 @@ export const Saller = () => {
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s
           </StyledTitle>
-          <NewAdModal />
+          {user?.seller && user?.id == saller?.id ? (
+            <NewAdModal />
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     </SellerSectionComponent>

@@ -8,38 +8,47 @@ import PageSelect from "../../components/PageSelect/PageSelect";
 import NavBarMobile from "../../components/NavBarMobile/NavBarMobile";
 import { useContext } from "react";
 import { DashboardContext } from "../../context/DashboardContext";
+import ModalEditProfile from "../../components/ModalEditProfile/ModalEditProfile";
 
 const Dashboard = () => {
   const { filterMobile } = useContext(DashboardContext);
 
   const datacar = {
-    id: "edd6ed65-3e56-42cd-886e-f175206cf665",
-    km: 50000,
-    price: 400000,
-    color: "Preto",
-    description: "O Uno é um automóvel co…",
+    id: "0342ffee-0a74-4498-94ef-a949c617f460",
+    km: 300000,
+    price: 50000,
+    color: "Cinza",
+    description: "Teste de descrição",
     main_image:
-      "https://cdn.autopapo.com.br/box/uploads/2021/08/11162502/fiat-uno-furgao-branco-de-frente-1920x1268.jpg",
+      "https://th.bing.com/th/id/OIP.oniOt0X5V-I4txeFU9MycwHaEI?w=291&h=180&c=7&r=0&o=5&pid=1.7",
     model_car: {
-      id: "53b0328a-015f-4fcf-a9ae-a70b9a7928a6",
-      branded: "Fiat",
-      model: "Uno",
-      year: "2006",
-      fuel: "Etanol",
+      id: "f90ad86d-8c3a-479d-ade5-639aaece0076",
+      branded: "citroën",
+      model: "aircross 100 anos 1.6 flex 16v aut.",
+      year: "2020",
+      fuel: "Gasolina",
     },
     user: {
-      id: "f2b684cd-fc07-4bc6-8a73-80be024447c9",
+      id: "89831263-8b12-4ba2-880e-2dd418343158",
       name: "Matheus",
       email: "matheus@mail.com",
       cpf: "10000000000",
-      password: "$2a$10$WlpRn3E1hmbjSJJ2kcVhPe.lpmCi5y1irwcUcsSU6U79PQHA5MigW",
+      password: "$2a$10$.SReUiJ4rPPNNF8inY/vnuk2X8Sh7/jiBXiffu2oAyMDfsuJnluRK",
       phone: "199999599",
       birthday: "1995-05-05T06:00:00.000Z",
       seller: true,
       isActive: true,
-      createdAt: "2023-04-19T23:08:16.148Z",
-      updatedAt: "2023-04-19T23:08:16.148Z",
+      createdAt: "2023-04-27T15:13:31.090Z",
+      updatedAt: "2023-04-27T15:13:31.090Z",
     },
+    comments: [],
+    images: [
+      {
+        id: "beb7d890-9774-48a6-be7b-7f78e67f2af7",
+        image_url:
+          "https://th.bing.com/th/id/OIP.fweYEGhcPjsf6oXekAV0yQHaEK?w=283&h=180&c=7&r=0&o=5&pid=1.7",
+      },
+    ],
   };
 
   return (
