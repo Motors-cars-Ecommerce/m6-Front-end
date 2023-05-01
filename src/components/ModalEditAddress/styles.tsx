@@ -115,6 +115,14 @@ export const ModalEditAddressStyed = styled.div`
     }
   }
 
+  span{
+    color: red;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-left: 15px;
+    height: 15px;
+  }
+
   .buttonsContainer {
     display: flex;
     flex-wrap: wrap;
