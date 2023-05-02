@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ModalEditProfileStyed } from "./styles";
 import { z } from 'zod';
 import EditProfileSchema from '../../Schemas/EditProfileSchema/EditProfileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { DashboardContext } from '../../context/DashboardContext';
 
 
 const ModalEditProfile = () => {
@@ -13,6 +14,8 @@ const ModalEditProfile = () => {
   const { register, handleSubmit, formState: {errors}  } = useForm<EdteProfileFormData>({resolver: zodResolver(EditProfileSchema)})
 
   const onSubmitFunction = (data:any) => console.log(data)
+
+  const { setModalEditProfile } = useContext(DashboardContext)
   
 
   return (
@@ -21,7 +24,7 @@ const ModalEditProfile = () => {
         <div className='content'>
         <section>
         <h2>Editar perfil</h2>
-        <button className='closeButton'>X</button>
+        <button onClick={()=> setModalEditProfile(false)} className='closeButton'>X</button>
         </section>
         <h3>Informações pessoais</h3>
         <form onSubmit={handleSubmit(onSubmitFunction)}  action="">
@@ -41,7 +44,7 @@ const ModalEditProfile = () => {
             <textarea placeholder='Digite sua descrição' {...register('description')} name="" id="" cols={30} rows={10}></textarea>
             {errors.description && <span> {errors.description.message} </span>}
             <div className='buttonsContainer' >
-                <button>Cancelar</button>
+                <button onClick={()=> setModalEditProfile(false)} >Cancelar</button>
                 <button className='deleteButton'>Excluir Perfil</button>
                 <button type='submit' className='saveButton' >Salvar Alterações</button>
             </div>

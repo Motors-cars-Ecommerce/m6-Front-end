@@ -12,7 +12,7 @@ import ModalEditProfile from "../../components/ModalEditProfile/ModalEditProfile
 import ModalEditAddress from "../../components/ModalEditAddress/ModalEditAddress";
 
 const Dashboard = () => {
-  const { filterMobile } = useContext(DashboardContext);
+  const { filterMobile, modalEditProfile, modalEditAddress } = useContext(DashboardContext);
 
   const datacar = {
     id: "0342ffee-0a74-4498-94ef-a949c617f460",
@@ -54,7 +54,8 @@ const Dashboard = () => {
 
   return (
     <DashboardStyled>
-      {/* <ModalEditProfile/> */}
+      { modalEditProfile && <ModalEditProfile/> }
+      { modalEditAddress && <ModalEditAddress/> }
       <HeaderComponet />
       {!filterMobile ? (
         <>
