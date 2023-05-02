@@ -8,9 +8,11 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { DataUserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { SallerContext } from "../../context/salleContext";
+import { DashboardContext } from "../../context/DashboardContext";
 
 export const HeaderComponet = () => {
   const { user, setUser } = useContext(DataUserContext);
+  const { setModalEditProfile, setModalEditAddress } = useContext(DashboardContext)
   const { setSaller, getSaler } = useContext(SallerContext);
   const [userOptions, setUserOptions] = useState(false);
   const [menuOptions, setMenuOptions] = useState(false);
@@ -37,6 +39,10 @@ export const HeaderComponet = () => {
   const toDashboard = () => {
     navigate("/");
   };
+
+  const toRegister = () => {
+    navigate("/register");
+  }
 
   return (
     <Header>
@@ -72,8 +78,8 @@ export const HeaderComponet = () => {
           {userOptions ? (
             <>
               <div className="user_options">
-                <span>Editar Perfil</span>
-                <span>Editar Endereço</span>
+                <span onClick={()=> setModalEditProfile(true)} >Editar Perfil</span>
+                <span onClick={()=> setModalEditAddress(true)} >Editar Endereço</span>
                 {user?.seller ? (
                   <span onClick={() => getSaler(user.id)}>Meus Anuncios</span>
                 ) : (
@@ -90,7 +96,7 @@ export const HeaderComponet = () => {
       ) : (
         <div className="header_buttons">
           <LoginButton onClick={toLogin}>Fazer Login</LoginButton>
-          <SingUpButton>Cadastrar</SingUpButton>
+          <SingUpButton onClick={toRegister}>Cadastrar</SingUpButton>
         </div>
       )}
       <div className="div_mobile">
@@ -107,13 +113,13 @@ export const HeaderComponet = () => {
             {!user ? (
               <>
                 <LoginButton onClick={toLogin}>Fazer Login</LoginButton>
-                <SingUpButton className="singup">Cadastrar</SingUpButton>
+                <SingUpButton onClick={toRegister} className="singup">Cadastrar</SingUpButton>
               </>
             ) : (
               <>
                 <div className="user_options_mobile">
-                  <span>Editar Perfil</span>
-                  <span>Editar Endereço</span>
+                <span onClick={()=> setModalEditProfile(true)} >Editar Perfil</span>
+                <span onClick={()=> setModalEditAddress(true)} >Editar Endereço</span>
                   {user?.seller ? (
                     <span onClick={() => getSaler(user.id)}>Meus Anuncios</span>
                   ) : (
