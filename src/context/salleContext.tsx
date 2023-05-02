@@ -75,6 +75,8 @@ interface iSallerContext {
   setCarModel: React.Dispatch<React.SetStateAction<iModelCar | null>>;
   getCarModel: (name: string, brand: string) => Promise<void>;
   getSaler: (salerId: string) => Promise<void>;
+  sucessModal: boolean;
+  setSucessModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const SallerContext = createContext({} as iSallerContext);
@@ -85,7 +87,7 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   const [carsApi, setCarsApi] = useState<any | null>();
   const [carModels, setCarModels] = useState([] as iModelCar[]);
   const [carModel, setCarModel] = useState<iModelCar | null>(null);
-  //const [token, setToken] = useState("")
+  const [sucessModal, setSucessModal] = useState(false);
   const token = localStorage.getItem("@accessToken");
   const userId = localStorage.getItem("@userID");
 
@@ -158,6 +160,7 @@ const SaleProvider = ({ children }: iChildrenProps) => {
         //const newCar = [...cars, data];
         await api.post("cars", data);
         loadCars(userId);
+        setSucessModal(true);
       } catch {
         console.log("erro");
       }
@@ -179,6 +182,8 @@ const SaleProvider = ({ children }: iChildrenProps) => {
     setCarModel,
     getCarModel,
     getSaler,
+    sucessModal,
+    setSucessModal,
   };
 
   return (

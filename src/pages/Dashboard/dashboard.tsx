@@ -54,7 +54,7 @@ const Dashboard = () => {
 
   return (
     <DashboardStyled>
-      <ModalEditProfile/>
+      {/* <ModalEditProfile/> */}
       <HeaderComponet />
       {!filterMobile ? (
         <>

@@ -3,9 +3,10 @@ import { StyledDivImage } from "./styled";
 import produto from "../../../assets/img-prod.jpg";
 import { useContext } from "react";
 import { ProductContext } from "../../../context/ProductContext";
+import { ImageModal } from "./ImageModal";
 
 export const DivImageDetail = () => {
-  const { product } = useContext(ProductContext);
+  const { product, getImageModal } = useContext(ProductContext);
 
   return (
     <StyledDivImage>
@@ -15,8 +16,12 @@ export const DivImageDetail = () => {
       <section className="image_container">
         {product?.images.map((image) => {
           return (
-            <div className="grid-item">
-              <img src={image.image_url} alt="Imagem 1" />
+            <div className="grid-item" key={image.image_url}>
+              <img
+                src={image.image_url}
+                alt="Imagem 1"
+                onClick={() => getImageModal(image.image_url)}
+              />
             </div>
           );
         })}
