@@ -58,17 +58,17 @@ export const SingUpButton = styled.button`
 
 export const AddImageButton = styled.button`
   box-sizing: border-box;
+  width: -webkit-fill-available;
+  font-size: 0.7em;
+  padding: 18px 16px 12px;
 
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px 20px;
   gap: 10px;
-  padding-top: 24px;
   cursor: pointer;
 
-  width: 315px;
   height: 38px;
 
   background: var(--brand-4);
@@ -78,10 +78,16 @@ export const AddImageButton = styled.button`
 
   font-style: normal;
   font-weight: 600;
-  font-size: 0.8rem;
   line-height: 0px;
 
   color: var(--brand-1);
+
+  @media (min-width: 800px) {
+    width: 315px;
+    padding: 12px 20px;
+    padding-top: 24px;
+    font-size: 0.8rem;
+  }
 `;
 
 export const CancelButton = styled.button`
@@ -95,11 +101,9 @@ export const CancelButton = styled.button`
   gap: 10px;
   cursor: pointer;
 
-  width: 146px;
   height: 48px;
 
   background: var(--grey-6);
-  /* Grey Scale/grey-6 */
 
   border: 1.5px solid var(--grey-6);
   border-radius: 4px;
@@ -110,6 +114,10 @@ export const CancelButton = styled.button`
   line-height: 0px;
 
   color: var(--grey-2);
+
+  @media (min-width: 800px) {
+    width: 146px;
+  }
 `;
 
 export const DisableButton = styled.button`
@@ -225,5 +233,37 @@ export const CreateAnnounceButton = styled.button`
 
   &:hover {
     background: var(--brand-4);
+  }
+`;
+
+export const ShowAdsbutton = styled.button`
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 28px;
+  gap: 10px;
+
+  width: 206px;
+  height: 48px;
+
+  background: var(--grey-0);
+
+  border: 1.5px solid var(--grey-0);
+  border-radius: 4px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 0px;
+
+  color: var(--whiteFixed);
+
+  &:hover {
+    background: var(--grey-1);
+    border: 1.5px solid var(--grey-1);
   }
 `;
