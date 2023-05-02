@@ -16,7 +16,7 @@ import { RegisterPage } from "../pages/RegisterPage/registerPage";
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<RegisterPage />} />
+      <Route path="/" element={< Dashboard/>} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/detail" element={<ProductPage />} />
       <Route path="/login" element={<Login />} />

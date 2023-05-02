@@ -6,9 +6,17 @@ import { useContext, useState } from "react";
 import { ICadastre } from "../../interfaces/User";
 import { DataUserContext } from "../../context/userContext";
 
+
+
+
+
+
+
+
+
+
 const ModalCadastre = () => {
-  // const { onSubmitFunc } = useContext(UserContext);
-  const [valueButton, setValueButton]= useState("buyer")
+  const [valueButton, setValueButton]= useState(false)
 
 
 
@@ -25,16 +33,28 @@ const ModalCadastre = () => {
     resolver: zodResolver(cadastreUserSchema),
   });
 
-  const onSubmitFunc = (data: any) => {
-    createdUser({...data,  typeUser:valueButton})
+  const onSubmitFunc = (data: ICadastre) => {
+
+    console.log("Valor do state =>>", valueButton)
+    const {confirmPassword,...res}= data
+
+    const newUser = {...res,  seller:valueButton}
+
+    console.log(newUser)
+
+    createdUser(newUser)
+    
   };
 
 
   const {createdUser, mudarCorDobotaoAnunciante, mudarCorBotaoComprador, mudarCorAnunciante,mudarCorComprador} = useContext(DataUserContext)
 
-  const registerValueButton =(value:string)=>{
+  const registerValueButton =(value:boolean)=>{
     setValueButton(value)
   }
+
+
+
   return (
     <FormStyled onSubmit={handleSubmit(onSubmitFunc)}>
       <h1>Cadastro</h1>
@@ -69,7 +89,7 @@ const ModalCadastre = () => {
       <span>informações de endereço</span>
 
       <label>CEP</label>
-      <input type="text" placeholder="00000.000" {...register("cep")} />
+      <input type="text" placeholder="00000.000" {...register("addresses.cep")} />
 
       {/* campo de estado e cidade separados por uma div */}
       <DivStreetStyled>
@@ -78,7 +98,7 @@ const ModalCadastre = () => {
           <input
             type="text"
             placeholder="Digitar Estado"
-            {...register("state")}
+            {...register("addresses.state")}
           />
         </div>
         <div>
@@ -86,14 +106,14 @@ const ModalCadastre = () => {
           <input
             type="text"
             placeholder="Digitar cidade"
-            {...register("city")}
+            {...register("addresses.city")}
           />
         </div>
       </DivStreetStyled>
       {/* ----------------------------- */}
 
       <label>Rua</label>
-      <input type="text" placeholder="nome da Rua" {...register("street")} />
+      <input type="text" placeholder="nome da Rua" {...register("addresses.street")} />
 
       <DivStreetStyled>
         <div>
@@ -101,7 +121,7 @@ const ModalCadastre = () => {
           <input
             type="text"
             placeholder="Digitar número"
-            {...register("number")}
+            {...register("addresses.number")}
           />
         </div>
         <div>
@@ -109,7 +129,7 @@ const ModalCadastre = () => {
           <input
             type="text"
             placeholder="Ex: apart 307"
-            {...register("complement")}
+            {...register("addresses.complement")}
           />
         </div>
       </DivStreetStyled>
@@ -117,10 +137,10 @@ const ModalCadastre = () => {
       <strong>Tipo da conta</strong>
 
       <DivButtonType>
-        <button  className={mudarCorComprador} onClick={()=>(mudarCorBotaoComprador(), registerValueButton("buyer"))} type="button" value="buyer"  {...register("typeUser")}>
+        <button  className={mudarCorComprador} onClick={()=>(mudarCorBotaoComprador(), registerValueButton(false))} type="button" >
           Comprador
         </button>
-        <button className={mudarCorAnunciante}  onClick={()=>(mudarCorDobotaoAnunciante(), registerValueButton("advertiser"))} type="button" value="advertiser" {...register("typeUser")}   >
+        <button className={mudarCorAnunciante}  onClick={()=>(mudarCorDobotaoAnunciante(), registerValueButton(true))} type="button" >
           Anuciante
         </button>
       </DivButtonType>

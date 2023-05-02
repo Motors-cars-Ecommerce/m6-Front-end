@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import api from "../service/api";
 import { error } from "console";
 import { useNavigate } from "react-router-dom";
-import { ICadastre, ILogin } from "../interfaces/User";
+import { ICadastre, ILogin, IRegisterBodyNotConfirmPassword } from "../interfaces/User";
 import { IUser } from "./salleContext";
 
 /* export interface IUser {
@@ -51,7 +51,7 @@ interface iUserContext {
   user: IUser | null;
   login: (data: ILogin) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
-  createdUser:(data:ICadastre)=>Promise<void>
+  createdUser:(data:IRegisterBodyNotConfirmPassword)=>Promise<void>
   mudarCorDobotaoAnunciante:()=> void;
   mudarCorBotaoComprador:()=> void
   mudarCorAnunciante:string
@@ -84,11 +84,6 @@ export function DataUserProvider({ children }: any) {
      setMudarCorComprador("roxo")
      setMudarCorAnunciante("normal")
    }
-
-
-
-
-
 
 
   /*   function userLogin(data: ILogin) {
@@ -139,7 +134,7 @@ export function DataUserProvider({ children }: any) {
     }
   };
 
-  const createdUser = async(data:ICadastre)=>{
+  const createdUser = async(data:IRegisterBodyNotConfirmPassword)=>{
     await api.post("/user", data)
     .then( (response) =>{
       console.log("cadastro deu certo ==>>",response);
