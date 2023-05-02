@@ -12,12 +12,14 @@ import ProductPage from "../pages/ProductPage";
 import { SalerPage } from "../pages/SelerPage";
 import Login from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage/registerPage";
+
 import ModalEditProfile from "../components/ModalEditProfile/ModalEditProfile";
+
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={< Dashboard/>} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/detail" element={<ProductPage />} />
       <Route path="/login" element={<Login />} />

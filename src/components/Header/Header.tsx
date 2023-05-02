@@ -40,6 +40,10 @@ export const HeaderComponet = () => {
     navigate("/");
   };
 
+  const toRegister = () => {
+    navigate("/register");
+  }
+
   return (
     <Header>
       <div className="header_tittle" onClick={toDashboard}>
@@ -92,7 +96,7 @@ export const HeaderComponet = () => {
       ) : (
         <div className="header_buttons">
           <LoginButton onClick={toLogin}>Fazer Login</LoginButton>
-          <SingUpButton>Cadastrar</SingUpButton>
+          <SingUpButton onClick={toRegister}>Cadastrar</SingUpButton>
         </div>
       )}
       <div className="div_mobile">
@@ -109,7 +113,7 @@ export const HeaderComponet = () => {
             {!user ? (
               <>
                 <LoginButton onClick={toLogin}>Fazer Login</LoginButton>
-                <SingUpButton className="singup">Cadastrar</SingUpButton>
+                <SingUpButton onClick={toRegister} className="singup">Cadastrar</SingUpButton>
               </>
             ) : (
               <>
