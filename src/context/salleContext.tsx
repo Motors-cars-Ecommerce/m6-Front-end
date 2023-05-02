@@ -28,6 +28,7 @@ export interface IUser {
     number: string;
     user: any;
     cep: string;
+    state: string;
     street: string;
     city: string;
     complement: string;
