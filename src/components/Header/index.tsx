@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
-export const Header = styled.section`
+export const Header = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 8vh;
+  height: 38px;
   padding-left: 10px;
+  width: 100vw;
 
   .header_tittle {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    gap: 5px;
+    
 
     background: linear-gradient(90deg, #0b0d0d -1.61%, #4529e6 100.99%);
-    -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 
     h2,
@@ -30,7 +31,7 @@ export const Header = styled.section`
   .menu_options_mobile {
     position: absolute;
     right: 0px;
-    width: 95vw;
+    width: 100vw;
     background: var(--whiteFixed);
     display: flex;
     flex-direction: column;
@@ -99,7 +100,6 @@ export const Header = styled.section`
     height: auto;
   }
 
-  .header_buttons,
   .header_user {
     display: none;
   }
@@ -222,8 +222,7 @@ export const Header = styled.section`
 
     .header_buttons {
       display: flex;
-      flex-direction: row;
-      -webkit-box-align: center;
+      
       align-items: center;
       padding: 0px;
       gap: 44px;

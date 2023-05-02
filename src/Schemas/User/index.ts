@@ -14,7 +14,7 @@ const cadastreUserSchema = z
     street: z.string(),
     number: z.string(),
     complement: z.string(),
-    typeUser: z.string(),
+    typeUser: z.string().refine((val) => val === "buyer" || val === "advertiser"),
     password: z.string(),
     confirmPassword: z.string(),
   })

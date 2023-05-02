@@ -1,25 +1,40 @@
 import { FormStyled, DivStreetStyled, DivButtonType } from "./styles";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm  } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cadastreUserSchema } from "../../Schemas/User";
+import { useContext, useState } from "react";
+import { ICadastre } from "../../interfaces/User";
+import { DataUserContext } from "../../context/userContext";
 
 const ModalCadastre = () => {
   // const { onSubmitFunc } = useContext(UserContext);
+  const [valueButton, setValueButton]= useState("buyer")
+
+
+
+
+
+
+
+
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
+    formState: { errors },} = useForm<ICadastre>({
     resolver: zodResolver(cadastreUserSchema),
   });
 
   const onSubmitFunc = (data: any) => {
-    console.log(data);
-    reset();
+    createdUser({...data,  typeUser:valueButton})
   };
 
+
+  const {createdUser, mudarCorDobotaoAnunciante, mudarCorBotaoComprador, mudarCorAnunciante,mudarCorComprador} = useContext(DataUserContext)
+
+  const registerValueButton =(value:string)=>{
+    setValueButton(value)
+  }
   return (
     <FormStyled onSubmit={handleSubmit(onSubmitFunc)}>
       <h1>Cadastro</h1>
@@ -102,10 +117,10 @@ const ModalCadastre = () => {
       <strong>Tipo da conta</strong>
 
       <DivButtonType>
-        <button type="button" value="buyer" {...register("typeUser")}>
+        <button  className={mudarCorComprador} onClick={()=>(mudarCorBotaoComprador(), registerValueButton("buyer"))} type="button" value="buyer"  {...register("typeUser")}>
           Comprador
         </button>
-        <button type="button" value="advertiser" {...register("typeUser")}>
+        <button className={mudarCorAnunciante}  onClick={()=>(mudarCorDobotaoAnunciante(), registerValueButton("advertiser"))} type="button" value="advertiser" {...register("typeUser")}   >
           Anuciante
         </button>
       </DivButtonType>

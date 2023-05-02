@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import api from "../service/api";
 import { error } from "console";
 import { useNavigate } from "react-router-dom";
-import { ILogin } from "../interfaces/User";
+import { ICadastre, ILogin } from "../interfaces/User";
 import { IUser } from "./salleContext";
 
 /* export interface IUser {
@@ -20,11 +20,48 @@ export interface ILoginRequest {
   user: IUser;
 }
 
+
+
+export interface IRegisterAddressesRequest {
+
+}
+
+
+export interface IRegisterRequest {
+  name: string;
+  email: string;
+  cpf: string;
+  password: string;
+  phone: string;
+  description:string;
+  birthday: Date;
+  seller: boolean;
+  isActive: boolean;
+  address: {
+    number: string;
+    cep: string;
+    street: string;
+    city: string;
+    complement: string;
+  }[];
+
+}
+
 interface iUserContext {
   user: IUser | null;
   login: (data: ILogin) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
+  createdUser:(data:ICadastre)=>Promise<void>
+  mudarCorDobotaoAnunciante:()=> void;
+  mudarCorBotaoComprador:()=> void
+  mudarCorAnunciante:string
+  mudarCorComprador:string
 }
+
+
+
+
+
 
 export const DataUserContext = createContext({} as iUserContext);
 
@@ -33,6 +70,26 @@ export function DataUserProvider({ children }: any) {
   const navigate = useNavigate();
   const token = localStorage.getItem("@accessToken");
   const userId = localStorage.getItem("@userID");
+
+
+  const [mudarCorAnunciante, setMudarCorAnunciante]= useState("normal" as string )
+  const [mudarCorComprador, setMudarCorComprador]= useState("normal" as string )
+ 
+   const mudarCorDobotaoAnunciante = ()=>{
+     setMudarCorAnunciante("roxo")
+     setMudarCorComprador("normal")
+   }
+ 
+   const mudarCorBotaoComprador = ()=>{
+     setMudarCorComprador("roxo")
+     setMudarCorAnunciante("normal")
+   }
+
+
+
+
+
+
 
   /*   function userLogin(data: ILogin) {
     api
@@ -82,12 +139,31 @@ export function DataUserProvider({ children }: any) {
     }
   };
 
+  const createdUser = async(data:ICadastre)=>{
+    await api.post("/user", data)
+    .then( (response) =>{
+      console.log("cadastro deu certo ==>>",response);
+      navigate("/login")
+    })
+    .catch((error)=>{
+      console.log("Cadastro deu errado ==>>", error )
+    })
+  }
+
+
+
+
   return (
     <DataUserContext.Provider
       value={{
         user,
         setUser,
         login,
+        createdUser,
+        mudarCorDobotaoAnunciante,
+        mudarCorBotaoComprador,
+        mudarCorAnunciante,
+        mudarCorComprador
       }}
     >
       {children}
