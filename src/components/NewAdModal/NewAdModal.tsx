@@ -250,6 +250,7 @@ export const NewAdModal = () => {
               <SelectBoxComponent {...register("model_car.fuel")}>
                 <option value="Gasolina">Gasolina</option>
                 <option value="Etanol">Etanol</option>
+                <option value="Diesel">Diesel</option>
                 <option value="Flex">Flex</option>
               </SelectBoxComponent>
             </div>

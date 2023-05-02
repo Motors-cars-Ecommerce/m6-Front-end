@@ -4,6 +4,7 @@ import { NewAdModal } from "../NewAdModal/NewAdModal";
 import { useContext } from "react";
 import { SallerContext } from "../../context/salleContext";
 import { DataUserContext } from "../../context/userContext";
+import { SucessAdModal } from "../sucessAdModal";
 
 export const Saller = () => {
   const { saller } = useContext(SallerContext);
@@ -60,6 +61,7 @@ export const Saller = () => {
           )}
         </div>
       </div>
+      <SucessAdModal />
     </SellerSectionComponent>
   );
 };

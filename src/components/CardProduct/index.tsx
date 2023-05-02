@@ -4,10 +4,18 @@ import { ContainerStyled } from "./styles";
 import { ProductContext } from "../../context/ProductContext";
 
 const CardProduct = () => {
-  const { product } = useContext(ProductContext);
+  const { product, getImageModal } = useContext(ProductContext);
   return (
     <ContainerStyled>
-      <img src={product?.main_image} alt="carro" />
+      {product?.main_image ? (
+        <img
+          onClick={() => getImageModal(product?.main_image)}
+          src={product?.main_image}
+          alt="carro"
+        />
+      ) : (
+        <></>
+      )}
     </ContainerStyled>
   );
 };
