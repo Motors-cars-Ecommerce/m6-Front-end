@@ -3,8 +3,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ModalEditAddressStyed } from "./styles";
 import EditAddressSchema from "../../Schemas/EditAddressSchema/EditAddressSchema";
 import {z} from 'zod'
+import { DashboardContext } from "../../context/DashboardContext";
+import { useContext } from "react";
 
 const ModalEditAddress = () => {
+
+  const { setModalEditAddress } = useContext(DashboardContext)
   
   type EditAddressFormData = z.infer<typeof EditAddressSchema>
 
@@ -18,7 +22,7 @@ const ModalEditAddress = () => {
         <div className="content">
           <section>
             <h2>Editar endereço</h2>
-            <button className="closeButton">X</button>
+            <button onClick={()=> setModalEditAddress(false)} className="closeButton">X</button>
           </section>
           <h3>Informações de endereço</h3>
           <form onSubmit={handleSubmit(onSubmitFunnction)} action="">
@@ -54,7 +58,7 @@ const ModalEditAddress = () => {
               </div>
             </div>
             <div className="buttonsContainer">
-              <button>Cancelar</button>
+              <button onClick={()=> setModalEditAddress(false)}>Cancelar</button>
               <button className="saveButton">Salvar Alterações</button>
             </div>
           </form>

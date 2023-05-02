@@ -103,6 +103,7 @@ export function DataUserProvider({ children }: any) {
     try {
       if (userId) {
         getUser(userId);
+        console.log(userId);
       } else setUser(null);
     } catch {
       console.log("error");

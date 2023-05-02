@@ -13,6 +13,9 @@ import { SalerPage } from "../pages/SelerPage";
 import Login from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage/registerPage";
 
+import ModalEditProfile from "../components/ModalEditProfile/ModalEditProfile";
+
+
 export const RoutesMain = () => {
   return (
     <Routes>

@@ -5,54 +5,48 @@ import InfoProduct from "../../components/InfoProduct";
 import InputComment from "../../components/InputComment";
 import {
   LoginButton,
+  ShowAdsbutton,
   SingUpButton,
 } from "../../styles/componets/buttons/buttons";
-import { Header } from "../../components/Header";
 import { StyledTitle } from "../../styles/componets/typography";
 import { MainStyled } from "./styles";
 import { TestModal } from "../../components/testModal";
+import { HeaderComponet } from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import produto from "../../assets/img-prod.jpg";
+import { useEffect, useState } from "react";
+import { DetailProduct } from "../../components/ProductDetail";
 
 const ProductPage = () => {
+  const [isMobile, setMobile] = useState(
+    window.innerWidth < 800 ? true : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth < 800 ? true : false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
-      <Header>
-        <div className="header_tittle">
-          <StyledTitle tag="h2">Motors </StyledTitle>
-          <StyledTitle tag="h3">shop</StyledTitle>
-        </div>
-        <div className="header_buttons">
-          <LoginButton>Fazer Login</LoginButton>
-          <SingUpButton>Cadastrar</SingUpButton>
-        </div>
-        <div className="header_user">
-          <StyledTitle
-            tag="span"
-            color="--whiteFixed"
-            weight={700}
-            size={14}
-            height={0}
-          >
-            SL
-          </StyledTitle>
-          <StyledTitle
-            tag="h3"
-            weight={400}
-            size={16}
-            height={28}
-            color="--grey-2"
-          >
-            Samuel Leão
-          </StyledTitle>
-        </div>
-      </Header>
-
+      <HeaderComponet />
       <MainStyled>
-        <CardProduct />
-        <InfoProduct />
-        <CardDescription />
-        <CardComment />
-        <InputComment />
+        <section className="product">
+          <CardProduct />
+          <InfoProduct />
+          <CardDescription />
+          <CardComment />
+          {isMobile ? <DetailProduct /> : <></>}
+          <InputComment />
+        </section>
+        {!isMobile ? <DetailProduct /> : <></>}
       </MainStyled>
+      <Footer />
     </>
   );
 };

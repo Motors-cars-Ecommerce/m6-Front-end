@@ -1,34 +1,28 @@
 import styled from "styled-components";
 
 const ContainerStyled = styled.div`
+  width: -webkit-fill-available;
   background-color: var(--grey-10);
-
-  max-width: 752px;
-  min-width: 375px;
-  width: 47%;
+  border-radius: 4px;
+  padding: 28px 44px;
   height: 249px;
 
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-
-  padding: 36px 44px 36px 44px;
-  border-radius: 4px;
 `;
 
 const FormStyled = styled.form`
   margin-top: 15px;
   background-color: var(--grey-10);
-  /* background-color: red; */
 
-  max-width: 672px;
-  min-width: 128px;
-  width: 89%;
+  width: 90%;
   height: 128px;
 
   border-radius: 4px;
   border: 2px solid var(--grey-7);
+
   /* gap: 10px; */
 
   div {
@@ -39,16 +33,19 @@ const FormStyled = styled.form`
 
     input {
       margin-top: 10px;
-      margin-left: 15px;
-      border: none;
-      max-width: 500px;
-      min-width: 150px;
-      width: 74%;
+      word-wrap: break-word;
+
+      width: 100%;
       height: 70px;
 
       font-size: 16px;
+      border: 1.5px solid var(--grey-7);
+      border-radius: 4px;
 
-      /* background-color: green; */
+      &:focus {
+        border-color: var(--brand-2);
+        outline: none;
+      }
 
       @media (max-width: 768px) {
         height: 100px;
