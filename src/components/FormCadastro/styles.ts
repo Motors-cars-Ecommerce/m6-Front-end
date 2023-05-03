@@ -3,7 +3,7 @@ import styled from "styled-components";
 const FormStyled = styled.form`
   max-width: 411px;
   min-width: 320px;
-  width: 25%;
+  width: 20%;
 
   height: auto;
 
@@ -14,9 +14,7 @@ const FormStyled = styled.form`
   border-radius: 4px;
 
   background-color: var(--grey-10);
-
-  padding-top: 44px;
-  padding-left: 48px;
+  padding: 3%;
 
   label {
     margin-top: 24px;
@@ -46,7 +44,7 @@ const FormStyled = styled.form`
   }
 
   button {
-    width: 73%;
+    width: 43%;
     height: 48px;
 
     border-radius: 4px;
@@ -61,9 +59,7 @@ const FormStyled = styled.form`
     margin-bottom: 44px;
   }
 
-  position: absolute;
-  /* top: 30%; */
-  left: 30%;
+  
 `;
 
 const DivStreetStyled = styled.div`
@@ -88,39 +84,30 @@ const DivStreetStyled = styled.div`
 `;
 
 const DivButtonType = styled.div`
-  width: 73%;
+  width: 90%;
   height: auto;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 
-  button:nth-child(1) {
-    width: 45%;
-    height: 48px;
-
-    color: var(--whiteFixed);
-    background-color: var(--brand-2);
-
-    border-radius: 4px;
-    border: 1.5px solid var(--brand-1);
-
-    font-weight: 600;
-    margin-top: 10px;
+  .normal{
+    color: black;
+    border-color: black;
+    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
   }
-  button:nth-child(2) {
-    width: 45%;
-    height: 48px;
 
-    color: var(--grey-0);
-    background-color: var(--grey-7);
-
-    border-radius: 4px;
-    border: 1.5px solid var(--grey-4);
-
-    font-weight: 600;
-
-    margin-top: 10px;
+  .roxo{
+    color:white ;
+    border-color: black;
+    border: 1px solid black;
+    background-color: var(--brand-1);
+    cursor: pointer;
   }
+
+
+
 `;
 
 export { FormStyled, DivStreetStyled, DivButtonType };

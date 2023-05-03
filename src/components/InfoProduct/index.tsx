@@ -1,22 +1,27 @@
 import { SectionStyled, InfoCardStyled, YearAndKmStyled } from "./styles";
-
+import { ProductContext } from "../../context/ProductContext";
+import { useContext } from "react";
 const InfoProduct = () => {
+  const { product } = useContext(ProductContext);
+
   return (
     <SectionStyled>
-      <h2>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200 </h2>
+      <h2>
+        {product?.model_car.branded} {product?.model_car.model}
+      </h2>
 
       <InfoCardStyled>
         <div>
           <YearAndKmStyled>
-            <span>2013</span>
+            <span>{product?.model_car.year}</span>
           </YearAndKmStyled>
 
           <YearAndKmStyled>
-            <span>0 KM</span>
+            <span>{product?.km} KM</span>
           </YearAndKmStyled>
         </div>
 
-        <strong>R$ 00.000,00</strong>
+        <strong>R$ {product?.price}</strong>
       </InfoCardStyled>
 
       <button>Comprar</button>

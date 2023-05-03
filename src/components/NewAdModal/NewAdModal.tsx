@@ -29,9 +29,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 const customStyles = {
   content: {
-    insetInlineStart: "5px",
-    width: "85vw",
-    insetBlockStart: "20vw",
+    width: "-webkit-fill-available",
     borderRadius: "8px",
   },
   overlay: {
@@ -179,6 +177,7 @@ export const NewAdModal = () => {
         image_url: image.image_url,
       })),
     };
+    console.log(newData);
     createNewCar(newData);
     toggleModal();
   };
@@ -241,7 +240,7 @@ export const NewAdModal = () => {
               <InputBoxComponent
                 type="text"
                 placeholder="2018"
-                defaultValue={carModel ? carModel?.year : ""}
+                value={carModel?.year}
                 readOnly
                 {...register("model_car.year")}
               />
@@ -251,6 +250,7 @@ export const NewAdModal = () => {
               <SelectBoxComponent {...register("model_car.fuel")}>
                 <option value="Gasolina">Gasolina</option>
                 <option value="Etanol">Etanol</option>
+                <option value="Diesel">Diesel</option>
                 <option value="Flex">Flex</option>
               </SelectBoxComponent>
             </div>

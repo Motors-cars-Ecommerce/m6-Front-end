@@ -1,8 +1,75 @@
+import { useContext } from "react";
 import { StyledTitle } from "../../styles/componets/typography";
 import { NavBarStyled } from "./styles";
-
+import { DashboardContext } from "../../context/DashboardContext";
 
 const NavBarDesktop = () => {
+  const {
+    carsFiltered,
+    filterByBrand,
+    filterByModel,
+    filterByColor,
+    filterByFuel,
+    filterByYear,
+    filterByPrice,
+    filterByMaxKM,
+    resetCarsFiltered,
+    maxKm,
+    setMaxKm,
+    minKm,
+    setMinKm,
+  } = useContext(DashboardContext);
+  const carsBrands = carsFiltered.filter((car, index, self) => {
+    return (
+      self.findIndex((i) => i.model_car.branded === car.model_car.branded) ===
+      index
+    );
+  });
+
+  const carsModels = carsFiltered.filter((car, index, self) => {
+    return (
+      self.findIndex((i) => i.model_car.model === car.model_car.model) === index
+    );
+  });
+
+  const carsColors = carsFiltered.filter((car, index, self) => {
+    return self.findIndex((i) => i.color === car.color) === index;
+  });
+
+  const carsYear = carsFiltered.filter((car, index, self) => {
+    return (
+      self.findIndex((i) => i.model_car.year === car.model_car.year) === index
+    );
+  });
+
+  const carsFuel = carsFiltered.filter((car, index, self) => {
+    return (
+      self.findIndex((i) => i.model_car.fuel === car.model_car.fuel) === index
+    );
+  });
+
+  const carsPrice = carsFiltered.filter((car, index, self) => {
+    return (
+      self.findIndex((i) => i.model_car.fuel === car.model_car.fuel) === index
+    );
+  });
+
+  const carsKM = carsFiltered.filter((car, index, self) => {
+    return (
+      self.findIndex((i) => i.model_car.fuel === car.model_car.fuel) === index
+    );
+  });
+
+  const inputMaxKm = document.getElementById("maxInputKm") as HTMLFormElement;
+  const inputMinKm = document.getElementById("minInputKm") as HTMLFormElement;
+
+  const resetFilters = () => {
+    resetCarsFiltered();
+    inputMaxKm.value = null;
+    inputMinKm.value = null;
+  };
+
+  console.log(carsBrands);
   return (
     <NavBarStyled>
       <div>
@@ -16,12 +83,11 @@ const NavBarDesktop = () => {
           Marca
         </StyledTitle>
         <ul>
-          <li>General Motors</li>
-          <li>Fiat</li>
-          <li>Ford</li>
-          <li>Honda</li>
-          <li>Porsche</li>
-          <li>Volkswagen</li>
+          {carsBrands.map((car) => (
+            <li onClick={() => filterByBrand(car.model_car.branded)}>
+              {car.model_car.branded}
+            </li>
+          ))}
         </ul>
       </div>
       <div>
@@ -35,14 +101,11 @@ const NavBarDesktop = () => {
           Modelo
         </StyledTitle>
         <ul>
-          <li>Civic</li>
-          <li>Corolla</li>
-          <li>Cruze</li>
-          <li>Fit</li>
-          <li>Gol</li>
-          <li>Ka</li>
-          <li>Onix</li>
-          <li>Porsche 781</li>
+          {carsModels.map((car) => (
+            <li onClick={() => filterByModel(car.model_car.model)}>
+              {car.model_car.model}
+            </li>
+          ))}
         </ul>
       </div>
       <div>
@@ -56,12 +119,9 @@ const NavBarDesktop = () => {
           Cor
         </StyledTitle>
         <ul>
-          <li>Azul</li>
-          <li>Branco</li>
-          <li>Cinza</li>
-          <li>Prata</li>
-          <li>Preto</li>
-          <li>Verde</li>
+          {carsColors.map((car) => (
+            <li onClick={() => filterByColor(car.color)}>{car.color}</li>
+          ))}
         </ul>
       </div>
       <div>
@@ -75,13 +135,11 @@ const NavBarDesktop = () => {
           Ano
         </StyledTitle>
         <ul>
-          <li>2022</li>
-          <li>2021</li>
-          <li>2018</li>
-          <li>2015</li>
-          <li>2013</li>
-          <li>2012</li>
-          <li>2010</li>
+          {carsYear.map((car) => (
+            <li onClick={() => filterByYear(car.model_car.year)}>
+              {car.model_car.year}
+            </li>
+          ))}
         </ul>
       </div>
       <div>
@@ -95,27 +153,40 @@ const NavBarDesktop = () => {
           Combustível
         </StyledTitle>
         <ul>
-          <li>Diesel</li>
-          <li>Etanol</li>
-          <li>Gasolina</li>
-          <li>Flex</li>
+          {carsFuel.map((car) => (
+            <li onClick={() => filterByFuel(car.model_car.fuel)}>
+              {car.model_car.fuel}
+            </li>
+          ))}
         </ul>
       </div>
       <StyledTitle tag="h2" color="--grey-0" size={28} weight={600} height={35}>
         Km
       </StyledTitle>
       <span className="">
-        <input placeholder="Mínima" />
-        <input placeholder="Máxima" />
+        <input
+          id="minInputKm"
+          placeholder="Mínima"
+          type="number"
+          onChange={(e) => setMinKm(parseInt(e.target.value))}
+        />
+        <input
+          placeholder="Máxima"
+          id="maxInputKm"
+          type="number"
+          onChange={(e) => setMaxKm(parseInt(e.target.value))}
+        />
       </span>
       <StyledTitle tag="h2" color="--grey-0" size={28} weight={600} height={35}>
         Preço
       </StyledTitle>
       <span className="">
-        <input placeholder="Mínimo" />
-        <input placeholder="Máximo" />
+        <input id="minInputPrice" placeholder="Mínimo" />
+        <input id="maxInputPrice" placeholder="Máximo" />
       </span>
-      <button className="desktop-button">Limpar Filtros</button>
+      <button onClick={() => resetFilters()} className="desktop-button">
+        Limpar Filtros
+      </button>
     </NavBarStyled>
   );
 };

@@ -1,16 +1,13 @@
 import styled from "styled-components";
 
 const ArticleStyled = styled.article`
+  width: -webkit-fill-available;
+  height: 370px;
+
   background-color: var(--grey-10);
-
-  max-width: 752px;
-  min-width: 375px;
-  width: 47%;
-
-  height: 557px;
-
   border-radius: 4px;
-  padding: 36px 44px 36px 44px;
+  padding: 28px 44px;
+  overflow-x: scroll;
 `;
 
 const ContainerCommet = styled.div`

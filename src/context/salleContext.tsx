@@ -24,6 +24,7 @@ export interface IUser {
   birthday: Date;
   seller: boolean;
   isActive: boolean;
+  description: string;
   address: {
     number: string;
     user: any;
@@ -75,6 +76,8 @@ interface iSallerContext {
   setCarModel: React.Dispatch<React.SetStateAction<iModelCar | null>>;
   getCarModel: (name: string, brand: string) => Promise<void>;
   getSaler: (salerId: string) => Promise<void>;
+  sucessModal: boolean;
+  setSucessModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const SallerContext = createContext({} as iSallerContext);
@@ -85,7 +88,9 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   const [carsApi, setCarsApi] = useState<any | null>();
   const [carModels, setCarModels] = useState([] as iModelCar[]);
   const [carModel, setCarModel] = useState<iModelCar | null>(null);
+  const [sucessModal, setSucessModal] = useState(false);
   const token = localStorage.getItem("@accessToken");
+  const userId = localStorage.getItem("@userID");
 
   const navigate = useNavigate();
 
@@ -99,12 +104,9 @@ const SaleProvider = ({ children }: iChildrenProps) => {
         console.log("erro");
       }
     }
-    if (saller == null) {
-      navigate("");
-    } else {
-      loadSaller();
-      loadCarApi();
-    }
+
+    loadSaller();
+    loadCarApi();
   }, []);
 
   async function loadCars(userId: string) {
@@ -152,12 +154,17 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   };
 
   const createNewCar = async (data: icar) => {
-    try {
-      const newCar = [...cars, data];
-      await api.post("cars", data);
-      setCars(newCar);
-    } catch {
-      console.log("erro");
+    console.log(userId, token);
+    if (userId) {
+      try {
+        api.defaults.headers.authorization = `Bearer ${token}`;
+        //const newCar = [...cars, data];
+        await api.post("cars", data);
+        loadCars(userId);
+        setSucessModal(true);
+      } catch {
+        console.log("erro");
+      }
     }
   };
 
@@ -176,6 +183,8 @@ const SaleProvider = ({ children }: iChildrenProps) => {
     setCarModel,
     getCarModel,
     getSaler,
+    sucessModal,
+    setSucessModal,
   };
 
   return (

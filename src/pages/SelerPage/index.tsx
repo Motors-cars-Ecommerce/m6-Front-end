@@ -11,6 +11,7 @@ import { SallerContext } from "../../context/salleContext";
 
 export const SalerPage = () => {
   const { cars } = useContext(SallerContext);
+
   return (
     <SellerPage>
       <HeaderComponet />

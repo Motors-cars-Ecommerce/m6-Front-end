@@ -7,21 +7,54 @@ import api from "../service/api";
 interface iDashboardContext {
   filterMobile: boolean;
   setFilterMobile: React.Dispatch<React.SetStateAction<boolean>>;
+  modalEditProfile: boolean;
+  setModalEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
+  modalEditAddress: boolean;
+  setModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
+  carsFiltered: icar[];
+  setCarsFiltered: React.Dispatch<React.SetStateAction<icar[]>>;
+  cars: icar[];
+  setCars: React.Dispatch<React.SetStateAction<icar[]>>;
+  filterByBrand: (brand: string) => void;
+  filterByModel: (model: string) => void;
+  filterByColor: (color: string) => void;
+  filterByFuel: (fuel: string) => void;
+  filterByYear: (year: string) => void;
+  filterByPrice: (minorValue: number, majorValue: number) => void;
+  filterByMaxKM: () => void;
+  resetCarsFiltered: () => void;
+  setMaxKm: React.Dispatch<React.SetStateAction<number>>;
+  maxKm: number;
+  setMinKm: React.Dispatch<React.SetStateAction<number>>;
+  minPrice: number;
+  minKm: number;
+  setMinPrice: React.Dispatch<React.SetStateAction<number>>;
+  maxPrice: number;
+  setMaxPrice: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const DashboardContext = createContext({} as iDashboardContext);
 
 const DashboardProvider = ({ children }: iChildrenProps) => {
+  const [modalEditProfile, setModalEditProfile] = useState<boolean>(false);
+  const [modalEditAddress, setModalEditAddress] = useState<boolean>(false);
   const [filterMobile, setFilterMobile] = useState<boolean>(false);
-  const [carFiltered, setCarFiltered] = useState([] as icar[]);
-  const [car, setCar] = useState([] as icar[]);
+  const [carsFiltered, setCarsFiltered] = useState([] as icar[]);
+  const [carsFilteredKm, setCarsFilteredKm] = useState([] as icar[]);
+  const [carsFilteredMinKm, setCarsFilteredMinKm] = useState([] as icar[]);
+  const [carsFilteredPrice, setCarsFilteredPrice] = useState([] as icar[]);
+  const [cars, setCars] = useState([] as icar[]);
+  const [maxKm, setMaxKm] = useState(0);
+  const [minKm, setMinKm] = useState(0);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
 
   useEffect(() => {
     const loadCars = async () => {
       try {
         const { data } = await api.get("/cars");
-        setCar(data);
-        filterCar();
+        setCars(data);
+        filterCar(data);
       } catch {
         console.log("error");
       }
@@ -29,53 +62,127 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
     loadCars();
   }, []);
 
-  const filterCar = () => {
-    setCarFiltered(car);
+  useEffect(() => {
+    filterByMinKM();
+  }, [minKm]);
+
+  useEffect(() => {
+    filterByMaxKM();
+  }, [maxKm]);
+
+  const filterCar = (data: icar[]) => {
+    setCarsFiltered(data);
+    setCarsFilteredKm(data);
+    setCarsFilteredMinKm(data);
   };
 
   const filterByBrand = (brand: string) => {
-    const filteredCars = carFiltered.filter(
+    const filteredCars = carsFiltered.filter(
       (c) => c.model_car.branded === brand
     );
-    setCarFiltered(filteredCars);
+    filterCar(filteredCars);
   };
 
   const filterByModel = (model: string) => {
-    const filteredCars = car.filter((c) => c.model_car.model === model);
-    setCarFiltered(filteredCars);
+    const filteredCars = carsFiltered.filter(
+      (c) => c.model_car.model === model
+    );
+    filterCar(filteredCars);
   };
 
   const filterByYear = (year: string) => {
-    const filteredCars = car.filter((c) => c.model_car.year === year);
-    setCarFiltered(filteredCars);
+    const filteredCars = cars.filter((c) => c.model_car.year === year);
+    filterCar(filteredCars);
   };
 
   const filterByColor = (color: string) => {
-    const filteredCars = carFiltered.filter((c) => c.color === color);
-    setCarFiltered(filteredCars);
-  };
-
-  const filterByPrice = (minorValue: number, majorValue: number) => {
-    const filteredCars = carFiltered.filter(
-      (c) => minorValue <= c.price && c.price >= majorValue
-    );
-    setCarFiltered(filteredCars);
-  };
-
-  const filterByKM = (minorValue: number, majorValue: number) => {
-    const filteredCars = carFiltered.filter(
-      (c) => minorValue <= c.km && c.price >= majorValue
-    );
-    setCarFiltered(filteredCars);
+    const filteredCars = carsFiltered.filter((c) => c.color === color);
+    filterCar(filteredCars);
   };
 
   const filterByFuel = (fuel: string) => {
-    const filteredCars = carFiltered.filter((c) => c.model_car.fuel === fuel);
-    setCarFiltered(filteredCars);
+    const filteredCars = carsFiltered.filter((c) => c.model_car.fuel === fuel);
+    filterCar(filteredCars);
+  };
+
+  const filterByPrice = (minorValue: number, majorValue: number) => {
+    const filteredCars = carsFiltered.filter(
+      (c) => minorValue <= c.price && c.price >= majorValue
+    );
+    setCarsFiltered(filteredCars);
+  };
+
+  const filterByMaxKM = () => {
+    if (maxKm > 0) {
+      if (minKm > 0) {
+        console.log(carsFilteredMinKm);
+        const filteredCars = carsFiltered.filter((c) => {
+          return c.km <= maxKm;
+        });
+        setCarsFiltered(filteredCars);
+      } else {
+        const filteredCars = carsFilteredKm.filter((c) => {
+          return c.km <= maxKm;
+        });
+
+        setCarsFiltered(filteredCars);
+      }
+    }
+  };
+
+  const filterByMinKM = () => {
+    if (minKm > 0) {
+      if (maxKm > 0) {
+        const filteredCars = carsFiltered.filter((c) => {
+          return c.km >= minKm;
+        });
+        setCarsFiltered(filteredCars);
+      } else {
+        const filteredCars = carsFilteredMinKm.filter((c) => {
+          return c.km >= minKm;
+        });
+
+        setCarsFiltered(filteredCars);
+      }
+    }
+  };
+
+  const resetCarsFiltered = () => {
+    setCarsFiltered(cars);
+    setCarsFilteredKm(cars);
   };
 
   return (
-    <DashboardContext.Provider value={{ setFilterMobile, filterMobile }}>
+    <DashboardContext.Provider
+      value={{
+        setFilterMobile,
+        filterMobile,
+        modalEditProfile,
+        setModalEditProfile,
+        modalEditAddress,
+        setModalEditAddress,
+        cars,
+        carsFiltered,
+        setCars,
+        setCarsFiltered,
+        filterByBrand,
+        filterByModel,
+        filterByColor,
+        filterByFuel,
+        filterByYear,
+        filterByPrice,
+        filterByMaxKM,
+        resetCarsFiltered,
+        setMaxKm,
+        maxKm,
+        setMinKm,
+        minKm,
+        setMinPrice,
+        maxPrice,
+        setMaxPrice,
+        minPrice,
+      }}
+    >
       {children}
     </DashboardContext.Provider>
   );
