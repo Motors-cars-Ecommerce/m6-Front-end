@@ -55,7 +55,7 @@ export const Saller = () => {
             {saller?.description}
           </StyledTitle>
           {user?.seller && user?.id == saller?.id ? (
-            <NewAdModal />
+            <NewAdModal key={user?.id} />
           ) : (
             <div></div>
           )}

@@ -6,7 +6,7 @@ export const FooterStyled = styled.footer`
   justify-content: center;
   align-items: center;
   padding: 45px 0px;
-  width: 92%;
+  width: -webkit-fill-available;
 
   gap: 40px;
 
@@ -56,12 +56,11 @@ export const FooterStyled = styled.footer`
     justify-content: center;
   }
 
-
   @media (min-width: 800px) {
     flex-direction: row;
     justify-content: space-between;
     padding: 45px 59px;
     height: 140px;
-
+    width: -webkit-fill-available;
   }
 `;
