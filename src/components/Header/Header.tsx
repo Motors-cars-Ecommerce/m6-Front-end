@@ -9,10 +9,13 @@ import { DataUserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { SallerContext } from "../../context/salleContext";
 import { DashboardContext } from "../../context/DashboardContext";
+import ModalEditProfile from "../ModalEditProfile/ModalEditProfile";
+import ModalEditAddress from "../ModalEditAddress/ModalEditAddress";
+
 
 export const HeaderComponet = () => {
   const { user, setUser } = useContext(DataUserContext);
-  const { setModalEditProfile, setModalEditAddress } = useContext(DashboardContext)
+  const { setModalEditProfile, setModalEditAddress, modalEditProfile, modalEditAddress } = useContext(DashboardContext)
   const { setSaller, getSaler } = useContext(SallerContext);
   const [userOptions, setUserOptions] = useState(false);
   const [menuOptions, setMenuOptions] = useState(false);
@@ -46,6 +49,8 @@ export const HeaderComponet = () => {
 
   return (
     <Header>
+            { modalEditProfile && <ModalEditProfile/> }
+            { modalEditAddress && <ModalEditAddress/> }
       <div className="header_tittle" onClick={toDashboard}>
         <StyledTitle tag="h2">Motors </StyledTitle>
         <StyledTitle tag="h3">shop</StyledTitle>
