@@ -61,6 +61,8 @@ export const ModalEditAddressStyed = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    cursor: pointer;
   }
 
   h3 {
@@ -146,6 +148,8 @@ export const ModalEditAddressStyed = styled.div`
     font-family: "Inter";
     font-style: normal;
     font-size: 16px;
+
+    cursor: pointer;
   }
 
   .saveButton {
