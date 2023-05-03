@@ -6,7 +6,7 @@ export const FooterStyled = styled.footer`
   justify-content: center;
   align-items: center;
   padding: 45px 0px;
-  width: 92%;
+  width: -webkit-fill-available;
 
   gap: 40px;
 

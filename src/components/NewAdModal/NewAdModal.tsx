@@ -22,10 +22,11 @@ import { StyledTitle } from "../../styles/componets/typography";
 import { FormComponet } from "../../styles/componets/Forms/form";
 import { IoIosClose } from "react-icons/io";
 import ReactModal from "react-modal";
-import { SallerContext, icar } from "../../context/salleContext";
+import { SallerContext } from "../../context/salleContext";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { icar } from "../../interfaces/Car";
 
 const customStyles = {
   content: {
@@ -158,27 +159,29 @@ export const NewAdModal = () => {
   });
 
   const submit = (data: icar) => {
-    const newData = {
-      user: saller,
-      comments: [],
-      id: data.id,
-      km: data.km,
-      price: data.price,
-      color: data.color,
-      description: data.description,
-      main_image: data.main_image,
-      model_car: {
-        branded: data.model_car.branded,
-        model: data.model_car.model,
-        year: data.model_car.year,
-        fuel: data.model_car.fuel,
-      },
-      images: data.images.map((image) => ({
-        image_url: image.image_url,
-      })),
-    };
-    console.log(newData);
-    createNewCar(newData);
+    if (saller) {
+      const newData = {
+        user: saller,
+        comments: [],
+        id: data.id,
+        km: data.km,
+        price: data.price,
+        color: data.color,
+        description: data.description,
+        main_image: data.main_image,
+        model_car: {
+          id: data.model_car.id,
+          branded: data.model_car.branded,
+          model: data.model_car.model,
+          year: data.model_car.year,
+          fuel: data.model_car.fuel,
+        },
+        images: data.images.map((image) => ({
+          image_url: image.image_url,
+        })),
+      };
+      createNewCar(newData);
+    }
     toggleModal();
   };
 
@@ -241,7 +244,6 @@ export const NewAdModal = () => {
                 type="text"
                 placeholder="2018"
                 value={carModel?.year}
-                readOnly
                 {...register("model_car.year")}
               />
             </div>
@@ -306,6 +308,7 @@ export const NewAdModal = () => {
               <InputBoxComponent
                 key={index}
                 type="text"
+                // @ts-ignore
                 {...register(`images[${index}].image_url`)}
               />
             </>

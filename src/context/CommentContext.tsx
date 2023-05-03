@@ -2,7 +2,6 @@ import { createContext, useState } from "react";
 import { iChildrenProps } from "./salleContext";
 import { icomment, icommentRequest } from "../components/InputComment";
 import api from "../service/api";
-import { icar } from "./salleContext";
 
 interface iCommentContext {
   comments: icommentRequest[];

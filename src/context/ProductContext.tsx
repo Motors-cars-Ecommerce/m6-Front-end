@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../service/api";
 import { useNavigate } from "react-router-dom";
-import { icar } from "./salleContext";
+import { icar } from "../interfaces/Car";
 
 export interface iChildrenProps {
   children: React.ReactNode;

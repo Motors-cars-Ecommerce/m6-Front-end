@@ -1,63 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../service/api";
 import { useNavigate } from "react-router-dom";
-
-export interface iModelCar {
-  id: string;
-  name: string;
-  brand: string;
-  year: string;
-  fuel: number;
-  value: number;
-}
+import { IUser } from "../interfaces/User";
+import { iApiModelCar, iModelCar } from "../interfaces/ModelCar";
+import { icar } from "../interfaces/Car";
 
 export interface iChildrenProps {
   children: React.ReactNode;
-}
-
-export interface IUser {
-  id: string;
-  name: string;
-  email: string;
-  cpf: string;
-  phone: string;
-  birthday: Date;
-  seller: boolean;
-  isActive: boolean;
-  description: string;
-  address: {
-    number: string;
-    user: any;
-    cep: string;
-    street: string;
-    city: string;
-    complement: string;
-    id: string;
-  }[];
-  cars: [];
-}
-
-export interface icar {
-  id: string;
-  km: number;
-  price: number;
-  color: string;
-  description: string;
-  main_image: string;
-  model_car: {
-    branded: string;
-    model: string;
-    year: string;
-    fuel: string;
-  };
-  images: { image_url: string }[];
-  comments: {
-    id: string;
-    text: string;
-    car: any;
-    user: any;
-  }[];
-  user: IUser | null;
 }
 
 interface iSallerContext {
@@ -69,10 +18,10 @@ interface iSallerContext {
   carsApi: any;
   setCarsApi: React.Dispatch<any>;
   carModels: iModelCar[];
-  setCarModels: React.Dispatch<React.SetStateAction<iModelCar[]>>;
+  setCarModels: React.Dispatch<React.SetStateAction<iApiModelCar[]>>;
   getAllCarModels: (model: string) => Promise<void>;
-  carModel: iModelCar | null;
-  setCarModel: React.Dispatch<React.SetStateAction<iModelCar | null>>;
+  carModel: iApiModelCar | null;
+  setCarModel: React.Dispatch<React.SetStateAction<iApiModelCar | null>>;
   getCarModel: (name: string, brand: string) => Promise<void>;
   getSaler: (salerId: string) => Promise<void>;
   sucessModal: boolean;
@@ -85,8 +34,8 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   const [saller, setSaller] = useState<IUser | null>(null);
   const [cars, setCars] = useState([] as icar[]);
   const [carsApi, setCarsApi] = useState<any | null>();
-  const [carModels, setCarModels] = useState([] as iModelCar[]);
-  const [carModel, setCarModel] = useState<iModelCar | null>(null);
+  const [carModels, setCarModels] = useState([] as iApiModelCar[]);
+  const [carModel, setCarModel] = useState<iApiModelCar | null>(null);
   const [sucessModal, setSucessModal] = useState(false);
   const token = localStorage.getItem("@accessToken");
   const userId = localStorage.getItem("@userID");
@@ -95,12 +44,14 @@ const SaleProvider = ({ children }: iChildrenProps) => {
 
   useEffect(() => {
     async function loadSaller() {
-      try {
-        const { data } = await api.get(`user/${saller?.id}`);
-        setSaller(data);
-        loadCars(data.id);
-      } catch {
-        console.log("erro");
+      if (saller) {
+        try {
+          const { data } = await api.get(`user/${saller?.id}`);
+          setSaller(data);
+          loadCars(data.id);
+        } catch {
+          console.log("erro");
+        }
       }
     }
 
@@ -153,11 +104,9 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   };
 
   const createNewCar = async (data: icar) => {
-    console.log(userId, token);
     if (userId) {
       try {
         api.defaults.headers.authorization = `Bearer ${token}`;
-        //const newCar = [...cars, data];
         await api.post("cars", data);
         loadCars(userId);
         setSucessModal(true);

@@ -19,12 +19,9 @@ const ModalCadastre = () => {
   });
 
   const onSubmitFunc = (data: ICadastre) => {
-    console.log("Valor do state =>>", valueButton);
     const { confirmPassword, ...res } = data;
 
     const newUser = { ...res, seller: valueButton };
-
-    console.log(newUser);
 
     createdUser(newUser);
   };
