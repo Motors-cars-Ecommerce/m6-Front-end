@@ -8,11 +8,9 @@ import PageSelect from "../../components/PageSelect/PageSelect";
 import NavBarMobile from "../../components/NavBarMobile/NavBarMobile";
 import { useContext } from "react";
 import { DashboardContext } from "../../context/DashboardContext";
-import ModalEditProfile from "../../components/ModalEditProfile/ModalEditProfile";
-import ModalEditAddress from "../../components/ModalEditAddress/ModalEditAddress";
 
 const Dashboard = () => {
-  const { filterMobile, modalEditProfile, modalEditAddress } = useContext(DashboardContext);
+  const { filterMobile } = useContext(DashboardContext);
 
   const datacar = {
     id: "0342ffee-0a74-4498-94ef-a949c617f460",
@@ -54,8 +52,6 @@ const Dashboard = () => {
 
   return (
     <DashboardStyled>
-      { modalEditProfile && <ModalEditProfile/> }
-      { modalEditAddress && <ModalEditAddress/> }
       <HeaderComponet />
       {!filterMobile ? (
         <>
