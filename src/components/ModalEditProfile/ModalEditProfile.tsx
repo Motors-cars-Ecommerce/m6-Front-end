@@ -5,17 +5,52 @@ import EditProfileSchema from '../../Schemas/EditProfileSchema/EditProfileSchema
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DashboardContext } from '../../context/DashboardContext';
+import api from '../../service/api';
+import axios from 'axios';
+import { toast } from 'react-toastify'
+import { DataUserContext } from '../../context/userContext';
+import { SallerContext } from '../../context/salleContext';
+import { useNavigate } from 'react-router';
 
 
 const ModalEditProfile = () => {
 
   type EdteProfileFormData = z.infer<typeof EditProfileSchema>
 
+  const navigate = useNavigate()
+
   const { register, handleSubmit, formState: {errors}  } = useForm<EdteProfileFormData>({resolver: zodResolver(EditProfileSchema)})
 
-  const onSubmitFunction = (data:any) => console.log(data)
-
   const { setModalEditProfile } = useContext(DashboardContext)
+
+  const { setUser } = useContext(DataUserContext);
+  const { setSaller } = useContext(SallerContext);
+
+  const onSubmitFunction = (data:any) => {
+    console.log(data)
+  }
+
+  const token = localStorage.getItem("@accessToken");
+  const userId = localStorage.getItem("@userID");
+
+  const handleAccountDeletion = (event:any) => {
+    event.preventDefault()
+    try {
+      api.delete('/user', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      localStorage.removeItem("@accessToken")
+      localStorage.removeItem("@userID")
+      setModalEditProfile(false)
+      toast.success('Conta Excluída com sucesso!')
+      setUser(null);
+      setSaller(null);
+      navigate("/");
+    } catch (error) {
+     axios.isAxiosError(error) && console.log(error.response)
+     toast.error('A requisição de exclusão falhou!')      
+    }
+  }
   
 
   return (
@@ -27,7 +62,7 @@ const ModalEditProfile = () => {
         <button onClick={()=> setModalEditProfile(false)} className='closeButton'>X</button>
         </section>
         <h3>Informações pessoais</h3>
-        <form onSubmit={handleSubmit(onSubmitFunction)}  action="">
+        <form onSubmit={handleSubmit(onSubmitFunction)} action="">
             <label htmlFor="">Nome</label>
             <input type="text" placeholder='Digite seu nome' {...register('name')} />
             {errors.name && <span> {errors.name.message} </span>}
@@ -45,7 +80,7 @@ const ModalEditProfile = () => {
             {errors.description && <span> {errors.description.message} </span>}
             <div className='buttonsContainer' >
                 <button onClick={()=> setModalEditProfile(false)} >Cancelar</button>
-                <button className='deleteButton'>Excluir Perfil</button>
+                <button onClick={() => handleAccountDeletion(event)} className='deleteButton'>Excluir Perfil</button>
                 <button type='submit' className='saveButton' >Salvar Alterações</button>
             </div>
         </form>
