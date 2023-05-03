@@ -11,11 +11,14 @@ import { toast } from 'react-toastify'
 import { DataUserContext } from '../../context/userContext';
 import { SallerContext } from '../../context/salleContext';
 import { useNavigate } from 'react-router';
+import { async } from 'q';
 
 
 const ModalEditProfile = () => {
 
   type EdteProfileFormData = z.infer<typeof EditProfileSchema>
+  const token = localStorage.getItem("@accessToken");
+  const userId = localStorage.getItem("@userID");
 
   const navigate = useNavigate()
 
@@ -26,17 +29,30 @@ const ModalEditProfile = () => {
   const { setUser } = useContext(DataUserContext);
   const { setSaller } = useContext(SallerContext);
 
-  const onSubmitFunction = (data:any) => {
-    console.log(data)
+  const onSubmitFunction = async (data:any) => {
+    const keysWithValues = Object.fromEntries(
+      Object.entries(data).filter(([key, value]) => value !== "")
+    );
+
+    console.log(keysWithValues)
+
+    try {
+      await api.patch(`/user/`, keysWithValues, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setModalEditProfile(false);
+      toast.success('Informações atualizadas com Sucesso!')
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("A requisição de edição falhou!");
+    }
   }
 
-  const token = localStorage.getItem("@accessToken");
-  const userId = localStorage.getItem("@userID");
 
   const handleAccountDeletion = (event:any) => {
     event.preventDefault()
     try {
-      api.delete('/user', {
+      api.delete('/user/', {
         headers: { Authorization: `Bearer ${token}` },
       })
       localStorage.removeItem("@accessToken")
@@ -76,7 +92,7 @@ const ModalEditProfile = () => {
             <input type="text" placeholder='Digite seu celular' {...register('phone')} />
             {errors.phone && <span> {errors.phone.message} </span>}
             <label htmlFor="">Descrição</label>
-            <textarea placeholder='Digite sua descrição' {...register('description')} name="" id="" cols={30} rows={10}></textarea>
+            <textarea placeholder='Digite sua descrição' id="" cols={30} rows={10} {...register('description')}></textarea>
             {errors.description && <span> {errors.description.message} </span>}
             <div className='buttonsContainer' >
                 <button onClick={()=> setModalEditProfile(false)} >Cancelar</button>
