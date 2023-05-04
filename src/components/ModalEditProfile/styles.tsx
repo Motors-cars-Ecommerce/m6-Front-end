@@ -61,6 +61,7 @@ export const ModalEditProfileStyed = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
   h3 {
@@ -159,6 +160,7 @@ export const ModalEditProfileStyed = styled.div`
     gap: 10px;
 
     margin: 20px 0px;
+    
   }
 
   button {
@@ -173,6 +175,7 @@ export const ModalEditProfileStyed = styled.div`
     font-family: "Inter";
     font-style: normal;
     font-size: 16px;
+    cursor: pointer;
   }
 
   .deleteButton {

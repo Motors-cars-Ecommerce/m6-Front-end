@@ -38,17 +38,18 @@ const Dashboard = () => {
       fuel: "Gasolina",
     },
     user: {
-      id: "89831263-8b12-4ba2-880e-2dd418343158",
+      id: "ceda5dff-aba5-4d9e-a8a4-573b307edfa3",
       name: "Matheus",
       email: "matheus@mail.com",
-      cpf: "10000000000",
-      password: "$2a$10$.SReUiJ4rPPNNF8inY/vnuk2X8Sh7/jiBXiffu2oAyMDfsuJnluRK",
+      cpf: "10012220201",
+      password: "$2a$10$3QnOa0ZvReiRyLOTEE4Bu.Jq4jAwe.vs.WEdjE/g4hsp3S1UuZd6m",
       phone: "199999599",
+      description: "teste de descrição para usuario",
       birthday: "1995-05-05T06:00:00.000Z",
       seller: true,
       isActive: true,
-      createdAt: "2023-04-27T15:13:31.090Z",
-      updatedAt: "2023-04-27T15:13:31.090Z",
+      createdAt: "2023-05-03T18:17:02.285Z",
+      updatedAt: "2023-05-03T18:17:02.285Z",
     },
     comments: [],
     images: [
@@ -72,9 +73,15 @@ const Dashboard = () => {
             <section>
               <NavBarDesktop />
               <ul className="container-card">
-                {carsFiltered.map((car) => (
-                  <HomeCarCard key={car.id} car={car} />
-                ))}
+                <HomeCarCard key={datacar.id} car={datacar} />
+                <HomeCarCard key={datacar.id} car={datacar} />
+                <HomeCarCard key={datacar.id} car={datacar} />
+                <HomeCarCard key={datacar.id} car={datacar} />
+                <HomeCarCard key={datacar.id} car={datacar} />
+                <HomeCarCard key={datacar.id} car={datacar} />
+                <HomeCarCard key={datacar.id} car={datacar} />
+                <HomeCarCard key={datacar.id} car={datacar} />
+                <HomeCarCard key={datacar.id} car={datacar} />
               </ul>
             </section>
             <PageSelect />
