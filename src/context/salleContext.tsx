@@ -26,6 +26,13 @@ interface iSallerContext {
   getSaler: (salerId: string) => Promise<void>;
   sucessModal: boolean;
   setSucessModal: React.Dispatch<React.SetStateAction<boolean>>;
+  pachCar: (adData: icar) => Promise<void>;
+  deleteCar: () => Promise<void>;
+  editAdModal: boolean;
+  setEditAdModal: React.Dispatch<React.SetStateAction<boolean>>;
+  deleteAdModal: boolean;
+  setDeleteAdModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setAdId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const SallerContext = createContext({} as iSallerContext);
@@ -37,6 +44,9 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   const [carModels, setCarModels] = useState([] as iApiModelCar[]);
   const [carModel, setCarModel] = useState<iApiModelCar | null>(null);
   const [sucessModal, setSucessModal] = useState(false);
+  const [editAdModal, setEditAdModal] = useState(false);
+  const [deleteAdModal, setDeleteAdModal] = useState(false);
+  const [adId, setAdId] = useState("");
   const token = localStorage.getItem("@accessToken");
   const userId = localStorage.getItem("@userID");
 
@@ -116,6 +126,20 @@ const SaleProvider = ({ children }: iChildrenProps) => {
     }
   };
 
+  const pachCar = async (adData: icar) => {
+    await api.patch(`/car/${adId}`, adData);
+    if (saller) {
+      loadCars(saller?.id);
+    }
+  };
+
+  const deleteCar = async () => {
+    await api.delete(`/car/${adId}`);
+    if (saller) {
+      loadCars(saller?.id);
+    }
+  };
+
   const contextValue = {
     saller,
     setSaller,
@@ -133,6 +157,13 @@ const SaleProvider = ({ children }: iChildrenProps) => {
     getSaler,
     sucessModal,
     setSucessModal,
+    setAdId,
+    editAdModal,
+    deleteAdModal,
+    setDeleteAdModal,
+    setEditAdModal,
+    pachCar,
+    deleteCar,
   };
 
   return (

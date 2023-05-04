@@ -1,32 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
-import {
-  StyledDivModal,
-  DivHeaderModal,
-  DivCarDetailModal,
-  DivButtonModal,
-} from "./styles";
-import {
-  InputBoxComponent,
-  SelectBoxComponent,
-} from "../../styles/componets/inputs/input";
-import {
-  AddImageButton,
-  CancelButton,
-  CreateAnnounceButton,
-  DisableButton,
-  EnableButton,
-} from "../../styles/componets/buttons/buttons";
-import { StyledTitle } from "../../styles/componets/typography";
-import { FormComponet } from "../../styles/componets/Forms/form";
 import { IoIosClose } from "react-icons/io";
 import ReactModal from "react-modal";
-import { SallerContext } from "../../context/salleContext";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { icar } from "../../interfaces/Car";
+import { SallerContext } from "../../../context/salleContext";
+import { icar } from "../../../interfaces/Car";
+import { StyledTitle } from "../../../styles/componets/typography";
+import { FormComponet } from "../../../styles/componets/Forms/form";
+import {
+  InputBoxComponent,
+  SelectBoxComponent,
+} from "../../../styles/componets/inputs/input";
+import {
+  AddImageButton,
+  CancelButton,
+  DisableButton,
+  EnableButton,
+} from "../../../styles/componets/buttons/buttons";
 
 const customStyles = {
   content: {
@@ -84,7 +77,6 @@ export const NewAdModal = () => {
   );
   const {
     saller,
-    createNewCar,
     carsApi,
     carModels,
     getAllCarModels,
@@ -176,11 +168,10 @@ export const NewAdModal = () => {
           year: data.model_car.year,
           fuel: data.model_car.fuel,
         },
-        images: data.images.map((image) => ({
+        images: data.images.map((image: any) => ({
           image_url: image.image_url,
         })),
       };
-      createNewCar(newData);
     }
     toggleModal();
   };
@@ -189,9 +180,6 @@ export const NewAdModal = () => {
 
   return (
     <StyledDivModal>
-      <CreateAnnounceButton onClick={toggleModal}>
-        Criar anuncio
-      </CreateAnnounceButton>
       <Modal
         isOpen={isOpen}
         onRequestClose={toggleModal}
@@ -313,16 +301,18 @@ export const NewAdModal = () => {
               />
             </>
           ))}
-          {errors?.images && <span>{errors.images.message}</span>}
           <AddImageButton type="button" onClick={handleAddImageButtonClick}>
             Adicionar campo para imagem da galeria
           </AddImageButton>
           <DivButtonModal>
-            <CancelButton onClick={() => toggleModal()}> Cancelar</CancelButton>
+            <CancelButton onClick={() => toggleModal()}>
+              {" "}
+              Excluir anúncio
+            </CancelButton>
             {form?.checkValidity() ? (
-              <EnableButton type="submit">Criar Anuncio</EnableButton>
+              <EnableButton type="submit">Salvar alteração</EnableButton>
             ) : (
-              <DisableButton type="submit">Criar Anuncio</DisableButton>
+              <DisableButton type="submit">Salvar alteração</DisableButton>
             )}
           </DivButtonModal>
         </FormComponet>

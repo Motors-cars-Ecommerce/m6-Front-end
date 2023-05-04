@@ -8,7 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CommentContext } from "../../context/CommentContext";
-import { IUser, icar } from "../../context/salleContext";
+import { icar } from "../../interfaces/Car";
+import { IUser } from "../../interfaces/User";
 
 export interface icomment {
   id?: string;

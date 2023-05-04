@@ -266,3 +266,106 @@ export const ShowAdsbutton = styled.button`
     border: 1.5px solid var(--grey-1);
   }
 `;
+
+export const CancelModalButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 10px;
+
+  width: 119px;
+  height: 38px;
+
+  /* Feedback/alert-3 */
+
+  background: #ffe5e5;
+  /* Feedback/alert-3 */
+
+  border: 1.5px solid #ffe5e5;
+  border-radius: 4px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 0px;
+  /* identical to box height, or 0% */
+
+  /* Feedback/alert-1 */
+
+  color: #cd2b31;
+
+  &:hover {
+    background: #fdd8d8;
+    /* Feedback/alert-2 */
+    color: #cd2b31;
+    border: 1.5px solid #fdd8d8;
+  }
+
+  @media (min-width: 800px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 28px;
+    gap: 10px;
+
+    width: 146px;
+    height: 48px;
+  }
+`;
+
+export const AceptModalButton = styled.button`
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 10px;
+
+  width: 119px;
+  height: 38px;
+
+  /* Feedback/sucess-3 */
+
+  background: #ddf3e4;
+  /* Feedback/sucess-3 */
+
+  border: 1.5px solid #ddf3e4;
+  border-radius: 4px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 0px;
+  /* identical to box height, or 0% */
+
+  /* Feedback/sucess-1 */
+
+  color: #18794e;
+
+  &:hover {
+    background: #ccebd7;
+    /* Feedback/sucess-2 */
+    border: 1.5px solid #ccebd7;
+  }
+
+  @media (min-width: 800px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 28px;
+    gap: 10px;
+
+    width: 146px;
+    height: 48px;
+  }
+`;

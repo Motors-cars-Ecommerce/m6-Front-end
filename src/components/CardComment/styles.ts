@@ -12,6 +12,7 @@ const ArticleStyled = styled.article`
 
 const ContainerCommet = styled.div`
   margin-top: 24px;
+
   p {
     font-size: 14px;
     font-weight: 400;
@@ -67,4 +68,28 @@ const OwnerCommentDiv = styled.div`
   }
 `;
 
-export { ArticleStyled, OwnerCommentDiv, ContainerCommet };
+const OptionsCommentStuyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+
+  svg {
+    cursor: pointer;
+  }
+`;
+
+const CommentDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export {
+  ArticleStyled,
+  OwnerCommentDiv,
+  ContainerCommet,
+  OptionsCommentStuyled,
+  CommentDiv,
+};
