@@ -3,8 +3,12 @@ import { createContext, useEffect, useState } from "react";
 import api from "../service/api";
 import { error } from "console";
 import { useNavigate } from "react-router-dom";
-import { ICadastre, ILogin, IRegisterBodyNotConfirmPassword } from "../interfaces/User";
-import { IUser } from "./salleContext";
+import {
+  ICadastre,
+  ILogin,
+  IRegisterBodyNotConfirmPassword,
+  IUser,
+} from "../interfaces/User";
 
 /* export interface IUser {
   id: string;
@@ -20,12 +24,7 @@ export interface ILoginRequest {
   user: IUser;
 }
 
-
-
-export interface IRegisterAddressesRequest {
-
-}
-
+export interface IRegisterAddressesRequest {}
 
 export interface IRegisterRequest {
   name: string;
@@ -33,7 +32,7 @@ export interface IRegisterRequest {
   cpf: string;
   password: string;
   phone: string;
-  description:string;
+  description: string;
   birthday: Date;
   seller: boolean;
   isActive: boolean;
@@ -44,24 +43,18 @@ export interface IRegisterRequest {
     city: string;
     complement: string;
   }[];
-
 }
 
 interface iUserContext {
   user: IUser | null;
   login: (data: ILogin) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
-  createdUser:(data:IRegisterBodyNotConfirmPassword)=>Promise<void>
-  mudarCorDobotaoAnunciante:()=> void;
-  mudarCorBotaoComprador:()=> void
-  mudarCorAnunciante:string
-  mudarCorComprador:string
+  createdUser: (data: IRegisterBodyNotConfirmPassword) => Promise<void>;
+  mudarCorDobotaoAnunciante: () => void;
+  mudarCorBotaoComprador: () => void;
+  mudarCorAnunciante: string;
+  mudarCorComprador: string;
 }
-
-
-
-
-
 
 export const DataUserContext = createContext({} as iUserContext);
 
@@ -71,39 +64,27 @@ export function DataUserProvider({ children }: any) {
   const token = localStorage.getItem("@accessToken");
   const userId = localStorage.getItem("@userID");
 
+  const [mudarCorAnunciante, setMudarCorAnunciante] = useState(
+    "normal" as string
+  );
+  const [mudarCorComprador, setMudarCorComprador] = useState(
+    "normal" as string
+  );
 
-  const [mudarCorAnunciante, setMudarCorAnunciante]= useState("normal" as string )
-  const [mudarCorComprador, setMudarCorComprador]= useState("normal" as string )
- 
-   const mudarCorDobotaoAnunciante = ()=>{
-     setMudarCorAnunciante("roxo")
-     setMudarCorComprador("normal")
-   }
- 
-   const mudarCorBotaoComprador = ()=>{
-     setMudarCorComprador("roxo")
-     setMudarCorAnunciante("normal")
-   }
+  const mudarCorDobotaoAnunciante = () => {
+    setMudarCorAnunciante("roxo");
+    setMudarCorComprador("normal");
+  };
 
-
-  /*   function userLogin(data: ILogin) {
-    api
-      .post<ILoginRequest>("/login", data)
-      .then((response) => {
-        setUser(response.data.user);
-        localStorage.setItem("@token", response.data.token);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log("Login error ->", error);
-      });
-  } */
+  const mudarCorBotaoComprador = () => {
+    setMudarCorComprador("roxo");
+    setMudarCorAnunciante("normal");
+  };
 
   useEffect(() => {
     try {
       if (userId) {
         getUser(userId);
-        console.log(userId);
       } else setUser(null);
     } catch {
       console.log("error");
@@ -135,19 +116,16 @@ export function DataUserProvider({ children }: any) {
     }
   };
 
-  const createdUser = async(data:IRegisterBodyNotConfirmPassword)=>{
-    await api.post("/user", data)
-    .then( (response) =>{
-      console.log("cadastro deu certo ==>>",response);
-      navigate("/login")
-    })
-    .catch((error)=>{
-      console.log("Cadastro deu errado ==>>", error )
-    })
-  }
-
-
-
+  const createdUser = async (data: IRegisterBodyNotConfirmPassword) => {
+    await api
+      .post("/user", data)
+      .then((response) => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log("Cadastro deu errado ==>>", error);
+      });
+  };
 
   return (
     <DataUserContext.Provider
@@ -159,7 +137,7 @@ export function DataUserProvider({ children }: any) {
         mudarCorDobotaoAnunciante,
         mudarCorBotaoComprador,
         mudarCorAnunciante,
-        mudarCorComprador
+        mudarCorComprador,
       }}
     >
       {children}
