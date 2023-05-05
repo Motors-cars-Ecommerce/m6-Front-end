@@ -20,7 +20,6 @@ interface iDashboardContext {
   filterByColor: (color: string) => void;
   filterByFuel: (fuel: string) => void;
   filterByYear: (year: string) => void;
-  filterByPrice: (minorValue: number, majorValue: number) => void;
   filterByMaxKM: () => void;
   resetCarsFiltered: () => void;
   setMaxKm: React.Dispatch<React.SetStateAction<number>>;
@@ -31,6 +30,8 @@ interface iDashboardContext {
   setMinPrice: React.Dispatch<React.SetStateAction<number>>;
   maxPrice: number;
   setMaxPrice: React.Dispatch<React.SetStateAction<number>>;
+  filterByMaxPrice: () => void;
+  filterByMinPrice: () => void;
 }
 
 export const DashboardContext = createContext({} as iDashboardContext);
@@ -105,11 +106,38 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
     filterCar(filteredCars);
   };
 
-  const filterByPrice = (minorValue: number, majorValue: number) => {
-    const filteredCars = carsFiltered.filter(
-      (c) => minorValue <= c.price && c.price >= majorValue
-    );
-    setCarsFiltered(filteredCars);
+  const filterByMaxPrice = () => {
+    if (maxPrice > 0) {
+      if (minPrice > 0) {
+        const filteredCars = carsFiltered.filter((c) => {
+          return c.price <= maxPrice;
+        });
+        setCarsFiltered(filteredCars);
+      } else {
+        const filteredCars = carsFilteredPrice.filter((c) => {
+          return c.price <= maxPrice;
+        });
+
+        setCarsFiltered(filteredCars);
+      }
+    }
+  };
+
+  const filterByMinPrice = () => {
+    if (minPrice > 0) {
+      if (maxPrice > 0) {
+        const filteredCars = carsFiltered.filter((c) => {
+          return c.price >= minPrice;
+        });
+        setCarsFiltered(filteredCars);
+      } else {
+        const filteredCars = carsFilteredPrice.filter((c) => {
+          return c.price >= minPrice;
+        });
+
+        setCarsFiltered(filteredCars);
+      }
+    }
   };
 
   const filterByMaxKM = () => {
@@ -170,7 +198,8 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
         filterByColor,
         filterByFuel,
         filterByYear,
-        filterByPrice,
+        filterByMaxPrice,
+        filterByMinPrice,
         filterByMaxKM,
         resetCarsFiltered,
         setMaxKm,

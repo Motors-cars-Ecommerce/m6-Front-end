@@ -11,12 +11,10 @@ const NavBarDesktop = () => {
     filterByColor,
     filterByFuel,
     filterByYear,
-    filterByPrice,
-    filterByMaxKM,
     resetCarsFiltered,
-    maxKm,
     setMaxKm,
-    minKm,
+    setMinPrice,
+    setMaxPrice,
     setMinKm,
   } = useContext(DashboardContext);
   const carsBrands = carsFiltered.filter((car, index, self) => {
@@ -43,18 +41,6 @@ const NavBarDesktop = () => {
   });
 
   const carsFuel = carsFiltered.filter((car, index, self) => {
-    return (
-      self.findIndex((i) => i.model_car.fuel === car.model_car.fuel) === index
-    );
-  });
-
-  const carsPrice = carsFiltered.filter((car, index, self) => {
-    return (
-      self.findIndex((i) => i.model_car.fuel === car.model_car.fuel) === index
-    );
-  });
-
-  const carsKM = carsFiltered.filter((car, index, self) => {
     return (
       self.findIndex((i) => i.model_car.fuel === car.model_car.fuel) === index
     );
@@ -181,8 +167,16 @@ const NavBarDesktop = () => {
         Preço
       </StyledTitle>
       <span className="">
-        <input id="minInputPrice" placeholder="Mínimo" />
-        <input id="maxInputPrice" placeholder="Máximo" />
+        <input
+          id="minInputPrice"
+          placeholder="Mínimo"
+          onChange={(e) => setMinPrice(parseInt(e.target.value))}
+        />
+        <input
+          id="maxInputPrice"
+          placeholder="Máximo"
+          onChange={(e) => setMaxPrice(parseInt(e.target.value))}
+        />
       </span>
       <button onClick={() => resetFilters()} className="desktop-button">
         Limpar Filtros
