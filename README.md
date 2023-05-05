@@ -32,7 +32,7 @@ https://motors-cars-g17.onrender.com
 
 ### Rotas que não precisam de autorização
 
-### Cadastro
+### Cadastro de usuário
 
 ### Post /register
 
@@ -81,6 +81,7 @@ Exemplo de erro:
 ```
 
 ### Login
+
 ### POST /login
 
 Exemplo do body:
@@ -100,7 +101,7 @@ Exemplo da resposta:
 }
 ```
 
-### GET 
+### GET para cars
 
 ```
 {
@@ -129,4 +130,16 @@ Exemplo da resposta:
 		]
 }
 ```
+## Rotas que precisam de autorização
 
+# Criar comentários
+
+## POST - comments/
+
+```
+{ 
+		"text": "teste comentario",
+    "car": "f2083e02-7c83-4c2b-9bee-a71b7dbc3788",
+    "user": "65fbd7d7-1f75-473c-88ce-4346d72beb6a"
+}
+```
