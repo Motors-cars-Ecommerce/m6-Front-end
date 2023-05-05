@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { DashboardContext } from "../../context/DashboardContext";
 import ModalEditProfile from "../../components/ModalEditProfile/ModalEditProfile";
 import ModalEditAddress from "../../components/ModalEditAddress/ModalEditAddress";
-import ModalResetPassword from "../../components/ModalPasswordRecovery/ModalPasswordRecovery";
+import ModalPasswordRecovery from "../../components/ModalPasswordRecovery/ModalPasswordRecovery";
 
 const Dashboard = () => {
   const { filterMobile, modalEditProfile, modalEditAddress } =
@@ -59,7 +59,7 @@ const Dashboard = () => {
     <DashboardStyled>
       {modalEditProfile && <ModalEditProfile />}
       {modalEditAddress && <ModalEditAddress />}
-      <ModalResetPassword/>
+      {/* <ModalPasswordRecovery/> */}
       <HeaderComponet />
       {!filterMobile ? (
         <>

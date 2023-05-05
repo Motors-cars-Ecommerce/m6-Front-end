@@ -26,8 +26,9 @@ const DashboardProvider = ({children}:iChildrenProps) => {
     const [ modalPasswordRecovery, setModalPasswordRecovery ] = useState<boolean>(false)
 
 
+
   return (
-    <DashboardContext.Provider value={{setFilterMobile, filterMobile, modalEditProfile, setModalEditProfile, modalEditAddress, setModalEditAddress, modalPasswordRecovery, setModalPasswordRecovery }}>
+    <DashboardContext.Provider value={{setFilterMobile, filterMobile, modalEditProfile, setModalEditProfile, modalEditAddress, setModalEditAddress, modalPasswordRecovery, setModalPasswordRecovery}}>
         {children}
     </DashboardContext.Provider>
   )

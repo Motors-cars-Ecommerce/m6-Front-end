@@ -7,28 +7,26 @@ import { useContext } from "react";
 import api from "../../service/api";
 import { toast } from "react-toastify";
 import axios from "axios";
-import setModalPasswordRecoverySchema from "../../Schemas/RecoverPassowrdSchema/RecoverPassowrdSchema";
+import { ModalPasswordRecoverySchema } from "../../Schemas/RecoverPassowrdSchema/RecoverPassowrdSchema";
 
 const ModalPasswordRecovery = () => {
 
   const { setModalPasswordRecovery } = useContext(DashboardContext)
   
-  type setModalPasswordRecoveryData = z.infer<typeof setModalPasswordRecoverySchema>
+  type ModalPasswordRecoveryData = z.infer<typeof ModalPasswordRecoverySchema>
 
-  const { register, handleSubmit, formState: {errors} } = useForm<setModalPasswordRecoveryData>( {resolver: zodResolver(setModalPasswordRecoverySchema)} )
+  const { register, handleSubmit, formState: {errors} } = useForm<ModalPasswordRecoveryData>( {resolver: zodResolver(ModalPasswordRecoverySchema)} )
 
   const onSubmitFunction = async (data:any) => {
 
-    console.log(data)
-
-    // try {
-    //   await api.patch(`/address/`, keysWithValues);
-    //   setModalEditAddress(false);
-    //   toast.success('Informações atualizadas com Sucesso!')
-    // } catch (error) {
-    //   axios.isAxiosError(error) && console.log(error.response);
-    //   toast.error("A requisição de edição falhou!");
-    // }
+    try {
+      await api.post(`/user/resetPassword/`, data);
+      setModalPasswordRecovery(false);
+      toast.success('E-mail enviado com sucesso!')
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("A requisição com o servidor falhou!");
+    }
   }
 
   return (

@@ -1,7 +1,13 @@
 import * as z from "zod";
 
-const setModalPasswordRecoverySchema = z.object({
+const ModalPasswordRecoverySchema = z.object({
   email: z.string().email().min(1),
 });
 
-export default setModalPasswordRecoverySchema;
+const ResetPasswordPageSchema = z.object({
+  password: z.string().min(1),
+  password_confirmation: z.string().min(1),
+});
+
+
+export {ModalPasswordRecoverySchema, ResetPasswordPageSchema}

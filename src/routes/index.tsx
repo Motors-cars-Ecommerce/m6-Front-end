@@ -12,8 +12,7 @@ import ProductPage from "../pages/ProductPage";
 import { SalerPage } from "../pages/SelerPage";
 import Login from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage/registerPage";
-import ModalEditProfile from "../components/ModalEditProfile/ModalEditProfile";
-import ModalEditAddress from "../components/ModalEditAddress/ModalEditAddress";
+import ResetPasswordPage from "../pages/ResetPasswordPage/ResetPasswordPage";
 
 export const RoutesMain = () => {
   return (
@@ -23,6 +22,7 @@ export const RoutesMain = () => {
       <Route path="/detail" element={<ProductPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/saler" element={<SalerPage />} />
+      <Route path="/user/resetPassword/:id" element={<ResetPasswordPage />} />
     </Routes>
   );
 };
