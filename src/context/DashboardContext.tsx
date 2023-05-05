@@ -9,6 +9,8 @@ interface iDashboardContext{
     setModalEditProfile: React.Dispatch<React.SetStateAction<boolean>>,
     modalEditAddress: boolean,
     setModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>,
+    modalPasswordRecovery: boolean,
+    setModalPasswordRecovery: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export const DashboardContext = createContext({} as iDashboardContext)
@@ -21,10 +23,11 @@ const DashboardProvider = ({children}:iChildrenProps) => {
 
     const [ modalEditProfile, setModalEditProfile ] = useState<boolean>(false)
     const [ modalEditAddress, setModalEditAddress ] = useState<boolean>(false)
+    const [ modalPasswordRecovery, setModalPasswordRecovery ] = useState<boolean>(false)
 
 
   return (
-    <DashboardContext.Provider value={{setFilterMobile, filterMobile, modalEditProfile, setModalEditProfile, modalEditAddress, setModalEditAddress}}>
+    <DashboardContext.Provider value={{setFilterMobile, filterMobile, modalEditProfile, setModalEditProfile, modalEditAddress, setModalEditAddress, modalPasswordRecovery, setModalPasswordRecovery }}>
         {children}
     </DashboardContext.Provider>
   )
