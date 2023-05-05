@@ -18,7 +18,6 @@ const ModalEditProfile = () => {
 
   type EdteProfileFormData = z.infer<typeof EditProfileSchema>
   const token = localStorage.getItem("@accessToken");
-  const userId = localStorage.getItem("@userID");
 
   const navigate = useNavigate()
 
@@ -33,8 +32,6 @@ const ModalEditProfile = () => {
     const keysWithValues = Object.fromEntries(
       Object.entries(data).filter(([key, value]) => value !== "")
     );
-
-    console.log(keysWithValues)
 
     try {
       await api.patch(`/user/`, keysWithValues, {

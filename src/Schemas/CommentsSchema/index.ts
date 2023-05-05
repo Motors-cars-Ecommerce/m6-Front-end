@@ -8,3 +8,7 @@ export const commentSchema = z.object({
   car: z.any(),
   user: userSchema,
 });
+
+export const updateCommentSchema = z.object({
+  text: z.string(),
+});

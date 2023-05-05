@@ -1,32 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
-import {
-  StyledDivModal,
-  DivHeaderModal,
-  DivCarDetailModal,
-  DivButtonModal,
-} from "./styles";
-import {
-  InputBoxComponent,
-  SelectBoxComponent,
-} from "../../styles/componets/inputs/input";
-import {
-  AddImageButton,
-  CancelButton,
-  CreateAnnounceButton,
-  DisableButton,
-  EnableButton,
-} from "../../styles/componets/buttons/buttons";
-import { StyledTitle } from "../../styles/componets/typography";
-import { FormComponet } from "../../styles/componets/Forms/form";
 import { IoIosClose } from "react-icons/io";
 import ReactModal from "react-modal";
-import { SallerContext } from "../../context/salleContext";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { icar } from "../../interfaces/Car";
+import { SallerContext } from "../../../context/salleContext";
+import { icar } from "../../../interfaces/Car";
+import { StyledTitle } from "../../../styles/componets/typography";
+import { FormComponet } from "../../../styles/componets/Forms/form";
+import {
+  InputBoxComponent,
+  SelectBoxComponent,
+} from "../../../styles/componets/inputs/input";
+import {
+  AddImageButton,
+  CancelButton,
+  DisableButton,
+  EnableButton,
+} from "../../../styles/componets/buttons/buttons";
+import {
+  DivButtonModal,
+  DivEditModal,
+  DivHeaderModal,
+  DivOptionsModal,
+} from "./styles";
 
 const customStyles = {
   content: {
@@ -77,24 +76,26 @@ const formSchema = yup.object().shape({
   model_car: modelCarSchema,
 });
 
-export const NewAdModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const EditAdModal = () => {
   const [modalStyles, setModalStyles] = useState(
     window.innerWidth < 800 ? customStyles : customStylesDesktop
   );
   const {
     saller,
-    createNewCar,
     carsApi,
     carModels,
     getAllCarModels,
     getCarModel,
     carModel,
     setCarModel,
+    editAdModal,
+    setEditAdModal,
   } = useContext(SallerContext);
 
   const [brandCar, setBrandCar] = useState("");
   const [imageInputsCount, setImageInputsCount] = useState(1);
+  const [isPublic, setIsPublic] = useState(true);
+  const { pachCar, setDeleteAdModal } = useContext(SallerContext);
 
   const handleAddImageButtonClick = () => {
     if (imageInputsCount === 6) {
@@ -132,8 +133,13 @@ export const NewAdModal = () => {
     reset();
     setImageInputsCount(1);
     setCarModel(null);
-    setIsOpen(!isOpen);
+    setEditAdModal(!editAdModal);
   }
+
+  const deleteCar = () => {
+    toggleModal();
+    setDeleteAdModal(true);
+  };
 
   const carOptions =
     carsApi &&
@@ -170,19 +176,19 @@ export const NewAdModal = () => {
           color: data.color,
           description: data.description,
           main_image: data.main_image,
-          isActive: true,
+          isActive: isPublic,
           model_car: {
             id: data.model_car.id,
             branded: data.model_car.branded,
             model: data.model_car.model,
-            year: carModel?.year,
+            year: carModel.year,
             fuel: data.model_car.fuel,
           },
-          images: data.images.map((image) => ({
+          images: data.images.map((image: any) => ({
             image_url: image.image_url,
           })),
         };
-        createNewCar(newData);
+        pachCar(newData);
       }
     }
     toggleModal();
@@ -191,12 +197,9 @@ export const NewAdModal = () => {
   const form = document.getElementById("form_create") as HTMLFormElement;
 
   return (
-    <StyledDivModal>
-      <CreateAnnounceButton onClick={toggleModal}>
-        Criar anuncio
-      </CreateAnnounceButton>
+    <DivEditModal>
       <Modal
-        isOpen={isOpen}
+        isOpen={editAdModal}
         onRequestClose={toggleModal}
         style={modalStyles}
         contentLabel="Example Modal"
@@ -209,7 +212,7 @@ export const NewAdModal = () => {
             size={16}
             height={20}
           >
-            Criar anúncio
+            Editar anúncio
           </StyledTitle>
           <IoIosClose onClick={toggleModal} />
         </DivHeaderModal>
@@ -240,14 +243,13 @@ export const NewAdModal = () => {
             <option value="">Selecione o modelo:</option>
             {carModelOptions}
           </SelectBoxComponent>
-          <DivCarDetailModal>
+          <div>
             <div>
               <label htmlFor="">Ano</label>
               <InputBoxComponent
                 type="text"
                 placeholder="2018"
                 value={carModel?.year}
-                {...register("model_car.year")}
               />
             </div>
             <div>
@@ -292,13 +294,30 @@ export const NewAdModal = () => {
                 {...register("price")}
               />
             </div>
-          </DivCarDetailModal>
+          </div>
           <label htmlFor="description">Descrição</label>
           <InputBoxComponent
             type="text"
             placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
             {...register("description")}
           />
+          <label htmlFor="public">Publicado</label>
+          <DivButtonModal>
+            <button
+              type="button"
+              className={isPublic ? "button_select" : "buton_unselect"}
+              onClick={() => setIsPublic(true)}
+            >
+              Sim
+            </button>
+            <button
+              type="button"
+              className={!isPublic ? "button_select" : "buton_unselect"}
+              onClick={() => setIsPublic(false)}
+            >
+              Não
+            </button>
+          </DivButtonModal>
           <label htmlFor="main_image">Imagem da Capa</label>
           <InputBoxComponent
             type="text"
@@ -316,20 +335,21 @@ export const NewAdModal = () => {
               />
             </>
           ))}
-          {errors?.images && <span>{errors.images.message}</span>}
           <AddImageButton type="button" onClick={handleAddImageButtonClick}>
             Adicionar campo para imagem da galeria
           </AddImageButton>
-          <DivButtonModal>
-            <CancelButton onClick={() => toggleModal()}> Cancelar</CancelButton>
+          <DivOptionsModal>
+            <CancelButton onClick={() => deleteCar()}>
+              Excluir anúncio
+            </CancelButton>
             {form?.checkValidity() ? (
-              <EnableButton type="submit">Criar Anuncio</EnableButton>
+              <EnableButton type="submit">Salvar alteração</EnableButton>
             ) : (
-              <DisableButton type="submit">Criar Anuncio</DisableButton>
+              <DisableButton type="submit">Salvar alteração</DisableButton>
             )}
-          </DivButtonModal>
+          </DivOptionsModal>
         </FormComponet>
       </Modal>
-    </StyledDivModal>
+    </DivEditModal>
   );
 };
