@@ -52,6 +52,7 @@ export const LoginPage = styled.div`
         width: 100%;
       }
 
+
       .forgottenPassWord {
         display: flex;
         justify-content: flex-end;
@@ -59,10 +60,29 @@ export const LoginPage = styled.div`
         width: 75%;
         a {
           font-size: 14px;
+
+      .buttonForgotPass {
+        border: none;
+        background-color: transparent;
+        font-size: 16px;
+        font-weight: bold;
+        font-size: 14px;
+        margin-top: 16px;
+        margin-bottom: 0;
+
+        color: #212529;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        cursor: pointer;
+
+        &:hover {
+          color: #3007d3;
+
         }
       }
 
-      button {
+      .loginBTN {
         margin-top: 24px;
         padding: 8px 16px;
         width: 286.09px;

@@ -4,6 +4,7 @@ import { icar } from "./salleContext";
 import { error } from "console";
 import api from "../service/api";
 
+
 interface iDashboardContext {
   filterMobile: boolean;
   setFilterMobile: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,6 +12,8 @@ interface iDashboardContext {
   setModalEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
   modalEditAddress: boolean;
   setModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
+  modalPasswordRecovery: boolean,
+  setModalPasswordRecovery: React.Dispatch<React.SetStateAction<boolean>>,
   carsFiltered: icar[];
   setCarsFiltered: React.Dispatch<React.SetStateAction<icar[]>>;
   cars: icar[];
@@ -32,6 +35,7 @@ interface iDashboardContext {
   setMaxPrice: React.Dispatch<React.SetStateAction<number>>;
   filterByMaxPrice: () => void;
   filterByMinPrice: () => void;
+
 }
 
 export const DashboardContext = createContext({} as iDashboardContext);
@@ -39,6 +43,7 @@ export const DashboardContext = createContext({} as iDashboardContext);
 const DashboardProvider = ({ children }: iChildrenProps) => {
   const [modalEditProfile, setModalEditProfile] = useState<boolean>(false);
   const [modalEditAddress, setModalEditAddress] = useState<boolean>(false);
+  const [ modalPasswordRecovery, setModalPasswordRecovery ] = useState<boolean>(false)
   const [filterMobile, setFilterMobile] = useState<boolean>(false);
   const [carsFiltered, setCarsFiltered] = useState([] as icar[]);
   const [carsFilteredKm, setCarsFilteredKm] = useState([] as icar[]);
@@ -123,6 +128,7 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
     }
   };
 
+
   const filterByMinPrice = () => {
     if (minPrice > 0) {
       if (maxPrice > 0) {
@@ -189,6 +195,8 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
         setModalEditProfile,
         modalEditAddress,
         setModalEditAddress,
+        modalPasswordRecovery, 
+        setModalPasswordRecovery,
         cars,
         carsFiltered,
         setCars,
