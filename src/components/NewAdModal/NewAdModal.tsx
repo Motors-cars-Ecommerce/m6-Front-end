@@ -160,27 +160,30 @@ export const NewAdModal = () => {
 
   const submit = (data: icar) => {
     if (saller) {
-      const newData = {
-        user: saller,
-        comments: [],
-        id: data.id,
-        km: data.km,
-        price: data.price,
-        color: data.color,
-        description: data.description,
-        main_image: data.main_image,
-        model_car: {
-          id: data.model_car.id,
-          branded: data.model_car.branded,
-          model: data.model_car.model,
-          year: data.model_car.year,
-          fuel: data.model_car.fuel,
-        },
-        images: data.images.map((image) => ({
-          image_url: image.image_url,
-        })),
-      };
-      createNewCar(newData);
+      if (carModel) {
+        const newData = {
+          user: saller,
+          comments: [],
+          id: data.id,
+          km: data.km,
+          price: data.price,
+          color: data.color,
+          description: data.description,
+          main_image: data.main_image,
+          isActive: true,
+          model_car: {
+            id: data.model_car.id,
+            branded: data.model_car.branded,
+            model: data.model_car.model,
+            year: carModel?.year,
+            fuel: data.model_car.fuel,
+          },
+          images: data.images.map((image) => ({
+            image_url: image.image_url,
+          })),
+        };
+        createNewCar(newData);
+      }
     }
     toggleModal();
   };

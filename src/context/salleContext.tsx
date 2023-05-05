@@ -127,14 +127,17 @@ const SaleProvider = ({ children }: iChildrenProps) => {
   };
 
   const pachCar = async (adData: icar) => {
-    await api.patch(`/car/${adId}`, adData);
+    api.defaults.headers.authorization = `Bearer ${token}`;
+    const { data } = await api.patch(`/cars/${adId}`, adData);
+    console.log(data);
     if (saller) {
       loadCars(saller?.id);
     }
   };
 
   const deleteCar = async () => {
-    await api.delete(`/car/${adId}`);
+    api.defaults.headers.authorization = `Bearer ${token}`;
+    await api.delete(`/cars/${adId}`);
     if (saller) {
       loadCars(saller?.id);
     }

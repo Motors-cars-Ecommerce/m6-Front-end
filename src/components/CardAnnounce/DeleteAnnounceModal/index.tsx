@@ -5,12 +5,22 @@ import {
   AceptModalButton,
   CancelModalButton,
 } from "../../../styles/componets/buttons/buttons";
+import { SallerContext } from "../../../context/salleContext";
+import { StyledTitle } from "../../../styles/componets/typography";
+import { DivDeleteModal, DivDeleteOptionsModal } from "./styles";
 
-const customStylesComments = {
+const customStylesDelete = {
   content: {
     width: "-webkit-fill-available",
     height: "fit-content",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
     borderRadius: "8px",
+    maxWidth: "330px",
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -18,15 +28,16 @@ const customStylesComments = {
   },
 };
 
-const customStylesCommentDesktop = {
+const customStylesDeleteDesktop = {
   content: {
-    width: "350px",
-    height: "height: fit-content;",
+    width: "330px",
+    height: "fit-content;",
     top: "50%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
+    borderRadius: "8px",
     transform: "translate(-50%, -50%)",
   },
   overlay: {
@@ -35,19 +46,17 @@ const customStylesCommentDesktop = {
   },
 };
 
-export const DeleteCommentModal = () => {
+export const DeleteAdModal = () => {
   const [modalStyles, setModalStyles] = useState(
-    window.innerWidth < 800 ? customStylesComments : customStylesCommentDesktop
+    window.innerWidth < 800 ? customStylesDelete : customStylesDeleteDesktop
   );
-  const { setDeleteCommentModal, deleteCommentModal, deleteComment } =
-    useContext(CommentContext);
+  const { deleteAdModal, setDeleteAdModal, deleteCar } =
+    useContext(SallerContext);
 
   useEffect(() => {
     const handleResize = () => {
       setModalStyles(
-        window.innerWidth < 800
-          ? customStylesComments
-          : customStylesCommentDesktop
+        window.innerWidth < 800 ? customStylesDelete : customStylesDeleteDesktop
       );
     };
     window.addEventListener("resize", handleResize);
@@ -57,32 +66,53 @@ export const DeleteCommentModal = () => {
   }, []);
 
   const toggleModal = () => {
-    setDeleteCommentModal(!deleteCommentModal);
+    setDeleteAdModal(!deleteAdModal);
   };
 
   const confirmDelete = () => {
-    deleteComment();
+    deleteCar();
     toggleModal();
   };
 
   return (
     <Modal
-      isOpen={deleteCommentModal}
+      isOpen={deleteAdModal}
       onRequestClose={toggleModal}
       style={modalStyles}
       contentLabel="Example Modal"
     >
-      <DeleteDivModal>
-        Deseja apagar este comentario?
-        <div>
+      <DivDeleteModal>
+        <StyledTitle
+          tag="h6"
+          weight={500}
+          size={16}
+          height={20}
+          color="--grey-1"
+        >
+          Excluir anúncio
+        </StyledTitle>
+        <StyledTitle tag="h6" weight={500} size={16} height={20}>
+          Tem certeza que deseja remover este anúncio?
+        </StyledTitle>
+        <StyledTitle
+          tag="span"
+          color="--grey-2"
+          weight={400}
+          size={16}
+          height={28}
+        >
+          Essa ação não pode ser desfeita. Isso excluirá permanentemente sua
+          conta e removerá seus dados de nossos servidores.
+        </StyledTitle>
+        <DivDeleteOptionsModal>
           <CancelModalButton onClick={() => toggleModal()}>
             Cancelar
           </CancelModalButton>
           <AceptModalButton onClick={() => confirmDelete()}>
             Deletar
           </AceptModalButton>
-        </div>
-      </DeleteDivModal>
+        </DivDeleteOptionsModal>
+      </DivDeleteModal>
     </Modal>
   );
 };
