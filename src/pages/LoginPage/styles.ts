@@ -52,6 +52,15 @@ export const LoginPage = styled.div`
         width: 100%;
       }
 
+
+      .forgottenPassWord {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        width: 75%;
+        a {
+          font-size: 14px;
+
       .buttonForgotPass {
         border: none;
         background-color: transparent;
@@ -69,6 +78,7 @@ export const LoginPage = styled.div`
 
         &:hover {
           color: #3007d3;
+
         }
       }
 
@@ -110,6 +120,22 @@ export const LoginPage = styled.div`
     }
   }
 
+  .registerBtn {
+    height: 30px;
+    width: 240px;
+    margin-top: 32px;
+    border: 1px solid #adb5bd;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #fdfdfd;
+    color: #212529;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+  }
+
   @media (min-width: 768px) {
     .containerLogin {
       padding: 44px 48px;
@@ -130,13 +156,13 @@ export const LoginPage = styled.div`
         }
         .forgottenPassWord {
           display: flex;
-          align-items: flex-end;
+          text-align: right;
         }
         p {
           width: auto;
         }
 
-        button {
+        .registerBtn {
           margin-top: 32px;
         }
       }

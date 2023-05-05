@@ -1,6 +1,5 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LoginPage } from "./styles";
-import { Header } from "../../components/Header";
 import { useContext } from "react";
 import { DataUserContext } from "../../context/userContext";
 import { loginUserSchema } from "../../Schemas/User";
@@ -14,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { DashboardContext } from "../../context/DashboardContext";
 import ModalPasswordRecovery from "../../components/ModalPasswordRecovery/ModalPasswordRecovery";
+
 
 const Login = () => {
   const {
@@ -69,9 +69,10 @@ const Login = () => {
               Entrar
             </button>
           </FormComponet>
-          <p className="registerText">
-            Não possui cadastro? <Link to="/register">Clique aqui</Link>
-          </p>
+          <p className="registerText">Ainda não possui conta?</p>
+          <Link className="registerBtn" to="/register">
+            Cadastrar
+          </Link>
         </div>
       </LoginPage>
       <Footer />
@@ -80,15 +81,3 @@ const Login = () => {
 };
 
 export default Login;
-/* 
-function useForm(arg0: { resolver: any }): {
-  register: any;
-  handleSubmit: any;
-  formState: { errors: any };
-} {
-  throw new Error("Function not implemented.");
-}
-
-function yupResolver(schemaLogin: any): any {
-  throw new Error("Function not implemented.");
-} */
