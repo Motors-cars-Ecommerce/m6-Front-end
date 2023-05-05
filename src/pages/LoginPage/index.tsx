@@ -12,6 +12,8 @@ import { InputBoxComponent } from "../../styles/componets/inputs/input";
 import Footer from "../../components/Footer/Footer";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { DashboardContext } from "../../context/DashboardContext";
+import ModalPasswordRecovery from "../../components/ModalPasswordRecovery/ModalPasswordRecovery";
 
 const Login = () => {
   const {
@@ -28,9 +30,14 @@ const Login = () => {
 
   const { login } = useContext(DataUserContext);
 
+  const { modalPasswordRecovery, setModalPasswordRecovery } = useContext(DashboardContext)
+
   return (
     <>
       <HeaderComponet />
+      {
+        modalPasswordRecovery && <ModalPasswordRecovery/>
+      }
       <LoginPage>
         <div className="containerLogin">
           <FormComponet onSubmit={handleSubmit(submit)}>
@@ -57,9 +64,7 @@ const Login = () => {
                 {...register("password")}
               />
             </section>
-            <section className="forgottenPassWord">
-              <Link to="/forgot-password">Esqueci minha senha</Link>
-            </section>
+            <button className="buttonForgotPass" onClick={()=> setModalPasswordRecovery(true)} >Esqueci minha senha</button>
             <button type="submit" className="loginBTN">
               Entrar
             </button>
