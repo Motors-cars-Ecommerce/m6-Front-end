@@ -25,7 +25,7 @@ const ModalPasswordRecovery = () => {
       toast.success('E-mail enviado com sucesso!')
     } catch (error) {
       axios.isAxiosError(error) && console.log(error.response);
-      toast.error("A requisição com o servidor falhou!");
+      toast.error("E-mail inválido!");
     }
   }
 
@@ -34,7 +34,7 @@ const ModalPasswordRecovery = () => {
       <div className="overlay">
         <div className="content">
           <section>
-            <h2>Criar Nova Senha</h2>
+            <h2>Esqueci Minha Senha</h2>
             <button onClick={()=> setModalPasswordRecovery(false)} className="closeButton">X</button>
           </section>
           <h3>Digite o endereço de email cadastrado em nosso site</h3>

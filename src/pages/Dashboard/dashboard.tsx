@@ -59,7 +59,7 @@ const Dashboard = () => {
     <DashboardStyled>
       {modalEditProfile && <ModalEditProfile />}
       {modalEditAddress && <ModalEditAddress />}
-      {/* <ModalPasswordRecovery/> */}
+      <ModalPasswordRecovery/>
       <HeaderComponet />
       {!filterMobile ? (
         <>

@@ -8,11 +8,13 @@ import api from "../../service/api";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { ResetPasswordPageSchema } from "../../Schemas/RecoverPassowrdSchema/RecoverPassowrdSchema";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const ResetPasswordPage = () => {
 
-
+    const { id } = useParams()
+    const navigate = useNavigate()
   
   type ResetPasswordPageSchemaData = z.infer<typeof ResetPasswordPageSchema>
 
@@ -20,16 +22,16 @@ const ResetPasswordPage = () => {
 
   const onSubmitFunction = async (data:any) => {
 
-    console.log(data)
+    delete data.password_confirmation
 
-    // try {
-    //   await api.patch(`/address/`, keysWithValues);
-    //   setModalEditAddress(false);
-    //   toast.success('Informações atualizadas com Sucesso!')
-    // } catch (error) {
-    //   axios.isAxiosError(error) && console.log(error.response);
-    //   toast.error("A requisição de edição falhou!");
-    // }
+    try {
+      await api.patch(`/user/resetPassword/${id}`, data);
+      toast.success('Senha Alterada com Sucesso!')
+      navigate('/login')
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("A requisição do servidor falhou!");
+    }
   }
 
   return (
