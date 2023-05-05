@@ -28,6 +28,7 @@ const ProductProvider = ({ children }: iChildrenProps) => {
   const navigate = useNavigate();
 
   const loadProduct = async (productId: string) => {
+    console.log(productId);
     const { data } = await api.get(`/cars/${productId}`);
     setProduct(data);
     navigate("/detail");
