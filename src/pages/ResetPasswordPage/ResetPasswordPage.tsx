@@ -24,6 +24,8 @@ const ResetPasswordPage = () => {
 
     delete data.password_confirmation
 
+    console.log(data)
+
     try {
       await api.patch(`/user/resetPassword/${id}`, data);
       toast.success('Senha Alterada com Sucesso!')
