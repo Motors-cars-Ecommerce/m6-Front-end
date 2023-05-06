@@ -65,15 +65,28 @@ export const HeaderComponet = () => {
             className="header_user"
             onClick={() => setUserOptions(!userOptions)}
           >
-            <StyledTitle
-              tag="span"
-              color="--whiteFixed"
-              weight={700}
-              size={14}
-              height={0}
-            >
-              {user.name}
-            </StyledTitle>
+            {" "}
+            {user?.name ? (
+              <StyledTitle
+                tag="span"
+                color="--whiteFixed"
+                weight={700}
+                size={14}
+                height={0}
+              >
+                {user.name[0]}
+              </StyledTitle>
+            ) : (
+              <StyledTitle
+                tag="span"
+                color="--whiteFixed"
+                weight={700}
+                size={14}
+                height={0}
+              >
+                {" "}
+              </StyledTitle>
+            )}
             <StyledTitle
               tag="h3"
               weight={400}
