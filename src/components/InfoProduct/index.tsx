@@ -24,7 +24,16 @@ const InfoProduct = () => {
         <strong>R$ {product?.price}</strong>
       </InfoCardStyled>
 
-      <button>Comprar</button>
+      <button
+        onClick={() =>
+          window.open(
+            `https://api.whatsapp.com/send?phone=55${product?.user.phone}&text=Olá! Vi seu anuncio do ${product?.model_car.model} no Motors Shop e queria saber mais sobre o veiculo! Poderia me ajudar?`,
+            "_blank"
+          )
+        }
+      >
+        Comprar
+      </button>
     </SectionStyled>
   );
 };

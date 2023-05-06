@@ -4,10 +4,19 @@ import carro from "./imgs/EXTERIOR-frontSidePilotNear-1653845164710-removebg-pre
 import { useContext, useEffect, useState } from "react";
 import { SallerContext } from "../../context/salleContext";
 import { icar } from "../../interfaces/Car";
+import { ProductContext } from "../../context/ProductContext";
+import { CommentContext } from "../../context/CommentContext";
 
 const HomeCarCard = ({ car }: any) => {
   const { getSaler, isItAGoodBuy } = useContext(SallerContext);
+  const { loadProduct } = useContext(ProductContext);
+  const { loadComments } = useContext(CommentContext);
   const [goodBuy, setGoodBuy] = useState(true);
+
+  const toDetail = (carID: string) => {
+    loadComments(carID);
+    loadProduct(carID);
+  };
 
   useEffect(() => {
     const checkGoodBuy = async () => {
@@ -18,7 +27,7 @@ const HomeCarCard = ({ car }: any) => {
 
   return (
     <CarCardStyled>
-      <figure>
+      <figure onClick={() => toDetail(car.id)}>
         {goodBuy ? <div>$</div> : <></>}
         <img src={car.main_image} alt="" />
       </figure>

@@ -21,14 +21,15 @@ const ContainerCommet = styled.div`
   }
 `;
 const OwnerCommentDiv = styled.div`
-  width: 220px;
-  height: 35px;
-
-  /* background-color: green; */
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+width: -webkit-fill-available;
+height: 35px;
+display: flex;
+-webkit-box-pack: justify;
+justify-content: space-between;
+-webkit-box-align: center;
+align-items: center;
+gap: 10px;
+}
 
   div {
     width: 32px;

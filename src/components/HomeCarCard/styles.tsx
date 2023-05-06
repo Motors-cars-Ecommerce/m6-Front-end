@@ -16,6 +16,7 @@ export const CarCardStyled = styled.li`
     display: flex;
     flex-direction: row-reverse;
     margin: 0 auto;
+    border: 2px solid #fff;
 
     position: relative;
 
@@ -45,6 +46,10 @@ export const CarCardStyled = styled.li`
       height: 100%;
       background-color: var(--grey-7);
       object-fit: cover;
+    }
+
+    &:hover {
+      border: 2px solid #4529e6;
     }
   }
 

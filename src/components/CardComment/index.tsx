@@ -13,6 +13,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { DeleteCommentModal } from "./deleteCommentModal";
 import { EditCommentModal } from "./editCommentModal";
 import { ProductContext } from "../../context/ProductContext";
+import { Comment } from "./timeComment";
 
 const CardComment = () => {
   const { comments, setDeleteCommentModal, setCommentId, setEditCommentModal } =
@@ -50,7 +51,7 @@ const CardComment = () => {
                     <strong>{comment.user?.name[0]}</strong>
                   </div>
                   <strong>{comment.user?.name}</strong>
-                  <span>há 3 dias</span>
+                  <Comment comment={comment} />
                 </OwnerCommentDiv>
                 <p>{comment.text}</p>
               </div>

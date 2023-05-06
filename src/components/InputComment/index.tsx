@@ -21,6 +21,7 @@ export interface icomment {
 export interface icommentRequest {
   id: string;
   text: string;
+  createdAt: Date;
   car: icar;
   user: IUser;
 }
