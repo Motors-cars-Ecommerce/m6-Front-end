@@ -1,16 +1,25 @@
 import { StyledTitle } from "../../styles/componets/typography";
 import { CarCardStyled, CarDataStyled, UserDataStyled } from "./styles";
 import carro from "./imgs/EXTERIOR-frontSidePilotNear-1653845164710-removebg-preview 1.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SallerContext } from "../../context/salleContext";
+import { icar } from "../../interfaces/Car";
 
 const HomeCarCard = ({ car }: any) => {
-  const { getSaler } = useContext(SallerContext);
+  const { getSaler, isItAGoodBuy } = useContext(SallerContext);
+  const [goodBuy, setGoodBuy] = useState(true);
+
+  useEffect(() => {
+    const checkGoodBuy = async () => {
+      setGoodBuy(await isItAGoodBuy(car));
+    };
+    checkGoodBuy();
+  }, []);
 
   return (
     <CarCardStyled>
       <figure>
-        <div>$</div>
+        {goodBuy ? <div>$</div> : <></>}
         <img src={car.main_image} alt="" />
       </figure>
       <StyledTitle tag="h2" color="--grey-1" size={16} weight={600} height={20}>
@@ -34,7 +43,7 @@ const HomeCarCard = ({ car }: any) => {
       </UserDataStyled>
       <CarDataStyled>
         <div>
-          <h2>{car.km}</h2>
+          <h2>{car.km} KM</h2>
           <h2>{car.model_car.year}</h2>
         </div>
         <h3>R$ {car.price}</h3>

@@ -55,7 +55,6 @@ const NavBarDesktop = () => {
     inputMinKm.value = null;
   };
 
-  console.log(carsBrands);
   return (
     <NavBarStyled>
       <div>

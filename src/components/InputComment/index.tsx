@@ -60,7 +60,7 @@ const InputComment = () => {
   return (
     <ContainerStyled>
       <OwnerComment>
-        <div>{user?.name}</div>
+        <div>{user?.name[0]}</div>
         <strong>{user?.name}</strong>
       </OwnerComment>
       <FormStyled onSubmit={handleSubmit(submit)}>
@@ -69,7 +69,13 @@ const InputComment = () => {
             placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
             {...register("text")}
           />
-          <button type="submit">Comentar</button>
+          {user ? (
+            <button type="submit">Comentar</button>
+          ) : (
+            <button type="button" className="no_user_button">
+              Comentar
+            </button>
+          )}
         </div>
       </FormStyled>
     </ContainerStyled>

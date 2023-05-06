@@ -44,13 +44,11 @@ export const CarCardStyled = styled.li`
       width: 100%;
       height: 100%;
       background-color: var(--grey-7);
-      object-fit: cover; 
+      object-fit: cover;
     }
   }
 
-
   @media (min-width: 800px) {
-    
   }
 `;
 
@@ -104,7 +102,7 @@ export const CarDataStyled = styled.div`
       order: 0;
       flex-grow: 0;
 
-      width: 35px;
+      width: auto;
       height: 24px;
 
       font-family: "Inter";

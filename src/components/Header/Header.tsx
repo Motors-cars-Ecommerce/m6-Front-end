@@ -12,10 +12,14 @@ import { DashboardContext } from "../../context/DashboardContext";
 import ModalEditProfile from "../ModalEditProfile/ModalEditProfile";
 import ModalEditAddress from "../ModalEditAddress/ModalEditAddress";
 
-
 export const HeaderComponet = () => {
   const { user, setUser } = useContext(DataUserContext);
-  const { setModalEditProfile, setModalEditAddress, modalEditProfile, modalEditAddress } = useContext(DashboardContext)
+  const {
+    setModalEditProfile,
+    setModalEditAddress,
+    modalEditProfile,
+    modalEditAddress,
+  } = useContext(DashboardContext);
   const { setSaller, getSaler } = useContext(SallerContext);
   const [userOptions, setUserOptions] = useState(false);
   const [menuOptions, setMenuOptions] = useState(false);
@@ -45,12 +49,12 @@ export const HeaderComponet = () => {
 
   const toRegister = () => {
     navigate("/register");
-  }
+  };
 
   return (
     <Header>
-            { modalEditProfile && <ModalEditProfile/> }
-            { modalEditAddress && <ModalEditAddress/> }
+      {modalEditProfile && <ModalEditProfile />}
+      {modalEditAddress && <ModalEditAddress />}
       <div className="header_tittle" onClick={toDashboard}>
         <StyledTitle tag="h2">Motors </StyledTitle>
         <StyledTitle tag="h3">shop</StyledTitle>
@@ -68,7 +72,7 @@ export const HeaderComponet = () => {
               size={14}
               height={0}
             >
-              T
+              {user.name}
             </StyledTitle>
             <StyledTitle
               tag="h3"
@@ -83,8 +87,12 @@ export const HeaderComponet = () => {
           {userOptions ? (
             <>
               <div className="user_options">
-                <span onClick={()=> setModalEditProfile(true)} >Editar Perfil</span>
-                <span onClick={()=> setModalEditAddress(true)} >Editar Endereço</span>
+                <span onClick={() => setModalEditProfile(true)}>
+                  Editar Perfil
+                </span>
+                <span onClick={() => setModalEditAddress(true)}>
+                  Editar Endereço
+                </span>
                 {user?.seller ? (
                   <span onClick={() => getSaler(user.id)}>Meus Anuncios</span>
                 ) : (
@@ -118,13 +126,19 @@ export const HeaderComponet = () => {
             {!user ? (
               <>
                 <LoginButton onClick={toLogin}>Fazer Login</LoginButton>
-                <SingUpButton onClick={toRegister} className="singup">Cadastrar</SingUpButton>
+                <SingUpButton onClick={toRegister} className="singup">
+                  Cadastrar
+                </SingUpButton>
               </>
             ) : (
               <>
                 <div className="user_options_mobile">
-                <span onClick={()=> setModalEditProfile(true)} >Editar Perfil</span>
-                <span onClick={()=> setModalEditAddress(true)} >Editar Endereço</span>
+                  <span onClick={() => setModalEditProfile(true)}>
+                    Editar Perfil
+                  </span>
+                  <span onClick={() => setModalEditAddress(true)}>
+                    Editar Endereço
+                  </span>
                   {user?.seller ? (
                     <span onClick={() => getSaler(user.id)}>Meus Anuncios</span>
                   ) : (

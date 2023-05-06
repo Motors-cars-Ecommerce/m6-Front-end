@@ -12,11 +12,14 @@ import { CgTrashEmpty } from "react-icons/cg";
 import { AiFillEdit } from "react-icons/ai";
 import { DeleteCommentModal } from "./deleteCommentModal";
 import { EditCommentModal } from "./editCommentModal";
+import { ProductContext } from "../../context/ProductContext";
 
 const CardComment = () => {
   const { comments, setDeleteCommentModal, setCommentId, setEditCommentModal } =
     useContext(CommentContext);
   const { user } = useContext(DataUserContext);
+  const { product } = useContext(ProductContext);
+  const userId = localStorage.getItem("@userID");
 
   const [showDivOption, setDivOptions] = useState(false);
 
@@ -51,11 +54,13 @@ const CardComment = () => {
                 </OwnerCommentDiv>
                 <p>{comment.text}</p>
               </div>
-              {user?.id == comment?.user?.id ? (
+              {user?.id == comment?.user?.id || product?.user?.id == userId ? (
                 showDivOption ? (
                   <OptionsCommentStuyled>
                     <CgTrashEmpty onClick={() => deleteComment(comment.id)} />
-                    <AiFillEdit onClick={() => editComment(comment.id)} />
+                    {user?.id == comment?.user?.id && (
+                      <AiFillEdit onClick={() => editComment(comment.id)} />
+                    )}
                   </OptionsCommentStuyled>
                 ) : (
                   <></>

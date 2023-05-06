@@ -21,7 +21,7 @@ export const DivSalerDetail = () => {
 
   return (
     <StyledDivSaler>
-      <div className="saler_initial">{product?.user?.name}</div>
+      <div className="saler_initial">{product?.user?.name[0]}</div>
       <StyledTitle tag="h6" weight={600} size={20} height={25} color="--grey-1">
         {product?.user?.name}
       </StyledTitle>

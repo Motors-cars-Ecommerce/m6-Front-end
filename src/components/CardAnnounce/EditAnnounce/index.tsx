@@ -25,6 +25,7 @@ import {
   DivEditModal,
   DivHeaderModal,
   DivOptionsModal,
+  DivCarDetailModal,
 } from "./styles";
 
 const customStyles = {
@@ -243,7 +244,7 @@ export const EditAdModal = () => {
             <option value="">Selecione o modelo:</option>
             {carModelOptions}
           </SelectBoxComponent>
-          <div>
+          <DivCarDetailModal>
             <div>
               <label htmlFor="">Ano</label>
               <InputBoxComponent
@@ -294,7 +295,7 @@ export const EditAdModal = () => {
                 {...register("price")}
               />
             </div>
-          </div>
+          </DivCarDetailModal>
           <label htmlFor="description">Descrição</label>
           <InputBoxComponent
             type="text"
