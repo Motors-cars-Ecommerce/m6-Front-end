@@ -35,6 +35,7 @@ interface iDashboardContext {
   setMaxPrice: React.Dispatch<React.SetStateAction<number>>;
   filterByMaxPrice: () => void;
   filterByMinPrice: () => void;
+  loadCars: () => Promise<void>
 
 }
 
@@ -56,17 +57,18 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
   const [maxPrice, setMaxPrice] = useState(0);
 
   useEffect(() => {
-    const loadCars = async () => {
-      try {
-        const { data } = await api.get("/cars");
-        setCars(data);
-        filterCar(data);
-      } catch {
-        console.log("error");
-      }
-    };
     loadCars();
   }, []);
+
+  const loadCars = async () => {
+    try {
+      const { data } = await api.get("/cars");
+      setCars(data);
+      filterCar(data);
+    } catch {
+      console.log("error");
+    }
+  };
 
   useEffect(() => {
     filterByMinKM();
@@ -218,6 +220,7 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
         maxPrice,
         setMaxPrice,
         minPrice,
+        loadCars
       }}
     >
       {children}
