@@ -117,14 +117,13 @@ export function DataUserProvider({ children }: any) {
   };
 
   const createdUser = async (data: IRegisterBodyNotConfirmPassword) => {
-    await api
-      .post("/user", data)
-      .then((response) => {
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log("Cadastro deu errado ==>>", error);
-      });
+    console.log(data);
+    try {
+      await api.post("/user", data);
+      navigate("/login");
+    } catch {
+      console.log("Cadastro deu errado ==>>");
+    }
   };
 
   return (

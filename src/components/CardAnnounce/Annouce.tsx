@@ -41,7 +41,9 @@ export const AnnounceComponent = ({ car }: any) => {
           </ButtonGeneric>
         </div>
       ) : (
-        <></>
+        <ButtonGeneric onClick={() => toDetail(car.id)}>
+          Ver detalhe
+        </ButtonGeneric>
       )}
     </AnnounceDiv>
   );

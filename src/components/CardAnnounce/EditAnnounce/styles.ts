@@ -92,3 +92,25 @@ export const DivOptionsModal = styled.div`
     gap: 15px;
   }
 `;
+
+export const DivCarDetailModal = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  div {
+    padding-top: 24px;
+    width: 152px;
+    height: 73px;
+
+    input,
+    select {
+      width: 100%;
+    }
+
+    @media (min-width: 800px) {
+      height: 73px;
+      width: 50%;
+    }
+  }
+`;

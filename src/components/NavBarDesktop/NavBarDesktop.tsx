@@ -55,7 +55,6 @@ const NavBarDesktop = () => {
     inputMinKm.value = null;
   };
 
-  console.log(carsBrands);
   return (
     <NavBarStyled>
       <div>
@@ -70,7 +69,10 @@ const NavBarDesktop = () => {
         </StyledTitle>
         <ul>
           {carsBrands.map((car) => (
-            <li onClick={() => filterByBrand(car.model_car.branded)}>
+            <li
+              key={car.id}
+              onClick={() => filterByBrand(car.model_car.branded)}
+            >
               {car.model_car.branded}
             </li>
           ))}
@@ -88,7 +90,7 @@ const NavBarDesktop = () => {
         </StyledTitle>
         <ul>
           {carsModels.map((car) => (
-            <li onClick={() => filterByModel(car.model_car.model)}>
+            <li key={car.id} onClick={() => filterByModel(car.model_car.model)}>
               {car.model_car.model}
             </li>
           ))}
@@ -106,7 +108,9 @@ const NavBarDesktop = () => {
         </StyledTitle>
         <ul>
           {carsColors.map((car) => (
-            <li onClick={() => filterByColor(car.color)}>{car.color}</li>
+            <li key={car.id} onClick={() => filterByColor(car.color)}>
+              {car.color}
+            </li>
           ))}
         </ul>
       </div>
@@ -122,7 +126,7 @@ const NavBarDesktop = () => {
         </StyledTitle>
         <ul>
           {carsYear.map((car) => (
-            <li onClick={() => filterByYear(car.model_car.year)}>
+            <li key={car.id} onClick={() => filterByYear(car.model_car.year)}>
               {car.model_car.year}
             </li>
           ))}
@@ -140,7 +144,7 @@ const NavBarDesktop = () => {
         </StyledTitle>
         <ul>
           {carsFuel.map((car) => (
-            <li onClick={() => filterByFuel(car.model_car.fuel)}>
+            <li key={car.id} onClick={() => filterByFuel(car.model_car.fuel)}>
               {car.model_car.fuel}
             </li>
           ))}

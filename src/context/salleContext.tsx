@@ -9,51 +9,6 @@ export interface iChildrenProps {
   children: React.ReactNode;
 }
 
-export interface IUser {
-  id: string;
-  name: string;
-  email: string;
-  cpf: string;
-  phone: string;
-  birthday: Date;
-  seller: boolean;
-  isActive: boolean;
-  description: string;
-  address: {
-    number: string;
-    user: any;
-    cep: string;
-    street: string;
-    city: string;
-    complement: string;
-    id: string;
-  }[];
-  cars: [];
-}
-
-export interface icar {
-  id: string;
-  km: number;
-  price: number;
-  color: string;
-  description: string;
-  main_image: string;
-  model_car: {
-    branded: string;
-    model: string;
-    year: string;
-    fuel: string;
-  };
-  images: { image_url: string }[];
-  comments: {
-    id: string;
-    text: string;
-    car: any;
-    user: any;
-  }[];
-  user: IUser | null;
-}
-
 interface iSallerContext {
   saller: IUser | null;
   setSaller: React.Dispatch<React.SetStateAction<IUser | null>>;
@@ -78,6 +33,7 @@ interface iSallerContext {
   deleteAdModal: boolean;
   setDeleteAdModal: React.Dispatch<React.SetStateAction<boolean>>;
   setAdId: React.Dispatch<React.SetStateAction<string>>;
+  isItAGoodBuy: (car: icar) => Promise<boolean>;
 }
 
 export const SallerContext = createContext({} as iSallerContext);
@@ -188,6 +144,18 @@ const SaleProvider = ({ children }: iChildrenProps) => {
     }
   };
 
+  const isItAGoodBuy = async (car: icar) => {
+    const { data } = await api.get(
+      `https://kenzie-kars.herokuapp.com/cars?brand=${car.model_car.branded}`
+    );
+
+    const carFilter = data.find(
+      (eCar: any) => eCar.name == car.model_car.model
+    );
+    const check = carFilter.value >= car.price;
+    return check;
+  };
+
   const contextValue = {
     saller,
     setSaller,
@@ -212,6 +180,7 @@ const SaleProvider = ({ children }: iChildrenProps) => {
     setEditAdModal,
     pachCar,
     deleteCar,
+    isItAGoodBuy,
   };
 
   return (

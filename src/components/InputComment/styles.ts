@@ -54,6 +54,10 @@ const FormStyled = styled.form`
       }
     }
 
+    .no_user_button {
+      background-color: var(--grey-4);
+    }
+
     button {
       width: 108px;
       height: 38px;
