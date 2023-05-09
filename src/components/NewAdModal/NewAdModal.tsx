@@ -61,18 +61,18 @@ const imageSchema = yup.object().shape({
 });
 
 const modelCarSchema = yup.object().shape({
-  branded: yup.string(),
-  model: yup.string(),
-  year: yup.string(),
+  branded: yup.string().required('A marca é obrigatória'),
+  model: yup.string().required(),
+  year: yup.string().required('O ano é obrigatório').max(4, 'No máximo 4 caracteres'),
   fuel: yup.string(),
 });
 
 const formSchema = yup.object().shape({
-  km: yup.number(),
-  price: yup.number(),
-  color: yup.string(),
-  description: yup.string(),
-  main_image: yup.string(),
+  km: yup.number().required('A km é obrigatória'),
+  price: yup.number().required('O preço é obrigatório'),
+  color: yup.string().required('A cor é obrigatória'),
+  description: yup.string().required('A descrição é obrigatória'),
+  main_image: yup.string().required('A imagem é obrigatória'),
   images: yup.array(imageSchema),
   model_car: modelCarSchema,
 });

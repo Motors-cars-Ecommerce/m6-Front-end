@@ -46,7 +46,11 @@ const customEditStylesCommentDesktop = {
 };
 
 const formSchema = z.object({
-  text: z.string(),
+  text: z
+    .string()
+    .nonempty("O comentário é obrigatório")
+    .min(10, "O comentário precisa de no mínimo 10 caracteres")
+    .max(150, "O comentário pode ter no máximo 150 caracteres"),
 });
 
 export const EditCommentModal = () => {
@@ -106,6 +110,7 @@ export const EditCommentModal = () => {
             placeholder="Digite seu Texto aqui..."
             {...register("text")}
           />
+          {errors.text && <span> {errors.text.message} </span>}
           <div>
             <CancelModalButton type="button" onClick={() => toggleModal()}>
               Cancelar

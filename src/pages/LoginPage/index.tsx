@@ -52,6 +52,7 @@ const Login = () => {
                 placeholder="Digite seu usuário"
                 {...register("email")}
               />
+               {errors.email && <span> {errors.email.message} </span>}
             </section>
             <section>
               <label htmlFor="password">Senha</label>
@@ -63,6 +64,7 @@ const Login = () => {
                 placeholder="Digite sua senha"
                 {...register("password")}
               />
+               {errors.password && <span> {errors.password.message} </span>}
             </section>
             <button className="buttonForgotPass" onClick={()=> setModalPasswordRecovery(true)} >Esqueci minha senha</button>
             <button type="submit" className="loginBTN">
