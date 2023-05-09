@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { IUser } from "../interfaces/User";
 import { iApiModelCar, iModelCar } from "../interfaces/ModelCar";
 import { icar } from "../interfaces/Car";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export interface iChildrenProps {
   children: React.ReactNode;
@@ -121,26 +123,39 @@ const SaleProvider = ({ children }: iChildrenProps) => {
         await api.post("cars", data);
         loadCars(userId);
         setSucessModal(true);
-      } catch {
-        console.log("erro");
+        toast.success("Publicação criada com sucesso!");
+      } catch (error) {
+        axios.isAxiosError(error) && console.log(error.response);
+        toast.error("A comunicação com o servidor falhou!");
       }
     }
   };
 
   const pachCar = async (adData: icar) => {
-    api.defaults.headers.authorization = `Bearer ${token}`;
-    const { data } = await api.patch(`/cars/${adId}`, adData);
-    console.log(data);
-    if (saller) {
-      loadCars(saller?.id);
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      const { data } = await api.patch(`/cars/${adId}`, adData);
+      toast.success("Informações atualizadas com Sucesso!");
+      if (saller) {
+        loadCars(saller?.id);
+      }
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("A comunicação com o servidor falhou!");
     }
   };
 
   const deleteCar = async () => {
-    api.defaults.headers.authorization = `Bearer ${token}`;
-    await api.delete(`/cars/${adId}`);
-    if (saller) {
-      loadCars(saller?.id);
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      await api.delete(`/cars/${adId}`);
+      toast.success("Publicação deletada com Sucesso!");
+      if (saller) {
+        loadCars(saller?.id);
+      }
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("A comunicação com o servidor falhou!");
     }
   };
 

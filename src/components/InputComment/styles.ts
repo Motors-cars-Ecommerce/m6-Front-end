@@ -25,6 +25,14 @@ const FormStyled = styled.form`
 
   /* gap: 10px; */
 
+  span {
+    color: red;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-left: 15px;
+    height: 15px;
+  }
+
   div {
     display: flex;
     justify-content: flex-start;

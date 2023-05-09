@@ -49,8 +49,8 @@ const ResetPasswordPage = () => {
             <input type="password" placeholder="Digite sua senha" {...register('password')} />
             {errors.password && <span> {errors.password.message} </span>}
             <label htmlFor="">Confirme sua senha</label>
-            <input type="password" placeholder="Confirme sua senha" {...register('password_confirmation')} />
-            {errors.password_confirmation && <span> {errors.password_confirmation.message} </span>}
+            <input type="password" placeholder="Confirme sua senha" {...register('confirmPassword')} />
+            {errors.confirmPassword && <span> {errors.confirmPassword.message} </span>}
             <div className="buttonsContainer">
               <button className="saveButton">Alterar Senha</button>
             </div>

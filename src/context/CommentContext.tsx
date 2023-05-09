@@ -3,6 +3,8 @@ import { iChildrenProps } from "./salleContext";
 import { icomment, icommentRequest } from "../components/InputComment";
 import api from "../service/api";
 import { icommentUpdate } from "../interfaces/Comment";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 interface iCommentContext {
   comments: icommentRequest[];
@@ -38,21 +40,39 @@ const CommentProvider = ({ children }: iChildrenProps) => {
   };
 
   const createComment = async (commentData: icomment) => {
-    api.defaults.headers.authorization = `Bearer ${token}`;
-    await api.post("/comments", commentData);
-    loadComments(commentData.car);
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      await api.post("/comments", commentData);
+      loadComments(commentData.car);
+      toast.success('Comentário adicionado com Sucesso!')
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("A comunicação com o servidor falhou!");
+    }
   };
 
   const pachComment = async (commentData: icommentUpdate) => {
-    api.defaults.headers.authorization = `Bearer ${token}`;
-    await api.patch(`/comments/${commentID}`, commentData);
-    loadComments(productId);
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      await api.patch(`/comments/${commentID}`, commentData);
+      loadComments(productId);
+      toast.success('Comentário editado com Sucesso!')  
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("A comunicação com o servidor falhou!");
+    }
   };
 
   const deleteComment = async () => {
-    api.defaults.headers.authorization = `Bearer ${token}`;
-    await api.delete(`/comments/${commentID}`);
-    loadComments(productId);
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      await api.delete(`/comments/${commentID}`);
+      loadComments(productId);
+      toast.success('Comentário apagado com Sucesso!')
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("A comunicação com o servidor falhou!");
+    }
   };
 
   const contextValue = {

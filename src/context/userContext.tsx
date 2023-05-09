@@ -1,14 +1,15 @@
 import jwt_decode from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
 import api from "../service/api";
-import { error } from "console";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   ICadastre,
   ILogin,
   IRegisterBodyNotConfirmPassword,
   IUser,
 } from "../interfaces/User";
+import axios from "axios";
 
 /* export interface IUser {
   id: string;
@@ -61,7 +62,6 @@ export const DataUserContext = createContext({} as iUserContext);
 export function DataUserProvider({ children }: any) {
   const [user, setUser] = useState({} as IUser | null);
   const navigate = useNavigate();
-  const token = localStorage.getItem("@accessToken");
   const userId = localStorage.getItem("@userID");
 
   const [mudarCorAnunciante, setMudarCorAnunciante] = useState(
@@ -102,8 +102,10 @@ export function DataUserProvider({ children }: any) {
       localStorage.setItem("@userID", userId);
       getUser(userId);
       navigate("/");
-    } catch {
-      console.log("erro");
+      toast.success('Login efetuado com Sucesso!')
+    } catch(error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("E-mail ou senha inválidos!");
     }
   };
 
@@ -121,8 +123,10 @@ export function DataUserProvider({ children }: any) {
     try {
       await api.post("/user", data);
       navigate("/login");
-    } catch {
-      console.log("Cadastro deu errado ==>>");
+      toast.success('Usuário criado com Sucesso!')
+    } catch(error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error("E-mail ou CPF já existente!");
     }
   };
 

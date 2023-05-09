@@ -27,7 +27,7 @@ export interface icommentRequest {
 }
 
 const commentSchema = z.object({
-  text: z.string().nonempty(),
+  text: z.string().nonempty("O comentário é obrigatório"),
   car: z.any(),
   user: z.any(),
 });
@@ -70,6 +70,7 @@ const InputComment = () => {
             placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
             {...register("text")}
           />
+          {errors.text && <span> {errors.text.message} </span>}
           {user ? (
             <button type="submit">Comentar</button>
           ) : (
