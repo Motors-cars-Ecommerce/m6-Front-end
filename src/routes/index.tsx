@@ -11,7 +11,7 @@ import { NewAdModal } from "../components/NewAdModal/NewAdModal";
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={< NewAdModal/>} />
+      <Route path="/" element={< Dashboard/>} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/detail" element={<ProductPage />} />
       <Route path="/login" element={<Login />} />
