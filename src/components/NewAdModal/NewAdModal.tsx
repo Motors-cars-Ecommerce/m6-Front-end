@@ -288,7 +288,7 @@ export const NewAdModal = () => {
               <label htmlFor="price">Preço</label>
               <InputBoxComponent
                 type="text"
-                placeholder="R$ 50.000,00"
+                placeholder="50000"
                 {...register("price")}
               />
             </div>

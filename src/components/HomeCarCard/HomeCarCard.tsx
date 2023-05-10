@@ -55,7 +55,7 @@ const HomeCarCard = ({ car }: any) => {
           <h2>{car.km} KM</h2>
           <h2>{car.model_car.year}</h2>
         </div>
-        <h3>R$ {car.price}</h3>
+        <h3>{car.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
       </CarDataStyled>
     </CarCardStyled>
   );
