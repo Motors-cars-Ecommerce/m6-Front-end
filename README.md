@@ -3,17 +3,26 @@
 Motors Shop é uma aplicação web que permite a compra e venda de carros de forma fácil e intuitiva. Desenvolvida em React com TypeScript e Styled Components, a plataforma oferece cards de carros com informações como fotos, quilometragem, preço, ano, descrição, marca e modelo, além de filtros para busca de modelos específicos. Os anunciantes podem registrar seus carros, gerenciar seus anúncios e editar ou excluir a qualquer momento. O Motors Shop oferece modais de confirmação para cadastro e exclusão de anúncios, proporcionando uma experiência mais segura e confiável para os usuários.
 
 ## URL
-URL utilizara para as requisições do json-server:
+URL da API da aplicação:
 
 https://motors-cars-g17.onrender.com
 
 ## Tecnologias usadas
-* React
-* TypeScript
-* Styled Components
-* Context
-* Axios
-* Vite
+* axios
+* react
+* react-dom
+* react-hook-form
+* react-icons
+* react-modal
+* react-router-dom
+* react-scripts
+* routes
+styled-components
+styled-react-modal
+typescript
+vite
+web-vitals
+zod
 
 ## Funcionalidades
 * Disponibilidade em dispositivos móveis e desktop: a aplicação pode ser acessada em dispositivos móveis e desktop, garantindo que os usuários possam usá-la em qualquer dispositivo.
