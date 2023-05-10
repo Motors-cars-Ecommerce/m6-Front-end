@@ -58,7 +58,7 @@ const NavBarDesktop = () => {
   return (
     <NavBarStyled>
       <div>
-        <StyledTitle
+        <StyledTitle className="font"
           tag="h2"
           color="--grey-0"
           size={28}
@@ -79,7 +79,7 @@ const NavBarDesktop = () => {
         </ul>
       </div>
       <div>
-        <StyledTitle
+        <StyledTitle className="font"
           tag="h2"
           color="--grey-0"
           size={28}
@@ -97,7 +97,7 @@ const NavBarDesktop = () => {
         </ul>
       </div>
       <div>
-        <StyledTitle
+        <StyledTitle className="font"
           tag="h2"
           color="--grey-0"
           size={28}
@@ -115,7 +115,7 @@ const NavBarDesktop = () => {
         </ul>
       </div>
       <div>
-        <StyledTitle
+        <StyledTitle className="font"
           tag="h2"
           color="--grey-0"
           size={28}
@@ -133,7 +133,7 @@ const NavBarDesktop = () => {
         </ul>
       </div>
       <div>
-        <StyledTitle
+        <StyledTitle className="font"
           tag="h2"
           color="--grey-0"
           size={28}
@@ -150,7 +150,7 @@ const NavBarDesktop = () => {
           ))}
         </ul>
       </div>
-      <StyledTitle tag="h2" color="--grey-0" size={28} weight={600} height={35}>
+      <StyledTitle className="font" tag="h2" color="--grey-0" size={28} weight={600} height={35}>
         Km
       </StyledTitle>
       <span className="">
@@ -167,7 +167,7 @@ const NavBarDesktop = () => {
           onChange={(e) => setMaxKm(parseInt(e.target.value))}
         />
       </span>
-      <StyledTitle tag="h2" color="--grey-0" size={28} weight={600} height={35}>
+      <StyledTitle className="font" tag="h2" color="--grey-0" size={28} weight={600} height={35}>
         Preço
       </StyledTitle>
       <span className="">
