@@ -16,6 +16,10 @@ export const NavBarStyled = styled.nav`
     display: flex;
     flex-direction: column;
 
+    .font{
+      font-family: 'Inter';
+    }
+
     ul {
       display: flex;
       flex-direction: column;

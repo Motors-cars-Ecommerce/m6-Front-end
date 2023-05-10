@@ -13,6 +13,8 @@ export const Header = styled.section`
     justify-content: space-evenly;
     gap: 5px;
 
+    cursor: pointer;
+
     background: linear-gradient(90deg, #0b0d0d -1.61%, #4529e6 100.99%);
     -webkit-background-clip: text;
     color: transparent;

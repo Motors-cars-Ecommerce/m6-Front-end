@@ -67,7 +67,7 @@ const Login = () => {
                {errors.password && <span> {errors.password.message} </span>}
             </section>
             <button className="buttonForgotPass" onClick={()=> setModalPasswordRecovery(true)} >Esqueci minha senha</button>
-            <button type="submit" className="loginBTN">
+            <button type="submit" className="loginBTN" >
               Entrar
             </button>
           </FormComponet>
