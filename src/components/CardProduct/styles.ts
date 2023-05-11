@@ -13,8 +13,10 @@ const ContainerStyled = styled.div`
   justify-content: center;
 
   img {
-    height: -webkit-fill-available;
-    max-width: -webkit-fill-available;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
   }
 
   @media (min-width: 800px) {

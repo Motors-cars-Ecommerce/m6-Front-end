@@ -46,6 +46,7 @@ export const CarCardStyled = styled.li`
       height: 100%;
       background-color: var(--grey-7);
       object-fit: cover;
+      cursor: pointer;
     }
 
     &:hover {
