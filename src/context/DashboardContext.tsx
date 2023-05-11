@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { iChildrenProps } from "./salleContext";
-import { icar } from "./salleContext";
+import { icar } from "../interfaces/Car";
 import { error } from "console";
 import api from "../service/api";
 
@@ -78,6 +78,14 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
     filterByMaxKM();
   }, [maxKm]);
 
+  useEffect(() => {
+    filterByMaxPrice();
+  }, [maxPrice]);
+
+  useEffect(() => {
+    filterByMinPrice();
+  }, [minPrice]);
+
   const filterCar = (data: icar[]) => {
     setCarsFiltered(data);
     setCarsFilteredKm(data);
@@ -113,75 +121,75 @@ const DashboardProvider = ({ children }: iChildrenProps) => {
     filterCar(filteredCars);
   };
 
-  const filterByMaxPrice = () => {
-    if (maxPrice > 0) {
-      if (minPrice > 0) {
-        const filteredCars = carsFiltered.filter((c) => {
-          return c.price <= maxPrice;
-        });
-        setCarsFiltered(filteredCars);
-      } else {
-        const filteredCars = carsFilteredPrice.filter((c) => {
-          return c.price <= maxPrice;
-        });
-
-        setCarsFiltered(filteredCars);
-      }
-    }
-  };
-
-
-  const filterByMinPrice = () => {
-    if (minPrice > 0) {
-      if (maxPrice > 0) {
-        const filteredCars = carsFiltered.filter((c) => {
-          return c.price >= minPrice;
-        });
-        setCarsFiltered(filteredCars);
-      } else {
-        const filteredCars = carsFilteredPrice.filter((c) => {
-          return c.price >= minPrice;
-        });
-
-        setCarsFiltered(filteredCars);
-      }
-    }
-  };
-
+  
   const filterByMaxKM = () => {
     if (maxKm > 0) {
       if (minKm > 0) {
-        console.log(carsFilteredMinKm);
-        const filteredCars = carsFiltered.filter((c) => {
-          return c.km <= maxKm;
-        });
+        const filteredCars = cars.filter((c) => c.km <= maxKm && c.km >= minKm);
         setCarsFiltered(filteredCars);
       } else {
-        const filteredCars = carsFilteredKm.filter((c) => {
-          return c.km <= maxKm;
-        });
-
+        const filteredCars = cars.filter((c) => c.km <= maxKm);
         setCarsFiltered(filteredCars);
       }
+    } else if (minKm > 0) {
+      const filteredCars = cars.filter((c) => c.km >= minKm);
+      setCarsFiltered(filteredCars);
+    } else {
+      setCarsFiltered(cars);
     }
   };
-
+  
   const filterByMinKM = () => {
     if (minKm > 0) {
       if (maxKm > 0) {
-        const filteredCars = carsFiltered.filter((c) => {
-          return c.km >= minKm;
-        });
+        const filteredCars = cars.filter((c) => c.km >= minKm && c.km <= maxKm);
         setCarsFiltered(filteredCars);
       } else {
-        const filteredCars = carsFilteredMinKm.filter((c) => {
-          return c.km >= minKm;
-        });
-
+        const filteredCars = cars.filter((c) => c.km >= minKm);
         setCarsFiltered(filteredCars);
       }
+    } else if (maxKm > 0) {
+      const filteredCars = cars.filter((c) => c.km <= maxKm);
+      setCarsFiltered(filteredCars);
+    } else {
+      setCarsFiltered(cars);
     }
   };
+  
+  const filterByMaxPrice = () => {
+    if (maxPrice > 0) {
+      if (minPrice > 0) {
+        const filteredCars = cars.filter((c) => c.price <= maxPrice && c.price >= minPrice);
+        setCarsFiltered(filteredCars);
+      } else {
+        const filteredCars = cars.filter((c) => c.price <= maxPrice);
+        setCarsFiltered(filteredCars);
+      }
+    } else if (minPrice > 0) {
+      const filteredCars = cars.filter((c) => c.price >= minPrice);
+      setCarsFiltered(filteredCars);
+    } else {
+      setCarsFiltered(cars);
+    }
+  };
+  
+  const filterByMinPrice = () => {
+    if (minPrice > 0) {
+      if (maxPrice > 0) {
+        const filteredCars = cars.filter((c) => c.price >= minPrice && c.price <= maxPrice);
+        setCarsFiltered(filteredCars);
+      } else {
+        const filteredCars = cars.filter((c) => c.price >= minPrice);
+        setCarsFiltered(filteredCars);
+      }
+    } else if (maxKm > 0) {
+      const filteredCars = cars.filter((c) => c.price <= maxPrice);
+      setCarsFiltered(filteredCars);
+    } else {
+      setCarsFiltered(cars);
+    }
+  };
+  
 
   const resetCarsFiltered = () => {
     setCarsFiltered(cars);

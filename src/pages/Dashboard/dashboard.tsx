@@ -17,7 +17,10 @@ const Dashboard = () => {
     modalEditProfile,
     modalEditAddress,
     carsFiltered,
+    cars,
     loadCars,
+    filterByMinPrice,
+    filterByMaxPrice,
   } = useContext(DashboardContext);
 
   useEffect(() => {

@@ -48,11 +48,15 @@ const NavBarDesktop = () => {
 
   const inputMaxKm = document.getElementById("maxInputKm") as HTMLFormElement;
   const inputMinKm = document.getElementById("minInputKm") as HTMLFormElement;
+  const inputMaxPrice = document.getElementById("maxInputKm") as HTMLFormElement;
+  const inputMinPrice = document.getElementById("minInputKm") as HTMLFormElement;
 
   const resetFilters = () => {
     resetCarsFiltered();
     inputMaxKm.value = null;
     inputMinKm.value = null;
+    inputMaxPrice.value = null;
+    inputMinPrice.value = null;
   };
 
   return (

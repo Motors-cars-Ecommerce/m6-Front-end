@@ -5,7 +5,7 @@ export const carModelSchema = z.object({
   model: z.string(),
   branded: z.string(),
   year: z.string(),
-  fuel: z.number(),
+  fuel: z.string(),
 });
 
 export const apiCarModelSchema = z.object({
@@ -14,5 +14,5 @@ export const apiCarModelSchema = z.object({
   branded: z.string(),
   value: z.string(),
   year: z.string(),
-  fuel: z.number(),
+  fuel: z.string(),
 });
